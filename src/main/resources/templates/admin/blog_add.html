@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加博客</title>
+    <link rel="stylesheet" th:href="@{/editor.md-master/css/editormd.css}" />
+
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script th:src="@{/editor.md-master/editormd.min.js}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-fluid" th:fragment="admin">
+    <div th:replace="~{ admin/conn ::  common_haeder }"></div>
+    <div class="row">
+        <div th:replace="~{admin/conn :: cbl}"></div>
+        <div class="col-xs-10">
+
+                <div class="form-group">
+                    <label for="title">博客标题</label>
+                    <input type="text" class="form-control" id="title" placeholder="请输入文章标题">
+                </div>
+                <div class="form-group">
+                    <label for="blogName">博客名称</label>
+                    <input type="text" class="form-control" id="blogName" placeholder="请输入博客名称">
+                </div>
+
+            <div id="test-editormd">
+                <textarea></textarea>
+            </div>
+            <button id="btn" class="btn btn-primary btn-block">提交</button>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    var testEditor;
+    testEditor = editormd("test-editormd", {
+        placeholder: '本编辑器支持Markdown编辑，左边编写，右边预览', //默认显示的文字，这里就不解释了
+        width: "90%",
+        height: 640,
+        syncScrolling: "single",
+        path: "/editor.md-master/lib/", //你的path路径（原资源文件中lib包在我们项目中所放的位置）
+        theme: "dark", //工具栏主题
+        previewTheme: "dark", //预览主题
+        editorTheme: "pastel-on-dark", //编辑主题
+        saveHTMLToTextarea: true,
+        emoji: false,
+        taskList: true,
+        tocm: true, // Using [TOCM]
+        tex: true, // 开启科学公式TeX语言支持，默认关闭
+        flowChart: true, // 开启流程图支持，默认关闭
+        sequenceDiagram: true, // 开启时序/序列图支持，默认关闭,
+        toolbarIcons: function() { //自定义工具栏，后面有详细介绍
+            return editormd.toolbarModes['simple']; // full, simple, mini
+        },
+        //图片上传
+        imageUpload: true,
+        imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+        imageUploadURL: "/admin/blog/upload", // 文件上传的处理请求！
+        onload: function() {
+            console.log('onload', this);
+        },/*指定需要显示的功能按钮*/
+        toolbarIcons: function () {
+            return ["undo", "redo", "|",
+                "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
+                "h1", "h2", "h3", "h4", "h5", "h6", "|",
+                "list-ul", "list-ol", "hr", "|",
+                "link", "reference-link", "image", "code", "preformatted-text",
+                "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
+                "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
+                "help", "info"]
+        }
+    });
+    //上面的挑有用的写上去就行
+
+    //var content = testEditor.getMarkdown(); //这个获得markdown格式的字符串
+    //var content2 = testEditor.getHTML(); //获得html格式的字符串
+
+
+    // 在js中调用getMarkdown这个方法可以获得Markdown格式的文本。
+    var btn = document.querySelector('#btn');
+    btn.addEventListener('click', () => {
+        let content = testEditor.getMarkdown();
+        console.log(content)
+        $.ajax({
+            url:"/admin/blog/addBlog",
+            type:"POST",
+            dataType:"json",
+            data: {
+                "title":document.querySelector("#title").value,
+                "b_name":document.querySelector("#blogName").value,
+                "content":content,
+                "time":new Date()
+            },
+            success:(data)=>{
+                console.log(data)
+            }
+
+        });
+
+    })
+</script>
+</body>
+</html>

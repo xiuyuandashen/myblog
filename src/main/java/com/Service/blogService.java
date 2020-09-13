@@ -1,0 +1,22 @@
+package com.Service;
+
+import com.entity.blog;
+
+import java.util.List;
+
+public interface blogService {
+    //查询全部
+    List<blog> quireAll();
+
+    // 添加博客
+    void addBlog(blog blog);
+
+    // 查询博客
+    blog quireById(Integer id);
+
+    //删除博客
+    void removeBlogById(Integer id);
+
+    //更新博客
+    void updateBlog(blog blog);
+}
