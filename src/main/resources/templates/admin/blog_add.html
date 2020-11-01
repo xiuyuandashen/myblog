@@ -83,24 +83,28 @@
 
     // 在js中调用getMarkdown这个方法可以获得Markdown格式的文本。
     var btn = document.querySelector('#btn');
+    var xmlHttpRequest = new XMLHttpRequest();
     btn.addEventListener('click', () => {
         let content = testEditor.getMarkdown();
         console.log(content)
-        $.ajax({
-            url:"/admin/blog/addBlog",
-            type:"POST",
-            dataType:"json",
-            data: {
-                "title":document.querySelector("#title").value,
-                "b_name":document.querySelector("#blogName").value,
-                "content":content,
-                "time":new Date()
-            },
-            success:(data)=>{
-                console.log(data)
-            }
+        let data={
+            "bid":null,
+            "title":document.querySelector("#title").value,
+            "bName":document.querySelector("#blogName").value,
+            "content":content,
+            "time":new Date()
+        }
+        xmlHttpRequest.open("POST", "/admin/blog/addBlog", true)
+        xmlHttpRequest.setRequestHeader("Content-type", "application/json");
+        //将json对象转换成字符串传输至后台
+        xmlHttpRequest.send(JSON.stringify(data));
+        xmlHttpRequest.onreadystatechange = function () {
+            if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
+                let d = xmlHttpRequest.responseText;
+                console.log(d);
 
-        });
+            }
+        }
 
     })
 </script>

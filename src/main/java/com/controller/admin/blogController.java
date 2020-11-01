@@ -4,17 +4,20 @@ package com.controller.admin;
 import com.Service.impl.blogServiceimpl;
 import com.entity.blog;
 import com.github.pagehelper.PageHelper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -51,7 +54,6 @@ public class blogController {
         return "admin/blog_update";
     }
     @RequestMapping("/UpdateBlog")
-     @ResponseBody
     public void UpdateBlog(@RequestParam("title") String title
             ,@RequestParam("b_name") String b_name
             ,@RequestParam("content") String content
@@ -63,15 +65,27 @@ public class blogController {
     }
 
 
-    @RequestMapping("/addBlog")
+    @RequestMapping(value = "/addBlog",produces = "application/json")
     @ResponseBody
-    public void addBlog(@RequestParam("title") String title
-            ,@RequestParam("b_name") String b_name
-            ,@RequestParam("content") String content
-            ,@RequestParam("time") Date time){
-        final blog blog = new blog(null, b_name, title, content, time);
-//        System.out.println(blog);
+    public blog addBlog(HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException {
+
+        ServletInputStream inputStream = request.getInputStream();
+        StringBuffer str =new StringBuffer();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream,"utf-8"));
+        String len = null;
+        while((len = reader.readLine())!=null){
+            str.append(len);
+        }
+        System.out.println(str.toString());
+        len = str.toString();
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.create();
+        blog blog = gson.fromJson(len, blog.class);
+
+        //System.out.println(blog);
         blogService.addBlog(blog);
+        return blog;
+
     }
 
     /**

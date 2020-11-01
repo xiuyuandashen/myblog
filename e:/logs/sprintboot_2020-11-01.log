@@ -1,0 +1,677 @@
+2020-11-01 15:30:15 INFO  [restartedMain]  com.MyblogApplication - Starting MyblogApplication on zlfdeMBP.lan with PID 1183 (/Users/zlf/Desktop/myblog/target/classes started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 15:30:15 INFO  [restartedMain]  com.MyblogApplication - No active profile set, falling back to default profiles: default
+2020-11-01 15:30:15 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-01 15:30:15 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-01 15:30:19 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-11-01 15:30:19 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-11-01 15:30:19 INFO  [restartedMain]  o.a.c.core.StandardService - Starting service [Tomcat]
+2020-11-01 15:30:19 INFO  [restartedMain]  o.a.c.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-11-01 15:30:19 INFO  [restartedMain]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-11-01 15:30:19 INFO  [restartedMain]  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3305 ms
+2020-11-01 15:30:20 INFO  [restartedMain]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3e4caf40, org.springframework.security.web.context.SecurityContextPersistenceFilter@45b57cae, org.springframework.security.web.header.HeaderWriterFilter@19cbcf13, org.springframework.security.web.authentication.logout.LogoutFilter@1f1a3580, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2c5f6677, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@103007d8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@517577b2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5e7374e2, org.springframework.security.web.session.SessionManagementFilter@72e77895, org.springframework.security.web.access.ExceptionTranslationFilter@70521c81, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@79496ad]
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 15:30:20 INFO  [restartedMain]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 15:30:20 INFO  [restartedMain]  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-11-01 15:30:20 INFO  [restartedMain]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 15:30:20 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-11-01 15:30:20 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 15:30:20 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 15:30:20 INFO  [restartedMain]  com.MyblogApplication - Started MyblogApplication in 5.378 seconds (JVM running for 6.36)
+2020-11-01 15:30:23 INFO  [http-nio-8080-exec-1]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-01 15:30:23 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-11-01 15:30:23 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Completed initialization in 7 ms
+2020-11-01 15:30:23 INFO  [http-nio-8080-exec-1]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 15:37:00 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 15:37:00 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 15:37:00 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 16:44:43 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.MyblogApplicationTests], using SpringBootContextLoader
+2020-11-01 16:44:43 INFO  [main]  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.MyblogApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-11-01 16:44:43 INFO  [main]  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.MyblogApplicationTests]: MyblogApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-11-01 16:44:43 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.MyblogApplication for test class com.MyblogApplicationTests
+2020-11-01 16:44:43 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-11-01 16:44:43 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2e54db99, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@55e8ec2f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4f2613d1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6d24ffa1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@65a4798f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@773f7880, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@878452d, org.springframework.test.context.event.EventPublishingTestExecutionListener@426b6a74, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4c51bb7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@83298d7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42a9e5d1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5b080f3a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@773cbf4f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6b54655f]
+2020-11-01 16:44:44 INFO  [main]  com.MyblogApplicationTests - Starting MyblogApplicationTests on zlfdeMBP.lan with PID 1503 (started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 16:44:44 INFO  [main]  com.MyblogApplicationTests - No active profile set, falling back to default profiles: default
+2020-11-01 16:44:48 INFO  [main]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3fa5c9ae, org.springframework.security.web.context.SecurityContextPersistenceFilter@4b0f8153, org.springframework.security.web.header.HeaderWriterFilter@5124b461, org.springframework.security.web.authentication.logout.LogoutFilter@693d61c1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@8eebc81, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@100ee352, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@539d69b7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@54385172, org.springframework.security.web.session.SessionManagementFilter@4f00ee48, org.springframework.security.web.access.ExceptionTranslationFilter@3fc6ae7b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@faf79f9]
+2020-11-01 16:44:48 INFO  [main]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 16:44:48 INFO  [main]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:44:48 INFO  [main]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 16:44:49 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 16:44:49 INFO  [main]  com.MyblogApplicationTests - Started MyblogApplicationTests in 5.521 seconds (JVM running for 6.907)
+2020-11-01 16:44:49 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:44:49 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2020-11-01 16:46:41 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.MyblogApplicationTests], using SpringBootContextLoader
+2020-11-01 16:46:41 INFO  [main]  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.MyblogApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-11-01 16:46:41 INFO  [main]  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.MyblogApplicationTests]: MyblogApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-11-01 16:46:41 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.MyblogApplication for test class com.MyblogApplicationTests
+2020-11-01 16:46:41 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-11-01 16:46:41 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2e54db99, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@55e8ec2f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4f2613d1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6d24ffa1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@65a4798f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@773f7880, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@878452d, org.springframework.test.context.event.EventPublishingTestExecutionListener@426b6a74, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4c51bb7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@83298d7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42a9e5d1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5b080f3a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@773cbf4f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6b54655f]
+2020-11-01 16:46:42 INFO  [main]  com.MyblogApplicationTests - Starting MyblogApplicationTests on zlfdeMBP.lan with PID 1510 (started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 16:46:42 INFO  [main]  com.MyblogApplicationTests - No active profile set, falling back to default profiles: default
+2020-11-01 16:46:46 INFO  [main]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@33ba63e4, org.springframework.security.web.context.SecurityContextPersistenceFilter@4f00ee48, org.springframework.security.web.header.HeaderWriterFilter@7cfc07ef, org.springframework.security.web.authentication.logout.LogoutFilter@24a170e0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@219cfe45, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3354dd3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@275cb78f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@28f871d1, org.springframework.security.web.session.SessionManagementFilter@4dfb114e, org.springframework.security.web.access.ExceptionTranslationFilter@61ecfae6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@59f89461]
+2020-11-01 16:46:46 INFO  [main]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 16:46:46 INFO  [main]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:46:46 INFO  [main]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 16:46:46 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 16:46:46 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 16:46:46 INFO  [main]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 16:46:47 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 16:46:47 INFO  [main]  com.MyblogApplicationTests - Started MyblogApplicationTests in 5.337 seconds (JVM running for 6.706)
+2020-11-01 16:46:47 INFO  [main]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 16:46:48 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:46:48 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 16:46:48 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 16:48:47 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.MyblogApplicationTests], using SpringBootContextLoader
+2020-11-01 16:48:47 INFO  [main]  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.MyblogApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-11-01 16:48:47 INFO  [main]  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.MyblogApplicationTests]: MyblogApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-11-01 16:48:47 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.MyblogApplication for test class com.MyblogApplicationTests
+2020-11-01 16:48:47 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-11-01 16:48:47 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2e54db99, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@55e8ec2f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4f2613d1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6d24ffa1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@65a4798f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@773f7880, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@878452d, org.springframework.test.context.event.EventPublishingTestExecutionListener@426b6a74, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4c51bb7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@83298d7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42a9e5d1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5b080f3a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@773cbf4f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6b54655f]
+2020-11-01 16:48:47 INFO  [main]  com.MyblogApplicationTests - Starting MyblogApplicationTests on zlfdeMBP.lan with PID 1520 (started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 16:48:48 INFO  [main]  com.MyblogApplicationTests - No active profile set, falling back to default profiles: default
+2020-11-01 16:48:51 INFO  [main]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@28f871d1, org.springframework.security.web.context.SecurityContextPersistenceFilter@3b73dc75, org.springframework.security.web.header.HeaderWriterFilter@414f46af, org.springframework.security.web.authentication.logout.LogoutFilter@5fedaf7c, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@19b10c14, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b0f8153, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6748d248, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@13fe4e38, org.springframework.security.web.session.SessionManagementFilter@5124b461, org.springframework.security.web.access.ExceptionTranslationFilter@57ad1859, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7d21ab4c]
+2020-11-01 16:48:51 INFO  [main]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 16:48:52 INFO  [main]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:48:52 INFO  [main]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 16:48:52 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 16:48:52 INFO  [main]  com.MyblogApplicationTests - Started MyblogApplicationTests in 4.98 seconds (JVM running for 6.251)
+2020-11-01 16:48:53 INFO  [main]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 16:48:53 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:48:53 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 16:48:53 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 16:50:10 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.MyblogApplicationTests], using SpringBootContextLoader
+2020-11-01 16:50:10 INFO  [main]  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.MyblogApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-11-01 16:50:10 INFO  [main]  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.MyblogApplicationTests]: MyblogApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-11-01 16:50:10 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.MyblogApplication for test class com.MyblogApplicationTests
+2020-11-01 16:50:10 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-11-01 16:50:10 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2e54db99, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@55e8ec2f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4f2613d1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6d24ffa1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@65a4798f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@773f7880, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@878452d, org.springframework.test.context.event.EventPublishingTestExecutionListener@426b6a74, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4c51bb7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@83298d7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42a9e5d1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5b080f3a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@773cbf4f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6b54655f]
+2020-11-01 16:50:11 INFO  [main]  com.MyblogApplicationTests - Starting MyblogApplicationTests on zlfdeMBP.lan with PID 1531 (started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 16:50:11 INFO  [main]  com.MyblogApplicationTests - No active profile set, falling back to default profiles: default
+2020-11-01 16:50:15 INFO  [main]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@33ba63e4, org.springframework.security.web.context.SecurityContextPersistenceFilter@4f00ee48, org.springframework.security.web.header.HeaderWriterFilter@7cfc07ef, org.springframework.security.web.authentication.logout.LogoutFilter@24a170e0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@219cfe45, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3354dd3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@275cb78f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@28f871d1, org.springframework.security.web.session.SessionManagementFilter@4dfb114e, org.springframework.security.web.access.ExceptionTranslationFilter@61ecfae6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@59f89461]
+2020-11-01 16:50:15 INFO  [main]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 16:50:15 INFO  [main]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:50:15 INFO  [main]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 16:50:16 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 16:50:16 INFO  [main]  com.MyblogApplicationTests - Started MyblogApplicationTests in 5.667 seconds (JVM running for 6.924)
+2020-11-01 16:50:17 INFO  [main]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 16:50:17 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:50:17 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 16:50:17 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 16:52:12 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.MyblogApplicationTests], using SpringBootContextLoader
+2020-11-01 16:52:12 INFO  [main]  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.MyblogApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-11-01 16:52:12 INFO  [main]  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.MyblogApplicationTests]: MyblogApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-11-01 16:52:12 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.MyblogApplication for test class com.MyblogApplicationTests
+2020-11-01 16:52:12 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-11-01 16:52:12 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2e54db99, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@55e8ec2f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4f2613d1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6d24ffa1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@65a4798f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@773f7880, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@878452d, org.springframework.test.context.event.EventPublishingTestExecutionListener@426b6a74, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4c51bb7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@83298d7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42a9e5d1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5b080f3a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@773cbf4f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6b54655f]
+2020-11-01 16:52:13 INFO  [main]  com.MyblogApplicationTests - Starting MyblogApplicationTests on zlfdeMBP.lan with PID 1537 (started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 16:52:13 INFO  [main]  com.MyblogApplicationTests - No active profile set, falling back to default profiles: default
+2020-11-01 16:52:16 INFO  [main]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@bc60f71, org.springframework.security.web.context.SecurityContextPersistenceFilter@6ae5ead4, org.springframework.security.web.header.HeaderWriterFilter@2123af21, org.springframework.security.web.authentication.logout.LogoutFilter@1bdc5006, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@24a99b1c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3b73dc75, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ada5639, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5f826a18, org.springframework.security.web.session.SessionManagementFilter@414f46af, org.springframework.security.web.access.ExceptionTranslationFilter@6430c591, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7c68b975]
+2020-11-01 16:52:16 INFO  [main]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 16:52:17 INFO  [main]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:52:17 INFO  [main]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 16:52:17 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 16:52:17 INFO  [main]  com.MyblogApplicationTests - Started MyblogApplicationTests in 4.858 seconds (JVM running for 6.065)
+2020-11-01 16:52:18 INFO  [main]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 16:52:18 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:52:18 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 16:52:18 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 16:54:36 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.MyblogApplicationTests], using SpringBootContextLoader
+2020-11-01 16:54:36 INFO  [main]  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.MyblogApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-11-01 16:54:36 INFO  [main]  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.MyblogApplicationTests]: MyblogApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-11-01 16:54:36 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.MyblogApplication for test class com.MyblogApplicationTests
+2020-11-01 16:54:37 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-11-01 16:54:37 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2e54db99, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@55e8ec2f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4f2613d1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6d24ffa1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@65a4798f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@773f7880, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@878452d, org.springframework.test.context.event.EventPublishingTestExecutionListener@426b6a74, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4c51bb7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@83298d7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42a9e5d1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5b080f3a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@773cbf4f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6b54655f]
+2020-11-01 16:54:37 INFO  [main]  com.MyblogApplicationTests - Starting MyblogApplicationTests on zlfdeMBP.lan with PID 1543 (started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 16:54:37 INFO  [main]  com.MyblogApplicationTests - No active profile set, falling back to default profiles: default
+2020-11-01 16:54:41 INFO  [main]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@33ba63e4, org.springframework.security.web.context.SecurityContextPersistenceFilter@4f00ee48, org.springframework.security.web.header.HeaderWriterFilter@7cfc07ef, org.springframework.security.web.authentication.logout.LogoutFilter@24a170e0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@219cfe45, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3354dd3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@275cb78f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@28f871d1, org.springframework.security.web.session.SessionManagementFilter@4dfb114e, org.springframework.security.web.access.ExceptionTranslationFilter@61ecfae6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@59f89461]
+2020-11-01 16:54:41 INFO  [main]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 16:54:41 INFO  [main]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:54:41 INFO  [main]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 16:54:42 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 16:54:42 INFO  [main]  com.MyblogApplicationTests - Started MyblogApplicationTests in 5.202 seconds (JVM running for 6.614)
+2020-11-01 16:54:42 INFO  [main]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 16:54:43 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:54:43 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 16:54:43 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 16:58:26 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.MyblogApplicationTests], using SpringBootContextLoader
+2020-11-01 16:58:26 INFO  [main]  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.MyblogApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-11-01 16:58:26 INFO  [main]  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.MyblogApplicationTests]: MyblogApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-11-01 16:58:26 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.MyblogApplication for test class com.MyblogApplicationTests
+2020-11-01 16:58:26 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-11-01 16:58:26 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2e54db99, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@55e8ec2f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4f2613d1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6d24ffa1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@65a4798f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@773f7880, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@878452d, org.springframework.test.context.event.EventPublishingTestExecutionListener@426b6a74, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4c51bb7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@83298d7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42a9e5d1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5b080f3a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@773cbf4f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6b54655f]
+2020-11-01 16:58:27 INFO  [main]  com.MyblogApplicationTests - Starting MyblogApplicationTests on zlfdeMBP.lan with PID 1553 (started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 16:58:27 INFO  [main]  com.MyblogApplicationTests - No active profile set, falling back to default profiles: default
+2020-11-01 16:58:31 INFO  [main]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@786296ca, org.springframework.security.web.context.SecurityContextPersistenceFilter@4dfb114e, org.springframework.security.web.header.HeaderWriterFilter@553c4d0d, org.springframework.security.web.authentication.logout.LogoutFilter@451426ac, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5976d578, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a64f52b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@100ee352, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@12f1350f, org.springframework.security.web.session.SessionManagementFilter@4b1f7fa4, org.springframework.security.web.access.ExceptionTranslationFilter@408d5c64, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1060e784]
+2020-11-01 16:58:31 INFO  [main]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 16:58:31 INFO  [main]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:58:31 INFO  [main]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 16:58:31 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 16:58:31 INFO  [main]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 16:58:32 INFO  [main]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 16:58:32 INFO  [main]  com.MyblogApplicationTests - Started MyblogApplicationTests in 5.368 seconds (JVM running for 6.787)
+2020-11-01 16:58:32 INFO  [main]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 16:58:33 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 16:58:33 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 16:58:33 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 17:32:00 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.MyblogApplicationTests], using SpringBootContextLoader
+2020-11-01 17:32:00 INFO  [main]  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.MyblogApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-11-01 17:32:00 INFO  [main]  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.MyblogApplicationTests]: MyblogApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-11-01 17:32:00 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.MyblogApplication for test class com.MyblogApplicationTests
+2020-11-01 17:32:00 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-11-01 17:32:00 INFO  [main]  o.s.b.t.c.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2e54db99, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@55e8ec2f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4f2613d1, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6d24ffa1, org.springframework.test.context.support.DirtiesContextTestExecutionListener@65a4798f, org.springframework.test.context.transaction.TransactionalTestExecutionListener@773f7880, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@878452d, org.springframework.test.context.event.EventPublishingTestExecutionListener@426b6a74, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4c51bb7, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@83298d7, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@42a9e5d1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5b080f3a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@773cbf4f, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6b54655f]
+2020-11-01 17:32:01 INFO  [main]  com.MyblogApplicationTests - Starting MyblogApplicationTests on zlfdeMBP.lan with PID 1665 (started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 17:32:01 INFO  [main]  com.MyblogApplicationTests - No active profile set, falling back to default profiles: default
+2020-11-01 17:32:08 INFO  [restartedMain]  com.MyblogApplication - Starting MyblogApplication on zlfdeMBP.lan with PID 1671 (/Users/zlf/Desktop/myblog/target/classes started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 17:32:08 INFO  [restartedMain]  com.MyblogApplication - No active profile set, falling back to default profiles: default
+2020-11-01 17:32:08 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-01 17:32:08 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-01 17:32:10 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-11-01 17:32:10 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:32:10 INFO  [restartedMain]  o.a.c.core.StandardService - Starting service [Tomcat]
+2020-11-01 17:32:10 INFO  [restartedMain]  o.a.c.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-11-01 17:32:10 INFO  [restartedMain]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-11-01 17:32:10 INFO  [restartedMain]  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2362 ms
+2020-11-01 17:32:11 INFO  [restartedMain]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22c0fa45, org.springframework.security.web.context.SecurityContextPersistenceFilter@95256fd, org.springframework.security.web.header.HeaderWriterFilter@6c0998ff, org.springframework.security.web.authentication.logout.LogoutFilter@183642a1, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3c07762, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4dd2580c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3ad83f2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@476d25b7, org.springframework.security.web.session.SessionManagementFilter@5e76894e, org.springframework.security.web.access.ExceptionTranslationFilter@52bd373a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6795a55f]
+2020-11-01 17:32:11 INFO  [restartedMain]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 17:32:11 INFO  [restartedMain]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 17:32:11 INFO  [restartedMain]  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-11-01 17:32:11 INFO  [restartedMain]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 17:32:11 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:32:11 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-01 17:32:11 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 17:32:11 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 17:32:11 INFO  [restartedMain]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 17:32:12 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 17:32:12 INFO  [restartedMain]  com.MyblogApplication - Started MyblogApplication in 3.86 seconds (JVM running for 4.494)
+2020-11-01 17:32:17 INFO  [http-nio-8080-exec-1]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-01 17:32:17 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-11-01 17:32:17 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Completed initialization in 5 ms
+2020-11-01 17:32:17 INFO  [http-nio-8080-exec-1]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 17:32:23 WARN  [http-nio-8080-exec-9]  o.s.s.c.b.BCryptPasswordEncoder - Encoded password does not look like BCrypt
+2020-11-01 17:32:29 WARN  [http-nio-8080-exec-1]  o.s.s.c.b.BCryptPasswordEncoder - Encoded password does not look like BCrypt
+2020-11-01 17:33:55 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 17:33:55 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 17:33:55 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 17:33:58 INFO  [restartedMain]  com.MyblogApplication - Starting MyblogApplication on zlfdeMBP.lan with PID 1682 (/Users/zlf/Desktop/myblog/target/classes started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 17:33:58 INFO  [restartedMain]  com.MyblogApplication - No active profile set, falling back to default profiles: default
+2020-11-01 17:33:58 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-01 17:33:58 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-01 17:34:00 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-11-01 17:34:00 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:34:00 INFO  [restartedMain]  o.a.c.core.StandardService - Starting service [Tomcat]
+2020-11-01 17:34:00 INFO  [restartedMain]  o.a.c.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-11-01 17:34:00 INFO  [restartedMain]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-11-01 17:34:00 INFO  [restartedMain]  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2252 ms
+2020-11-01 17:34:01 WARN  [restartedMain]  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalArgumentException: role should not start with 'ROLE_' since it is automatically inserted. Got 'ROLE_ADMIN'
+2020-11-01 17:34:01 INFO  [restartedMain]  c.a.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2020-11-01 17:34:01 INFO  [restartedMain]  o.a.c.core.StandardService - Stopping service [Tomcat]
+2020-11-01 17:34:01 INFO  [restartedMain]  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-11-01 17:34:01 ERROR [restartedMain]  o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalArgumentException: role should not start with 'ROLE_' since it is automatically inserted. Got 'ROLE_ADMIN'
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:483)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.MyblogApplication.main(MyblogApplication.java:12)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalArgumentException: role should not start with 'ROLE_' since it is automatically inserted. Got 'ROLE_ADMIN'
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:650)
+	... 27 common frames omitted
+Caused by: java.lang.IllegalArgumentException: role should not start with 'ROLE_' since it is automatically inserted. Got 'ROLE_ADMIN'
+	at org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.hasRole(ExpressionUrlAuthorizationConfigurer.java:248)
+	at org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.access$400(ExpressionUrlAuthorizationConfigurer.java:81)
+	at org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer$AuthorizedUrl.hasRole(ExpressionUrlAuthorizationConfigurer.java:330)
+	at com.Config.SecurityConfig.configure(SecurityConfig.java:26)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.getHttp(WebSecurityConfigurerAdapter.java:231)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:322)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:94)
+	at com.Config.SecurityConfig$$EnhancerBySpringCGLIB$$8eb8e08a.init(<generated>)
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.init(AbstractConfiguredSecurityBuilder.java:370)
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:324)
+	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:41)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.springSecurityFilterChain(WebSecurityConfiguration.java:104)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 28 common frames omitted
+2020-11-01 17:34:10 INFO  [restartedMain]  com.MyblogApplication - Starting MyblogApplication on zlfdeMBP.lan with PID 1685 (/Users/zlf/Desktop/myblog/target/classes started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 17:34:10 INFO  [restartedMain]  com.MyblogApplication - No active profile set, falling back to default profiles: default
+2020-11-01 17:34:10 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-01 17:34:10 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-01 17:34:12 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-11-01 17:34:12 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:34:12 INFO  [restartedMain]  o.a.c.core.StandardService - Starting service [Tomcat]
+2020-11-01 17:34:12 INFO  [restartedMain]  o.a.c.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-11-01 17:34:12 INFO  [restartedMain]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-11-01 17:34:12 INFO  [restartedMain]  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1911 ms
+2020-11-01 17:34:12 WARN  [restartedMain]  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalArgumentException: role should not start with 'ROLE_' since it is automatically inserted. Got 'ROLE_ADMIN'
+2020-11-01 17:34:12 INFO  [restartedMain]  c.a.druid.pool.DruidDataSource - {dataSource-0} closing ...
+2020-11-01 17:34:12 INFO  [restartedMain]  o.a.c.core.StandardService - Stopping service [Tomcat]
+2020-11-01 17:34:12 INFO  [restartedMain]  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020-11-01 17:34:12 ERROR [restartedMain]  o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalArgumentException: role should not start with 'ROLE_' since it is automatically inserted. Got 'ROLE_ADMIN'
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:655)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:483)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.MyblogApplication.main(MyblogApplication.java:12)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalArgumentException: role should not start with 'ROLE_' since it is automatically inserted. Got 'ROLE_ADMIN'
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:650)
+	... 27 common frames omitted
+Caused by: java.lang.IllegalArgumentException: role should not start with 'ROLE_' since it is automatically inserted. Got 'ROLE_ADMIN'
+	at org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.hasRole(ExpressionUrlAuthorizationConfigurer.java:248)
+	at org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.access$400(ExpressionUrlAuthorizationConfigurer.java:81)
+	at org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer$AuthorizedUrl.hasRole(ExpressionUrlAuthorizationConfigurer.java:330)
+	at com.Config.SecurityConfig.configure(SecurityConfig.java:26)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.getHttp(WebSecurityConfigurerAdapter.java:231)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:322)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:94)
+	at com.Config.SecurityConfig$$EnhancerBySpringCGLIB$$6d7126e4.init(<generated>)
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.init(AbstractConfiguredSecurityBuilder.java:370)
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:324)
+	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:41)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.springSecurityFilterChain(WebSecurityConfiguration.java:104)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 28 common frames omitted
+2020-11-01 17:35:00 INFO  [restartedMain]  com.MyblogApplication - Starting MyblogApplication on zlfdeMBP.lan with PID 1691 (/Users/zlf/Desktop/myblog/target/classes started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 17:35:00 INFO  [restartedMain]  com.MyblogApplication - No active profile set, falling back to default profiles: default
+2020-11-01 17:35:00 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-01 17:35:00 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-01 17:35:02 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-11-01 17:35:02 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:35:02 INFO  [restartedMain]  o.a.c.core.StandardService - Starting service [Tomcat]
+2020-11-01 17:35:02 INFO  [restartedMain]  o.a.c.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-11-01 17:35:02 INFO  [restartedMain]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-11-01 17:35:02 INFO  [restartedMain]  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1868 ms
+2020-11-01 17:35:03 INFO  [restartedMain]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@56cbf78d, org.springframework.security.web.context.SecurityContextPersistenceFilter@79171246, org.springframework.security.web.header.HeaderWriterFilter@8a77fe3, org.springframework.security.web.authentication.logout.LogoutFilter@2a618a04, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@49349e04, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@54ea5ec6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3bbd0259, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5fb87460, org.springframework.security.web.session.SessionManagementFilter@5ff0fef9, org.springframework.security.web.access.ExceptionTranslationFilter@24249c3c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7677d6e6]
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 17:35:03 INFO  [restartedMain]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 17:35:03 INFO  [restartedMain]  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-11-01 17:35:03 INFO  [restartedMain]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 17:35:03 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:35:03 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 17:35:03 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 17:35:03 INFO  [restartedMain]  com.MyblogApplication - Started MyblogApplication in 3.236 seconds (JVM running for 3.952)
+2020-11-01 17:35:08 INFO  [http-nio-8080-exec-1]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-01 17:35:08 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-11-01 17:35:08 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Completed initialization in 4 ms
+2020-11-01 17:35:14 INFO  [http-nio-8080-exec-3]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 17:35:15 WARN  [http-nio-8080-exec-3]  o.s.s.c.b.BCryptPasswordEncoder - Encoded password does not look like BCrypt
+2020-11-01 17:36:43 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 17:36:43 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 17:36:43 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 17:39:53 INFO  [restartedMain]  com.MyblogApplication - Starting MyblogApplication on zlfdeMBP.lan with PID 1719 (/Users/zlf/Desktop/myblog/target/classes started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 17:39:53 INFO  [restartedMain]  com.MyblogApplication - No active profile set, falling back to default profiles: default
+2020-11-01 17:39:53 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-01 17:39:53 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-01 17:39:55 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-11-01 17:39:55 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:39:55 INFO  [restartedMain]  o.a.c.core.StandardService - Starting service [Tomcat]
+2020-11-01 17:39:55 INFO  [restartedMain]  o.a.c.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-11-01 17:39:55 INFO  [restartedMain]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-11-01 17:39:55 INFO  [restartedMain]  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2412 ms
+2020-11-01 17:39:56 INFO  [restartedMain]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2aab4432, org.springframework.security.web.context.SecurityContextPersistenceFilter@63c51cde, org.springframework.security.web.header.HeaderWriterFilter@3c5e3be, org.springframework.security.web.authentication.logout.LogoutFilter@65f81b8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3c65af48, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18b7a913, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@191d5001, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@44f9ccd3, org.springframework.security.web.session.SessionManagementFilter@41c3a377, org.springframework.security.web.access.ExceptionTranslationFilter@2bc7fbc1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@e69b177]
+2020-11-01 17:39:56 INFO  [restartedMain]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 17:39:56 INFO  [restartedMain]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 17:39:56 INFO  [restartedMain]  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-11-01 17:39:56 INFO  [restartedMain]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 17:39:56 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:39:56 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-01 17:39:56 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 17:39:56 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 17:39:56 INFO  [restartedMain]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 17:39:57 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 17:39:57 INFO  [restartedMain]  com.MyblogApplication - Started MyblogApplication in 4.062 seconds (JVM running for 4.654)
+2020-11-01 17:40:04 INFO  [http-nio-8080-exec-1]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-01 17:40:04 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-11-01 17:40:04 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Completed initialization in 6 ms
+2020-11-01 17:40:10 INFO  [http-nio-8080-exec-3]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 17:40:11 WARN  [http-nio-8080-exec-3]  o.s.s.c.b.BCryptPasswordEncoder - Encoded password does not look like BCrypt
+2020-11-01 17:43:10 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 17:43:10 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 17:43:10 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 17:43:13 INFO  [restartedMain]  com.MyblogApplication - Starting MyblogApplication on zlfdeMBP.lan with PID 1749 (/Users/zlf/Desktop/myblog/target/classes started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 17:43:13 INFO  [restartedMain]  com.MyblogApplication - No active profile set, falling back to default profiles: default
+2020-11-01 17:43:13 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-01 17:43:13 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-01 17:43:15 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-11-01 17:43:15 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:43:15 INFO  [restartedMain]  o.a.c.core.StandardService - Starting service [Tomcat]
+2020-11-01 17:43:15 INFO  [restartedMain]  o.a.c.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-11-01 17:43:15 INFO  [restartedMain]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-11-01 17:43:15 INFO  [restartedMain]  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2029 ms
+2020-11-01 17:43:15 INFO  [restartedMain]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1516889c, org.springframework.security.web.context.SecurityContextPersistenceFilter@502fb4d9, org.springframework.security.web.header.HeaderWriterFilter@67a638ea, org.springframework.security.web.authentication.logout.LogoutFilter@7725068a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1072353, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4f2f9a2e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@51f8e2bc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2601dd5e, org.springframework.security.web.session.SessionManagementFilter@2524a051, org.springframework.security.web.access.ExceptionTranslationFilter@105bcbff, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7e8dffc7]
+2020-11-01 17:43:15 INFO  [restartedMain]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 17:43:15 INFO  [restartedMain]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 17:43:15 INFO  [restartedMain]  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-11-01 17:43:15 INFO  [restartedMain]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 17:43:16 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:43:16 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 17:43:16 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 17:43:16 INFO  [restartedMain]  com.MyblogApplication - Started MyblogApplication in 3.557 seconds (JVM running for 4.218)
+2020-11-01 17:43:26 INFO  [http-nio-8080-exec-1]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-01 17:43:26 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-11-01 17:43:26 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Completed initialization in 5 ms
+2020-11-01 17:43:32 INFO  [http-nio-8080-exec-4]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 17:46:02 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 17:46:02 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 17:46:02 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed
+2020-11-01 17:46:06 INFO  [restartedMain]  com.MyblogApplication - Starting MyblogApplication on zlfdeMBP.lan with PID 1766 (/Users/zlf/Desktop/myblog/target/classes started by zlf in /Users/zlf/Desktop/myblog)
+2020-11-01 17:46:06 INFO  [restartedMain]  com.MyblogApplication - No active profile set, falling back to default profiles: default
+2020-11-01 17:46:06 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020-11-01 17:46:06 INFO  [restartedMain]  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020-11-01 17:46:08 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2020-11-01 17:46:08 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:46:08 INFO  [restartedMain]  o.a.c.core.StandardService - Starting service [Tomcat]
+2020-11-01 17:46:08 INFO  [restartedMain]  o.a.c.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-11-01 17:46:08 INFO  [restartedMain]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2020-11-01 17:46:08 INFO  [restartedMain]  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2386 ms
+2020-11-01 17:46:09 INFO  [restartedMain]  o.s.s.w.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@558ee7c0, org.springframework.security.web.context.SecurityContextPersistenceFilter@d7f1484, org.springframework.security.web.header.HeaderWriterFilter@d21d43, org.springframework.security.web.authentication.logout.LogoutFilter@77536246, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@63e78abc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7fd1011a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@655ae6fa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@41628b02, org.springframework.security.web.session.SessionManagementFilter@776bf2e, org.springframework.security.web.access.ExceptionTranslationFilter@6c91fc15, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@18e3e19e]
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-11-01 17:46:09 INFO  [restartedMain]  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-01 17:46:09 INFO  [restartedMain]  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2020-11-01 17:46:09 INFO  [restartedMain]  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2020-11-01 17:46:09 INFO  [restartedMain]  o.a.c.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2020-11-01 17:46:09 INFO  [restartedMain]  o.s.b.w.e.t.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingGET_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingHEAD_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPOST_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPUT_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingPATCH_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingDELETE_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingOPTIONS_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: addBlogUsingTRACE_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingGET_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingHEAD_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPOST_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPUT_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingPATCH_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingDELETE_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingOPTIONS_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: adminIndexUsingTRACE_1
+2020-11-01 17:46:09 INFO  [restartedMain]  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: indexUsingGET_1
+2020-11-01 17:46:09 INFO  [restartedMain]  com.MyblogApplication - Started MyblogApplication in 4.004 seconds (JVM running for 4.657)
+2020-11-01 17:46:14 INFO  [http-nio-8080-exec-1]  o.a.c.c.C.[.[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-01 17:46:14 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2020-11-01 17:46:14 INFO  [http-nio-8080-exec-1]  o.s.w.s.DispatcherServlet - Completed initialization in 5 ms
+2020-11-01 17:46:16 INFO  [http-nio-8080-exec-10]  c.a.druid.pool.DruidDataSource - {dataSource-1} inited
+2020-11-01 17:48:05 INFO  [SpringContextShutdownHook]  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-01 17:48:05 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2020-11-01 17:48:05 INFO  [SpringContextShutdownHook]  c.a.druid.pool.DruidDataSource - {dataSource-1} closed

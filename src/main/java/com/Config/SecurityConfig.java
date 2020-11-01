@@ -1,5 +1,7 @@
 package com.Config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,7 +13,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
+    @Autowired
+    MyAuthenticationProvider myAuthenticationProvider;
 
+    @Autowired
+    UserDetailServiceImpl userDetailService;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -20,7 +26,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("/img/**").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/editor.md-master/**").permitAll()
-                .antMatchers("/admin/**").hasRole("admin");
+                .antMatchers("/admin/**").hasRole("ADMIN");
         //关闭  CSRF disable() 禁用
         http.csrf().disable();
         http.formLogin().loginPage("/login")
@@ -35,11 +41,14 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
-                .withUser("admin")
-                .password(new BCryptPasswordEncoder().encode("123456"))
-                .roles("admin");
-
+//        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
+//                .withUser("admin")
+//                .password(new BCryptPasswordEncoder().encode("123456"))
+//                .roles("admin");
+        // 使用自定义登陆校验器
+        auth.authenticationProvider(myAuthenticationProvider);
+        // 使用这行代码（使用默认登陆校验器）
+        //auth.userDetailsService(userDetailService).passwordEncoder(new BCryptPasswordEncoder());
     }
 
 //    @Override

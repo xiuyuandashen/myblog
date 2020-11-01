@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: feng10.10
-    url: jdbc:mysql://localhost:3306/blog?characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/myblog?characterEncoding=utf8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     ## 指定数据源为druid
     type: com.alibaba.druid.pool.DruidDataSource
@@ -39,7 +39,7 @@ spring:
     time-zone: GMT+8 # 北京时间相对伦敦有8小时的时差，使用GTM+8，这样才能正常显示时间
   mvc:
     format:
-      date: yyyy-MM-dd  # 设置对输入参数格式化，这样后台就可以接收Date类型
+      date: yyyy-MM-dd HH:mm:ss  # 设置对输入参数格式化，这样后台就可以接收Date类型
 
 
 mybatis:
