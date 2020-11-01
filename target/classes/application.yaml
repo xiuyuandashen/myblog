@@ -1,0 +1,59 @@
+spring:
+  datasource:
+    username: root
+    password: feng10.10
+    url: jdbc:mysql://localhost:3306/myblog?characterEncoding=utf8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    ## 指定数据源为druid
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    # 下面为连接池的补充设置，应用到上面所有数据源中
+    # 初始化大小，最小，最大
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 25
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,logback
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    # 合并多个DruidDataSource的监控数据
+    useGlobalDataSourceStat: true
+
+  thymeleaf:
+    cache: false
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss # 对输出时间格式化
+    time-zone: GMT+8 # 北京时间相对伦敦有8小时的时差，使用GTM+8，这样才能正常显示时间
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss  # 设置对输入参数格式化，这样后台就可以接收Date类型
+
+
+mybatis:
+  mapper-locations: classpath*:/mapper/*.xml
+  type-aliases-package: com.entity
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+
+#logging:
+#  file:
+#    name: e://logs/all.log # 日志文件名称（例如，`myapp.log`）。 名称可以是当前目录的确切位置或相对。
+#  level:  #日志级别 debug/info/warn/error 默认未info 日志级别严重性映射
+#    root: info # root 设置全局的输入级别，root代表全局
