@@ -83,25 +83,47 @@
 
     // 在js中调用getMarkdown这个方法可以获得Markdown格式的文本。
     var btn = document.querySelector('#btn');
+    var xmlHttpRequest = new XMLHttpRequest();
     btn.addEventListener('click', () => {
         let content = testEditor.getMarkdown();
         console.log(content)
-        $.ajax({
-            url:"/admin/blog/UpdateBlog",
-            type:"POST",
-            dataType:"json",
-            data: {
-                "bid":[[${blog.getBid()}]],
-                "title":document.querySelector("#title").value,
-                "b_name":document.querySelector("#blogName").value,
-                "content":content,
-                "time":new Date()
-            },
-            success:()=>{
+        // $.ajax({
+        //     url:"/admin/blog/UpdateBlog",
+        //     type:"POST",
+        //     dataType:"json",
+        //     contentType:"application/json",
+        //     data: {
+        //         "bid":[[${blog.getBid()}]],
+        //         "title":document.querySelector("#title").value,
+        //         "bName":document.querySelector("#blogName").value,
+        //         "content":content,
+        //         "time":new Date()
+        //     },
+        //     success:()=>{
+        //
+        //     }
+        //
+        // });
+        let data={
+            "bid":[[${blog.getBid()}]],
+            "title":document.querySelector("#title").value,
+            "bName":document.querySelector("#blogName").value,
+            "content":content,
+            "time":new Date()
+        }
+        xmlHttpRequest.open("POST", "/admin/blog/UpdateBlog", true)
+        xmlHttpRequest.setRequestHeader("Content-type", "application/json");
+        //将json对象转换成字符串传输至后台
+        xmlHttpRequest.send(JSON.stringify(data));
+        xmlHttpRequest.onreadystatechange = function () {
+            if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
+                let d = xmlHttpRequest.responseText;
+                if(d!=null) alert("修改成功");
+                else alert("修改失败");
+                //console.log(d);
 
             }
-
-        });
+        }
 
     })
 </script>

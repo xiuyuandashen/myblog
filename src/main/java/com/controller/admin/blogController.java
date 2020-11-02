@@ -4,6 +4,7 @@ package com.controller.admin;
 import com.Service.impl.blogServiceimpl;
 import com.entity.blog;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.server.PathParam;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,9 +41,13 @@ public class blogController {
 
 
     @RequestMapping("/BlogList")
-    public String BlogList(Model model){
-        final List<blog> blogs = blogService.quireAll();
-        model.addAttribute("blogs",blogs);
+    public String BlogList(Model model, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "3") int pageSize){
+        //final List<blog> blogs = blogService.quireAll();
+        //model.addAttribute("blogs",blogs);
+        PageHelper.startPage(pageNum,pageSize);
+        List<blog> blogs = blogService.quireAll();
+        PageInfo<blog> blogPageInfo = new PageInfo<>(blogs);
+        model.addAttribute("blogPageInfo",blogPageInfo);
         return "admin/blog_list";
     }
 
@@ -54,14 +60,24 @@ public class blogController {
         return "admin/blog_update";
     }
     @RequestMapping("/UpdateBlog")
-    public void UpdateBlog(@RequestParam("title") String title
-            ,@RequestParam("b_name") String b_name
-            ,@RequestParam("content") String content
-            ,@RequestParam("time") Date time,
-              @RequestParam("bid")  Integer bid){
-        final blog blog = new blog(bid, b_name, title, content, time);
-        //System.out.println(blog);
+    @ResponseBody
+    public blog UpdateBlog(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        //final blog blog = new blog(bid, b_name, title, content, time);
+        ServletInputStream inputStream = request.getInputStream();
+        StringBuffer str =new StringBuffer();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream,"utf-8"));
+        String len = null;
+        while((len = reader.readLine())!=null){
+            str.append(len);
+        }
+        System.out.println(str.toString());
+        len = str.toString();
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.create();
+        blog blog = gson.fromJson(len, blog.class);
+
         blogService.updateBlog(blog);
+        return blog;
     }
 
 
@@ -90,7 +106,7 @@ public class blogController {
 
     /**
      * 博客上传图片
-     * @param upload    图片
+     * @param upload    图片 图片不能超过1mb
      * @param request
      * @return
      */

@@ -26,7 +26,7 @@
                     <th>作者</th>
                     <th>修改</th>
                 </tr>
-                <tr th:each="blog : ${blogs}">
+                <tr th:each="blog : ${blogPageInfo.list}">
                     <td th:text="${blog.getbName()}"></td>
                     <td th:text="${blog.getTitle()}"></td>
                     <td th:text="${#dates.format(blog.getTime(),'yyyy-MM-dd ')}"></td>
@@ -34,18 +34,15 @@
                     <td><a th:href="@{/admin/blog/{id}/update(id=${blog.getBid()})}">修改</a></td>
                 </tr>
             </table>
-            <nav aria-label="Page navigation">
+            <nav aria-label="Page navigation" style="display: flex;justify-content: center">
                 <ul class="pagination">
                     <li>
                         <a href="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
+                    <li th:each="pageNums :${blogPageInfo.navigatepageNums}" th:class="${pageNums == blogPageInfo.getPageNum()?'active':''}"><a th:href="@{/admin/blog/BlogList(pageNum=${pageNums})}" th:text="${pageNums}"></a> </li>
+
                     <li>
                         <a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>

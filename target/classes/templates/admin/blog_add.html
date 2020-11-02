@@ -101,7 +101,9 @@
         xmlHttpRequest.onreadystatechange = function () {
             if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
                 let d = xmlHttpRequest.responseText;
-                console.log(d);
+                if(d!=null) alert("添加成功");
+                else alert("添加失败");
+                //console.log(d);
 
             }
         }
