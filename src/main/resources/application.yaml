@@ -41,6 +41,22 @@ spring:
     format:
       date: yyyy-MM-dd HH:mm:ss  # 设置对输入参数格式化，这样后台就可以接收Date类型
 
+  cache:
+    cache-names: c1,c2
+    redis:
+      time-to-live: 300s
+  redis:
+    database: 0
+    host: 120.55.51.37
+    port: 6379
+    password: feng10.10
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+
 
 mybatis:
   mapper-locations: classpath*:/mapper/*.xml

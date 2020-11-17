@@ -1,6 +1,7 @@
 package com.controller.admin;
 
 
+import com.Config.PageConn;
 import com.Service.impl.blogServiceimpl;
 import com.entity.blog;
 import com.github.pagehelper.PageHelper;
@@ -8,6 +9,7 @@ import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +34,9 @@ public class blogController {
     @Autowired
     blogServiceimpl blogService;
 
+    @Autowired
+    PageConn pageConn;
+
     @RequestMapping("/queryAll")
     public List<blog> queryAllBlog(){
 
@@ -42,10 +47,9 @@ public class blogController {
 
     @RequestMapping("/BlogList")
     public String BlogList(Model model, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "3") int pageSize){
-        //final List<blog> blogs = blogService.quireAll();
-        //model.addAttribute("blogs",blogs);
-        PageHelper.startPage(pageNum,pageSize);
-        List<blog> blogs = blogService.quireAll();
+
+        //PageHelper.startPage(pageNum,pageSize);
+        List<blog> blogs = pageConn.pageList(pageNum,pageSize);
         PageInfo<blog> blogPageInfo = new PageInfo<>(blogs);
         model.addAttribute("blogPageInfo",blogPageInfo);
         return "admin/blog_list";

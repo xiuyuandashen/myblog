@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.Config.PageConn;
 import com.Service.impl.blogServiceimpl;
 import com.entity.blog;
 import com.github.pagehelper.PageHelper;
@@ -21,12 +22,15 @@ public class RouterController {
     @Autowired
     blogServiceimpl blogService;
 
+    @Autowired
+    PageConn pageConn;
+
     @GetMapping(path = {"/","index"})
     public String index(Model model,
                         @RequestParam(value = "pageNum",defaultValue = "1",required = false) Integer pageNum,
                         @RequestParam(value = "pageSize",defaultValue = "3",required = false) Integer pageSize){
-        PageHelper.startPage(pageNum,pageSize);
-        final List<blog> blogs = blogService.quireAll();
+        //PageHelper.startPage(pageNum,pageSize);
+        final List<blog> blogs = pageConn.pageList(pageNum,pageSize);
         final PageInfo<blog> blogPageInfo = new PageInfo<>(blogs);
         model.addAttribute("blogPageInfo",blogPageInfo);
         return "index";

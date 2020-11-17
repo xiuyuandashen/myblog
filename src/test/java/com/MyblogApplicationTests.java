@@ -1,5 +1,6 @@
 package com;
 
+import com.Service.blogService;
 import com.dao.blogDao;
 import com.dao.loginMapper;
 import com.entity.blog;
@@ -18,6 +19,8 @@ class MyblogApplicationTests {
 
     @Autowired
     blogDao blogDao;
+    @Autowired
+    blogService blogService;
 
     @Autowired
     loginMapper loginMapper;
@@ -26,10 +29,16 @@ class MyblogApplicationTests {
     void contextLoads() {
         //final List<blog> blogs = blogDao.quireAll();
        //blogDao.addBlog(new blog(null,"测试2","测试2","## 测试",new Date()));
-        List<role> roleByUserId = loginMapper.findRoleByUserId(1);
-        System.out.println(roleByUserId);
-        myUser root = loginMapper.loadUserByUsername("root");
-        System.out.println(root);
+//        List<role> roleByUserId = loginMapper.findRoleByUserId(1);
+//        System.out.println(roleByUserId);
+//        myUser root = loginMapper.loadUserByUsername("root");
+//        System.out.println(root);
+        //blogService.removeBlogById(1002);
+
+        blogService.quireAll();
+
+
+
     }
 
 
