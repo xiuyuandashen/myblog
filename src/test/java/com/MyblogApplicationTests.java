@@ -2,15 +2,16 @@ package com;
 
 import com.Service.blogService;
 import com.dao.blogDao;
+import com.dao.commentMapper;
 import com.dao.loginMapper;
-import com.entity.blog;
-import com.entity.myUser;
-import com.entity.role;
+import com.entity.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.crypto.spec.PSource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,9 @@ class MyblogApplicationTests {
 
     @Autowired
     loginMapper loginMapper;
+
+    @Autowired
+    com.dao.commentMapper commentMapper;
 
     @Test
     void contextLoads() {
@@ -41,6 +45,43 @@ class MyblogApplicationTests {
 
     }
 
+    @Test
+    void testComment(){
+        List<CommentVO> result = new ArrayList<>();
+        List<Long> commentIdByBlogId = commentMapper.getCommentIdByBlogId(1001);
 
+        for(long commentId : commentIdByBlogId) {
+            CommentVO commentVO = commentMapper.selectCommentById((int) commentId);
+            myUser myUser1 = loginMapper.selectByUserId(commentVO.getUserId());
+            commentVO.setUserName(myUser1.getName());
+
+
+            List<ReplyVO> replyVOS = commentMapper.selectByPid(commentVO.getCommentId());
+            List<ReplyVO> reply = new ArrayList<>();
+//
+            for (ReplyVO replyVO : replyVOS) {
+                myUser myUser = loginMapper.selectByUserId(replyVO.getUserId());
+                replyVO.setReplyUserName(myUser1.getName());
+                replyVO.setUserName(myUser.getName());
+                reply.add(replyVO);
+            }
+
+            commentVO.setReplyVO(reply);
+            result.add(commentVO);
+        }
+
+        System.out.println(result);
+
+    }
+    @Test
+    @Transactional
+    void add(){
+
+//        Comment comment =new Comment(Long.valueOf(1001),Long.valueOf(1001),0,0,"测试添加2",new Date());
+//        int i = commentMapper.addComment(comment);
+//        System.out.println(i);i
+        long commentByCommentId = commentMapper.getCommentByCommentId(1001);
+        System.out.println(commentByCommentId);
+    }
 
 }

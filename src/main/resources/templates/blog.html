@@ -26,6 +26,8 @@
             border: none;
         }
     </style>
+
+
 </head>
 <body>
 <div class="container-fluid">
@@ -70,32 +72,40 @@
         <li class="active" th:text="${blog.title}"></li>
     </ol>
     <div class="container">
-<!--        <div class="panel panel-default">-->
-<!--            <div class="panel-heading">-->
-<!--                <h3 class="panel-title " th:text="${blog.getTitle()}"></h3>-->
-<!--            </div>-->
-<!--            <div class="panel-body">-->
-<!--                -->
-<!--            </div>-->
-<!--        </div>-->
-
-        <div id="layout" class="editor col-lg-8" >
-            <div class="page-header">
-                <h3 id="dingbu">[[${blog.getTitle()}]]  <small th:text="${#dates.format(blog.time, 'yyyy-MM-dd')}"></small></h3>
-            </div>
-            <!-- id 与 editormd.markdownToHTML("id",{}) 要一致 -->
-            <div id="test-editormd">
-                <textarea th:text="${blog.getContent()}"></textarea>
+        <div class="row" style="margin-bottom: 5vh">
+            <div id="layout" class="editor col-lg-12" >
+                <div class="page-header">
+                    <h3 id="dingbu">[[${blog.getTitle()}]]  <small th:text="${#dates.format(blog.time, 'yyyy-MM-dd')}"></small></h3>
+                </div>
+                <!-- id 与 editormd.markdownToHTML("id",{}) 要一致 -->
+                <div id="test-editormd">
+                    <textarea th:text="${blog.getContent()}"></textarea>
+                </div>
             </div>
         </div>
-        <iframe class="col-lg-4" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=433357475&auto=1&height=430"></iframe>
+
+<!--        <iframe class="col-lg-4" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=433357475&auto=1&height=430"></iframe>-->
         <!--        <ul class="nav nav-pills col-md-1 col-md-offset-1 nav-stacked " style="position: fixed;right: 10vw;top: 40vh" >-->
 <!--            <li role="presentation" class="active" style="text-align: center"><a href="#dingbu">返回顶部</a></li>-->
 <!--            <li role="presentation" class="active" style="text-align: center"><a href="#dibu">返回底部</a></li>-->
 <!--        </ul>-->
+        <div  class="row" style="margin-bottom: 5vh">
+            <div class="pinglun1" style="display: flex;justify-content: space-between;align-items: center">
+                <div class="touxiang col-lg-1" style="display: flex">
+                    <img th:src="@{/img/4.png}" alt="" class="img-circle" style="width: 70px;height: 70px;margin: 0 auto" >
+                </div>
+                <div class="col-lg-11" style="display: flex;justify-content: flex-start;">
+                    <textarea class="FplText" id="fpl" style="width: 80%;height: 80%;min-width: 800px;max-height: 80px;min-height: 50px"></textarea>
+                    <button class="btn btn-success Fpinglun" id="PL" style="width: 80px;margin-left: 10px">评论</button>
+                </div>
+            </div>
+        </div>
+        <div class="row ping" >
+        </div>
     </div>
 
 </div>
+<hr>
 <div th:replace="~{ admin/conn ::  dibu }"></div>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
@@ -109,19 +119,192 @@
 <script th:src="@{/editor.md-master/lib/sequence-diagram.min.js} "></script>
 <script th:src="@{/editor.md-master/lib/flowchart.min.js }"></script>
 <script th:src="@{/editor.md-master/editormd.min.js}"></script>
+<script th:src="@{/js/ajax.js}"></script>
+
+</body>
 <script>
 
-
-   var testEditor = editormd.markdownToHTML("test-editormd", {
+    console.log("---- ----")
+    var testEditor =null;
+    let PingLunDiv=null;
+    testEditor = editormd.markdownToHTML("test-editormd", {
         htmlDecode: "style,script,iframe", // you can filter tags decode
-        emoji: true,
-        taskList: true,
-        tex: true, // 默认不解析
-        flowChart: true, // 默认不解析
-        sequenceDiagram: true, // 默认不解析
-        previewTheme : "dark"
+        // emoji: true,
+        // taskList: true,
+        // tex: true, // 默认不解析
+        // flowChart: true, // 默认不解析
+        // sequenceDiagram: true, // 默认不解析
+        // previewTheme : "dark"
     });
-   // testEditor.setPreviewTheme("dark");
+    //testEditor.setPreviewTheme("dark");
+    PingLunDiv = document.querySelector(".ping");
+    console.log("-- -----");
+    var imgurl = "[[@{/img/4.png}]]";
+    var responseCommentList;
+    window.addEventListener("load",function (){
+        responseCommentList = ()=> {
+            let url = "/comment/" + [[${blog.bid}]];
+            Ajax2(url, "POST", () => {
+                let data = xmlHttpRequest.responseText;
+                let arr = JSON.parse(data);
+                console.log(data);
+                arr.forEach((item, index) => {
+                    let PingLunItemF = document.createElement("div");
+                    PingLunItemF.className = "panel panel-default";
+                    if (item.replyVO.length >= 1) {
+                        PingLunItemF.innerHTML += `
+
+                <div class="panel-body" pid="0" replyUserId="0" userId="${item.userId}"  commentId="${item.commentId}" style="display:flex;justify-content: start;align-items: center;"><img src="${imgurl}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + item.userName + ": " +
+                            item.commentMsg + `<span class="label label-primary" style="margin-left: 7px">` + item.createTime + `</span><small class="hfbtn-${item.commentId}" style="color: #999999;margin-left: 5px;">回复</small>
+                </div>
+                `;
+                        item.replyVO.forEach((it, index) => {
+                            PingLunItemF.innerHTML += `
+
+                <div class="panel-body" pid="${item.commentId}" commentId="${it.commentId}" userId="${it.userId}" replyUserId="${it.replyUserId}" style="margin-left:100px;display:flex;justify-content: start;align-items: center;border-left: 1px solid #ddd;"><img src="${imgurl}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + it.userName + " 对 " + it.replyUserName + "说：" +
+                                it.commentMsg + `<span class="label label-primary" style="margin-left: 7px">` + it.createTime + `</span><small class="hfbtn-${it.commentId}" style="color: #999999;margin-left: 5px;">回复</small>
+                </div>
+                      `;
+                        })
+                        PingLunDiv.appendChild(PingLunItemF);
+                    } else {
+                        PingLunItemF.innerHTML += `<div class="panel-body" commentId="${item.commentId}" userId="${item.userId}" pid="0" replyUserId="0"  style="display:flex;justify-content: start;align-items: center;"><img src="${imgurl}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + item.userName + ": " +
+                            item.commentMsg + `<span class="label label-primary" style="margin-left: 7px">` + item.createTime + `</span><small class="hfbtn-${item.commentId}" style="color: #999999;margin-left: 5px;">回复</small>
+                </div>
+                `;
+                        PingLunDiv.appendChild(PingLunItemF);
+                    }
+                })
+            })
+        }
+        responseCommentList();
+        //console.log("事件")
+
+    });
+
+    var arr;
+
+    function huifuBtn() {
+        arr =  document.querySelectorAll(".panel small");
+            //console.log(arr)
+            arr.forEach((item,index)=>{
+                item.addEventListener('click',()=>{
+                    if(document.querySelector('.pinglun')!=null){
+                        document.querySelector('.pinglun').parentNode.parentNode.removeChild(document.querySelector('.pinglun').parentNode);
+                    }
+                    let parentandnext = item.parentNode.nextSibling;
+                    let p = parentandnext.parentNode;
+                    console.log(parentandnext)
+                    let div =  document.createElement("div");
+                    div.className = "panel-body huifu";
+                    div.style.marginLeft = "100px";
+                    div.style.borderLeft="1px solid #ddd";
+                    div.innerHTML+=`<div class="pinglun" style="display: flex;justify-content: space-between;align-items: center;width:100%;height:100%">
+                    <div class="touxiang" style="display: flex;width:80px;">
+                        <img src="${imgurl}" alt="" class="img-circle" style="width: 50px;height: 50px;" >
+                    </div>
+                    <div class="" style="display: flex;justify-content: flex-start;width:90%;align-items: center">
+                        <textarea class="FplText" id="hf" style="width: 80%;height: 80%;min-width: 600px;max-height: 80px;min-height: 50px"></textarea>
+                        <button class="btn btn-success Fpinglun" id="btnhf" style="width: 80px;margin-left: 10px">评论</button>
+                        <small id="quxiaohuifu" style="color: red;margin-left: 7px">取消回复</small>
+                    </div>
+                </div>`
+                    p.insertBefore(div,parentandnext);
+
+                    //绑定取消评论事件
+                    quxiaopinglun();
+                    //console.log("hell")
+
+
+                    //回复
+                    var btnhuifu = document.querySelector("#btnhf");
+                    btnhuifu.addEventListener('click',()=>{
+
+                        let url = "/comment/addcomment";
+                        var a = btnhuifu.parentNode.parentNode.parentNode.previousSibling;
+                        // console.log(a);
+                        // console.log("-- ---")
+                        // console.log(a.parentNode.firstElementChild);
+                        let pid;
+                        if(a.getAttribute("pid") == '0') pid = a.getAttribute("commentId");
+                        else pid = a.parentNode.firstElementChild.getAttribute("commentId");
+                        let data={
+                            blogId : [[${blog.bid}]],
+                            commentMsg : document.querySelector("#hf").value,
+                            replyUserId: a.getAttribute("userId"),
+                            pid: pid
+
+                        }
+                        //console.log(data);
+                        Ajax1(url,data,"POST",()=>{
+                            // 响应
+                            var res = xmlHttpRequest.responseText;
+                            if(res == "true"){
+                                //清除所有评论
+                                clearCommentList();
+                                //加载所有评论
+                                responseCommentList();
+                                // 添加回复绑定事件
+                                setTimeout(huifuBtn,1000);
+                            }else alert("请先登陆！")
+                        });
+                    })
+
+                })
+            })
+    }
+     // 延时1.5s后执行，这样dom对象才能加载完获取。
+    setTimeout(huifuBtn,1500);
+
+    // 取消评论
+    function quxiaopinglun() {
+        let btn = document.querySelector("#quxiaohuifu");
+        console.log(btn);
+        if(btn!=null){
+            btn.addEventListener('click',()=>{
+                // 删除评论的div
+                btn.parentNode.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode.parentNode);
+            })
+        }
+    }
+
+    function pinglunBtn() {
+        var pinglunBtn = document.querySelector("#PL");
+        pinglunBtn.addEventListener("click",()=>{
+            let url = "/comment/addcomment";
+            let data={
+                blogId : [[${blog.bid}]],
+                commentMsg : document.querySelector("#fpl").value,
+                replyUserId: 0,
+                pid: 0
+            }
+
+            console.log(data);
+            Ajax1(url,data,"POST",()=>{
+                var res = xmlHttpRequest.responseText;
+                if(res == "true"){
+                    //清除所有评论
+                    clearCommentList();
+                    //加载所有评论
+                    responseCommentList();
+                    // 添加回复绑定事件
+                    setTimeout(huifuBtn,1000);
+                }else alert("请先登陆！")
+
+
+            });
+        })
+    }
+    //评论
+    pinglunBtn();
+
+
+    var clearCommentList = ()=>{
+        var Plist = document.querySelector(".ping");
+        Plist.innerHTML="";
+    }
+
 </script>
-</body>
+
+
 </html>

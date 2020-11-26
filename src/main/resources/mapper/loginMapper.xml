@@ -8,6 +8,10 @@
         select * from USER where name = #{name};
     </select>
 
+    <select id="selectByUserId" parameterType="long" resultType="com.entity.myUser">
+        select * from  USER where id = #{id}
+    </select>
+
     <select id="findRoleByUserId" parameterType="java.lang.Integer" resultType="com.entity.role">
         select ROLE.id,ROLE.name from ROLE,USER,ROLE_USER where  USER.id = ROLE_USER.user_id and ROLE.id = ROLE_USER.role_id and USER.id = #{id} ;
     </select>

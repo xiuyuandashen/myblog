@@ -34,6 +34,11 @@ spring:
 
   thymeleaf:
     cache: false
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+      exclude: templates
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss # 对输出时间格式化
     time-zone: GMT+8 # 北京时间相对伦敦有8小时的时差，使用GTM+8，这样才能正常显示时间

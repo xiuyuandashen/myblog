@@ -12,4 +12,6 @@ public interface loginMapper {
     myUser loadUserByUsername(String name);
 
     List<role> findRoleByUserId(Integer id);
+
+    myUser selectByUserId(long id);
 }

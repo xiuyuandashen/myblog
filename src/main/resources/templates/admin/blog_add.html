@@ -36,6 +36,7 @@
 </div>
 
 </body>
+<script th:src="@{/js/ajax.js}"></script>
 <script>
     var testEditor;
     testEditor = editormd("test-editormd", {
@@ -83,10 +84,10 @@
 
     // 在js中调用getMarkdown这个方法可以获得Markdown格式的文本。
     var btn = document.querySelector('#btn');
-    var xmlHttpRequest = new XMLHttpRequest();
+    //var xmlHttpRequest = new XMLHttpRequest();
     btn.addEventListener('click', () => {
-        let content = testEditor.getMarkdown();
-        console.log(content)
+         let content = testEditor.getMarkdown();
+        // console.log(content)
         let data={
             "bid":null,
             "title":document.querySelector("#title").value,
@@ -94,19 +95,24 @@
             "content":content,
             "time":new Date()
         }
-        xmlHttpRequest.open("POST", "/admin/blog/addBlog", true)
-        xmlHttpRequest.setRequestHeader("Content-type", "application/json");
-        //将json对象转换成字符串传输至后台
-        xmlHttpRequest.send(JSON.stringify(data));
-        xmlHttpRequest.onreadystatechange = function () {
-            if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
-                let d = xmlHttpRequest.responseText;
-                if(d!=null) alert("添加成功");
-                else alert("添加失败");
-                //console.log(d);
-
-            }
-        }
+        // xmlHttpRequest.open("POST", "/admin/blog/addBlog", true)
+        // xmlHttpRequest.setRequestHeader("Content-type", "application/json");
+        // //将json对象转换成字符串传输至后台
+        // xmlHttpRequest.send(JSON.stringify(data));
+        // xmlHttpRequest.onreadystatechange = function () {
+        //     if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
+        //         let d = xmlHttpRequest.responseText;
+        //         if(d!=null) alert("添加成功");
+        //         else alert("添加失败");
+        //         //console.log(d);
+        //
+        //     }
+        // }
+        Ajax1("/admin/blog/addBlog",data,"POST",()=>{
+           let d= xmlHttpRequest.responseText;
+            if(d!=null) alert("添加成功");
+            else alert("添加失败");
+        })
 
     })
 </script>
