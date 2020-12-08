@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加博客</title>
+    <link rel="stylesheet" th:href="@{/editor.md-master/css/editormd.css}" />
+
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script th:src="@{/editor.md-master/editormd.min.js}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container-fluid" style="padding: 0" th:fragment="admin">
+    <nav class="navbar  navbar-inverse" style="margin-bottom: 0;border: none">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header" >
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" style="padding: 15px 24px">个人博客</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+                    <!--                    <li><a th:href="@{}">博客</a></li>-->
+                </ul>
+                <ul class="nav navbar-nav tx " th:if="${user}!=null" style="position: relative" >
+                    <li ><a href="#"><img th:src="${user.headPortrait}" class="img-circle"  id="touxiang" width="20px"><span class="sr-only">(current)</span></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li th:if="${user}==null" ><a th:href="@{/login}">登录</a></li>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="row" style="margin-top: 10px;padding: 0 30px 30px 30px">
+
+        <div class="col-xs-12">
+
+            <div class="form-group">
+                <label for="title">博客标题</label>
+                <input type="text" class="form-control" id="title" placeholder="请输入文章标题">
+            </div>
+            <div class="form-group">
+                <label for="blogName">博客名称</label>
+                <input type="text" class="form-control" id="blogName" placeholder="请输入博客名称">
+            </div>
+
+            <div id="test-editormd">
+                <textarea></textarea>
+            </div>
+            <button id="btn" class="btn btn-primary btn-block">提交</button>
+        </div>
+    </div>
+    <div th:replace="~{ admin/conn ::  dibu }"></div>
+</div>
+
+</body>
+<script th:src="@{/js/ajax.js}"></script>
+<script>
+    var touxiang = document.querySelector("#touxiang");
+    touxiang.addEventListener("mouseover",()=>{
+        if(document.querySelector(".caidan")==null){
+            let userId = [[${user.id}]]
+            var div = document.createElement("div");
+            div.className = "caidan"
+            div.style.width="100px";
+            div.innerHTML=`
+                <ul style="background-color: white;box-shadow: 0 0 5px #999;text-align: left;list-style: none;padding: 3px" >
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-home" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/user/personalCenter" style="color: #999999">个人中心</a>
+                    </li>
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-th-list" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/user/userBlogList" style="color: #999999">我的博客</a>
+                    </li>
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-pencil" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/user/addBlog" style="color: #999999">写博客</a>
+                    </li>
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-off" style="margin:0 5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/logout" style="color: #999999">注销</a>
+                    </li>
+
+                </ul>
+            `
+            let tx = document.querySelector(".tx")
+            tx.appendChild(div)
+            div.style.position =  "absolute";
+            div.style.top = "50px"
+            div.style.left = "0px"
+            div.style.zIndex="10"
+            div.addEventListener("mouseleave",()=>{
+                tx.removeChild(document.querySelector(".caidan"))
+            })
+        }
+    })
+
+</script>
+<script>
+    var testEditor;
+    testEditor = editormd("test-editormd", {
+        placeholder: '本编辑器支持Markdown编辑，左边编写，右边预览', //默认显示的文字，这里就不解释了
+        width: "90%",
+        height: 640,
+        syncScrolling: "single",
+        path: "/editor.md-master/lib/", //你的path路径（原资源文件中lib包在我们项目中所放的位置）
+        theme: "dark", //工具栏主题
+        previewTheme: "dark", //预览主题
+        editorTheme: "pastel-on-dark", //编辑主题
+        saveHTMLToTextarea: true,
+        emoji: false,
+        taskList: true,
+        tocm: true, // Using [TOCM]
+        tex: true, // 开启科学公式TeX语言支持，默认关闭
+        flowChart: true, // 开启流程图支持，默认关闭
+        sequenceDiagram: true, // 开启时序/序列图支持，默认关闭,
+        toolbarIcons: function() { //自定义工具栏，后面有详细介绍
+            return editormd.toolbarModes['simple']; // full, simple, mini
+        },
+        //图片上传
+        imageUpload: true,
+        imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+        imageUploadURL: "/admin/blog/upload", // 文件上传的处理请求！
+        onload: function() {
+            console.log('onload', this);
+        },/*指定需要显示的功能按钮*/
+        toolbarIcons: function () {
+            return ["undo", "redo", "|",
+                "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
+                "h1", "h2", "h3", "h4", "h5", "h6", "|",
+                "list-ul", "list-ol", "hr", "|",
+                "link", "reference-link", "image", "code", "preformatted-text",
+                "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
+                "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
+                "help", "info"]
+        }
+    });
+    //上面的挑有用的写上去就行
+
+    //var content = testEditor.getMarkdown(); //这个获得markdown格式的字符串
+    //var content2 = testEditor.getHTML(); //获得html格式的字符串
+
+
+    // 在js中调用getMarkdown这个方法可以获得Markdown格式的文本。
+    var btn = document.querySelector('#btn');
+    //var xmlHttpRequest = new XMLHttpRequest();
+    var userId = [[${user.id}]]
+    console.log(userId)
+    btn.addEventListener('click', () => {
+        let content = testEditor.getMarkdown();
+         console.log(content)
+        let data={
+            "bid":null,
+            "title":document.querySelector("#title").value,
+            "bName":document.querySelector("#blogName").value,
+            "content":content
+            //"time":new Date()
+        }
+        // xmlHttpRequest.open("POST", "/admin/blog/addBlog", true)
+        // xmlHttpRequest.setRequestHeader("Content-type", "application/json");
+        // //将json对象转换成字符串传输至后台
+        // xmlHttpRequest.send(JSON.stringify(data));
+        // xmlHttpRequest.onreadystatechange = function () {
+        //     if (xmlHttpRequest.status == 200 && xmlHttpRequest.readyState == 4) {
+        //         let d = xmlHttpRequest.responseText;
+        //         if(d!=null) alert("添加成功");
+        //         else alert("添加失败");
+        //         //console.log(d);
+        //
+        //     }
+        // }
+        let url = "/"+userId +"/addBlog";
+        Ajax1(url,data,"POST",()=>{
+            let d= xmlHttpRequest.responseText;
+            if(d!=null) alert("添加成功");
+            else alert("添加失败");
+        })
+
+    })
+</script>
+
+</body>
+</html>

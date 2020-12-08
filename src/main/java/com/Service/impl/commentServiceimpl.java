@@ -1,14 +1,13 @@
 package com.Service.impl;
 
 import com.Service.commentService;
-import com.dao.commentMapper;
-import com.dao.loginMapper;
 import com.entity.Comment;
 import com.entity.CommentVO;
 import com.entity.ReplyVO;
 import com.entity.myUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +34,7 @@ public class commentServiceimpl implements commentService {
             // 评论所属的用户
             myUser myUser1 = loginMapper.selectByUserId(commentVO.getUserId());
             commentVO.setUserName(myUser1.getName());
-
+            commentVO.setHeadPortrait(myUser1.getHeadPortrait());
 
             List<ReplyVO> replyVOS = commentMapper.selectByPid(commentVO.getCommentId());
             List<ReplyVO> reply = new ArrayList<>();
@@ -47,6 +46,7 @@ public class commentServiceimpl implements commentService {
 
                 replyVO.setReplyUserName(loginMapper.selectByUserId(replyVO.getReplyUserId()).getName());
                 replyVO.setUserName(myUser.getName());
+                replyVO.setHeadPortrait(myUser.getHeadPortrait());
                 reply.add(replyVO);
 
             }
@@ -61,6 +61,7 @@ public class commentServiceimpl implements commentService {
     }
 
     @Override
+    @Transactional
     public int addComment(Comment comment) {
 
         return commentMapper.addComment(comment);

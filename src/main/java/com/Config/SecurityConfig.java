@@ -26,7 +26,13 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("/img/**").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/editor.md-master/**").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN");
+                .antMatchers("/admin/blog/queryAll").hasRole("ADMIN")
+                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/admin/blog/BlogList").hasRole("ADMIN")
+                .antMatchers("/admin/blog/addBlog").hasRole("USER")
+                .antMatchers("/admin/blog/upload").hasRole("USER")
+                .antMatchers("/admin/blog/**/update").hasRole("USER")
+                .antMatchers("/admin/blog/UpdateBlog").hasRole("USER");
         //关闭  CSRF disable() 禁用
         http.csrf().disable();
         http.formLogin().loginPage("/login")

@@ -14,10 +14,10 @@
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
 
     <style>
-        img {
-            width: 80%;
-            text-align: left;
-        }
+        /*img {*/
+        /*    width: 80%;*/
+        /*    text-align: left;*/
+        /*}*/
         .container-fluid{
             padding: 0;
             border: none ;
@@ -31,30 +31,31 @@
 </head>
 <body>
 <div class="container-fluid">
-    <nav class="navbar navbar-inverse" style="margin-bottom: 0;border: none">
+    <nav class="navbar  navbar-inverse" style="margin-bottom: 0;border: none">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <div class="navbar-header" >
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"  style="padding: 15px 24px">个人博客</a>
+                <a class="navbar-brand" href="#" style="padding: 15px 24px">个人博客</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class=""><a th:href="@{/}">首页 <span class="sr-only">(current)</span></a></li>
-                    <li class="active"><a href="#">博客</a></li>
-
+                    <li class=""><a th:href="@{/index}">首页 <span class="sr-only">(current)</span></a></li>
+                    <!--                    <li><a th:href="@{}">博客</a></li>-->
                 </ul>
-
+                <ul class="nav navbar-nav tx " th:if="${user}!=null" style="position: relative" >
+                    <li ><a href="#"><img th:src="${user.headPortrait}" class="img-circle"  id="touxiang" width="20px"><span class="sr-only">(current)</span></a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a th:href="@{/admin}">管理员</a></li>
+
+                    <li th:if="${user}==null" ><a th:href="@{/login}">登录</a></li>
 
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -84,19 +85,18 @@
             </div>
         </div>
 
-<!--        <iframe class="col-lg-4" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=433357475&auto=1&height=430"></iframe>-->
-        <!--        <ul class="nav nav-pills col-md-1 col-md-offset-1 nav-stacked " style="position: fixed;right: 10vw;top: 40vh" >-->
-<!--            <li role="presentation" class="active" style="text-align: center"><a href="#dingbu">返回顶部</a></li>-->
-<!--            <li role="presentation" class="active" style="text-align: center"><a href="#dibu">返回底部</a></li>-->
-<!--        </ul>-->
+
         <div  class="row" style="margin-bottom: 5vh">
             <div class="pinglun1" style="display: flex;justify-content: space-between;align-items: center">
-                <div class="touxiang col-lg-1" style="display: flex">
+                <div th:if="${user}!=null" class="touxiang col-lg-1" style="display: flex">
+                    <img th:src="${user.headPortrait}" alt="" class="img-circle" style="width: 70px;height: 70px;margin: 0 auto" id="headImg">
+                </div>
+                <div th:if="${flag}=='false'" class="touxiang col-lg-1" style="display: flex">
                     <img th:src="@{/img/4.png}" alt="" class="img-circle" style="width: 70px;height: 70px;margin: 0 auto" >
                 </div>
                 <div class="col-lg-11" style="display: flex;justify-content: flex-start;">
-                    <textarea class="FplText" id="fpl" style="width: 80%;height: 80%;min-width: 800px;max-height: 80px;min-height: 50px"></textarea>
-                    <button class="btn btn-success Fpinglun" id="PL" style="width: 80px;margin-left: 10px">评论</button>
+                    <textarea class="FplText" id="fpl" style="width: 800px;max-width: 800px;height: auto;min-width: 800px;min-height: 80px;"></textarea>
+                    <button class="btn btn-success Fpinglun" id="PL" style="max-width: 80px;margin-left: 10px">评论</button>
                 </div>
             </div>
         </div>
@@ -123,8 +123,54 @@
 
 </body>
 <script>
+        let flag = [[${flag}]]
+        console.log(flag)
+        if(flag == true){
+            var touxiang = document.querySelector("#touxiang");
+            touxiang.addEventListener("mouseover",()=>{
+                if(document.querySelector(".caidan")==null){
 
-    console.log("---- ----")
+
+                    var div = document.createElement("div");
+                    div.className = "caidan"
+                    div.style.width="100px";
+                    div.innerHTML=`
+                <ul style="background-color: white;box-shadow: 0 0 5px #999;text-align: left;list-style: none;padding: 3px" >
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-home" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/user/personalCenter" style="color: #999999">个人中心</a>
+                    </li>
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-th-list" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/user/userBlogList" style="color: #999999">我的博客</a>
+                    </li>
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-pencil" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/user/addBlog" style="color: #999999">写博客</a>
+                    </li>
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-off" style="margin:0 5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/logout" style="color: #999999">注销</a>
+                    </li>
+
+                </ul>
+            `
+                    let tx = document.querySelector(".tx")
+                    tx.appendChild(div)
+                    div.style.position =  "absolute";
+                    div.style.top = "50px"
+                    div.style.left = "0px"
+                    div.addEventListener("mouseleave",()=>{
+                        tx.removeChild(document.querySelector(".caidan"))
+                    })
+                }
+            })
+        }
+
+</script>
+<script>
+
+
     var testEditor =null;
     let PingLunDiv=null;
     testEditor = editormd.markdownToHTML("test-editormd", {
@@ -138,8 +184,8 @@
     });
     //testEditor.setPreviewTheme("dark");
     PingLunDiv = document.querySelector(".ping");
-    console.log("-- -----");
-    var imgurl = "[[@{/img/4.png}]]";
+
+
     var responseCommentList;
     window.addEventListener("load",function (){
         responseCommentList = ()=> {
@@ -154,21 +200,21 @@
                     if (item.replyVO.length >= 1) {
                         PingLunItemF.innerHTML += `
 
-                <div class="panel-body" pid="0" replyUserId="0" userId="${item.userId}"  commentId="${item.commentId}" style="display:flex;justify-content: start;align-items: center;"><img src="${imgurl}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + item.userName + ": " +
+                <div class="panel-body" pid="0" replyUserId="0" userId="${item.userId}"  commentId="${item.commentId}" style="display:flex;justify-content: start;align-items: center;"><img src="${item.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + item.userName + ": " +
                             item.commentMsg + `<span class="label label-primary" style="margin-left: 7px">` + item.createTime + `</span><small class="hfbtn-${item.commentId}" style="color: #999999;margin-left: 5px;">回复</small>
                 </div>
                 `;
                         item.replyVO.forEach((it, index) => {
                             PingLunItemF.innerHTML += `
 
-                <div class="panel-body" pid="${item.commentId}" commentId="${it.commentId}" userId="${it.userId}" replyUserId="${it.replyUserId}" style="margin-left:100px;display:flex;justify-content: start;align-items: center;border-left: 1px solid #ddd;"><img src="${imgurl}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + it.userName + " 对 " + it.replyUserName + "说：" +
+                <div class="panel-body" pid="${item.commentId}" commentId="${it.commentId}" userId="${it.userId}" replyUserId="${it.replyUserId}" style="margin-left:100px;display:flex;justify-content: start;align-items: center;border-left: 1px solid #ddd;"><img src="${it.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + it.userName + " 对 " + it.replyUserName + "说：" +
                                 it.commentMsg + `<span class="label label-primary" style="margin-left: 7px">` + it.createTime + `</span><small class="hfbtn-${it.commentId}" style="color: #999999;margin-left: 5px;">回复</small>
                 </div>
                       `;
                         })
                         PingLunDiv.appendChild(PingLunItemF);
                     } else {
-                        PingLunItemF.innerHTML += `<div class="panel-body" commentId="${item.commentId}" userId="${item.userId}" pid="0" replyUserId="0"  style="display:flex;justify-content: start;align-items: center;"><img src="${imgurl}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + item.userName + ": " +
+                        PingLunItemF.innerHTML += `<div class="panel-body" commentId="${item.commentId}" userId="${item.userId}" pid="0" replyUserId="0"  style="display:flex;justify-content: start;align-items: center;"><img src="${item.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + item.userName + ": " +
                             item.commentMsg + `<span class="label label-primary" style="margin-left: 7px">` + item.createTime + `</span><small class="hfbtn-${item.commentId}" style="color: #999999;margin-left: 5px;">回复</small>
                 </div>
                 `;
@@ -178,7 +224,7 @@
             })
         }
         responseCommentList();
-        //console.log("事件")
+
 
     });
 
@@ -186,7 +232,9 @@
 
     function huifuBtn() {
         arr =  document.querySelectorAll(".panel small");
-            //console.log(arr)
+            var imgurl = document.querySelector("#headImg").getAttribute("src")
+            console.log(imgurl)
+
             arr.forEach((item,index)=>{
                 item.addEventListener('click',()=>{
                     if(document.querySelector('.pinglun')!=null){
@@ -201,7 +249,7 @@
                     div.style.borderLeft="1px solid #ddd";
                     div.innerHTML+=`<div class="pinglun" style="display: flex;justify-content: space-between;align-items: center;width:100%;height:100%">
                     <div class="touxiang" style="display: flex;width:80px;">
-                        <img src="${imgurl}" alt="" class="img-circle" style="width: 50px;height: 50px;" >
+                        <img src="`+imgurl+`" alt="" class="img-circle" style="width: 50px;height: 50px;" >
                     </div>
                     <div class="" style="display: flex;justify-content: flex-start;width:90%;align-items: center">
                         <textarea class="FplText" id="hf" style="width: 80%;height: 80%;min-width: 600px;max-height: 80px;min-height: 50px"></textarea>
@@ -213,48 +261,51 @@
 
                     //绑定取消评论事件
                     quxiaopinglun();
-                    //console.log("hell")
+
 
 
                     //回复
                     var btnhuifu = document.querySelector("#btnhf");
                     btnhuifu.addEventListener('click',()=>{
+                        if(document.querySelector("#hf").value.trim().length>0){
+                            let url = "/comment/addcomment";
+                            var a = btnhuifu.parentNode.parentNode.parentNode.previousSibling;
+                             console.log(a);
+                             console.log("-- ---")
+                            // console.log(a.parentNode.firstElementChild);
+                            let pid;
+                            if(a.getAttribute("pid") == '0') pid = a.getAttribute("commentId");
+                            else pid = a.parentNode.firstElementChild.getAttribute("commentId");
+                            let data={
+                                blogId : [[${blog.bid}]],
+                                commentMsg : document.querySelector("#hf").value,
+                                replyUserId: a.getAttribute("userId"),
+                                pid: pid
 
-                        let url = "/comment/addcomment";
-                        var a = btnhuifu.parentNode.parentNode.parentNode.previousSibling;
-                        // console.log(a);
-                        // console.log("-- ---")
-                        // console.log(a.parentNode.firstElementChild);
-                        let pid;
-                        if(a.getAttribute("pid") == '0') pid = a.getAttribute("commentId");
-                        else pid = a.parentNode.firstElementChild.getAttribute("commentId");
-                        let data={
-                            blogId : [[${blog.bid}]],
-                            commentMsg : document.querySelector("#hf").value,
-                            replyUserId: a.getAttribute("userId"),
-                            pid: pid
+                            }
 
+                            Ajax1(url,data,"POST",()=>{
+                                // 响应
+                                var res = xmlHttpRequest.responseText;
+                                if(res == "true"){
+                                    //清除所有评论
+                                    clearCommentList();
+                                    //加载所有评论
+                                    responseCommentList();
+                                    // 添加回复绑定事件
+                                    setTimeout(huifuBtn,1000);
+                                }else alert("请先登陆！")
+                            });
                         }
-                        //console.log(data);
-                        Ajax1(url,data,"POST",()=>{
-                            // 响应
-                            var res = xmlHttpRequest.responseText;
-                            if(res == "true"){
-                                //清除所有评论
-                                clearCommentList();
-                                //加载所有评论
-                                responseCommentList();
-                                // 添加回复绑定事件
-                                setTimeout(huifuBtn,1000);
-                            }else alert("请先登陆！")
-                        });
+
                     })
 
                 })
             })
     }
      // 延时1.5s后执行，这样dom对象才能加载完获取。
-    setTimeout(huifuBtn,1500);
+    if(flag==true)
+        setTimeout(huifuBtn,1500);
 
     // 取消评论
     function quxiaopinglun() {
@@ -268,37 +319,41 @@
         }
     }
 
+    //评论
     function pinglunBtn() {
         var pinglunBtn = document.querySelector("#PL");
         pinglunBtn.addEventListener("click",()=>{
-            let url = "/comment/addcomment";
-            let data={
-                blogId : [[${blog.bid}]],
-                commentMsg : document.querySelector("#fpl").value,
-                replyUserId: 0,
-                pid: 0
+            if(document.querySelector("#fpl").value.trim().length>0){
+                let url = "/comment/addcomment";
+                let data={
+                    blogId : [[${blog.bid}]],
+                    commentMsg : document.querySelector("#fpl").value,
+                    replyUserId: 0,
+                    pid: 0
+                }
+
+                console.log(data);
+                Ajax1(url,data,"POST",()=>{
+                    var res = xmlHttpRequest.responseText;
+                    if(res == "true"){
+                        //清除所有评论
+                        clearCommentList();
+                        //加载所有评论
+                        responseCommentList();
+                        // 添加回复绑定事件
+                        setTimeout(huifuBtn,1000);
+                    }else alert("请先登陆！")
+
+
+                });
             }
 
-            console.log(data);
-            Ajax1(url,data,"POST",()=>{
-                var res = xmlHttpRequest.responseText;
-                if(res == "true"){
-                    //清除所有评论
-                    clearCommentList();
-                    //加载所有评论
-                    responseCommentList();
-                    // 添加回复绑定事件
-                    setTimeout(huifuBtn,1000);
-                }else alert("请先登陆！")
-
-
-            });
         })
     }
     //评论
     pinglunBtn();
 
-
+    //清除评论列表
     var clearCommentList = ()=>{
         var Plist = document.querySelector(".ping");
         Plist.innerHTML="";

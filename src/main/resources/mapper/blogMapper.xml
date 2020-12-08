@@ -10,17 +10,29 @@
         <result column="title" property="title"></result>
         <result column="content" property="content"></result>
         <result column="time" property="time"></result>
+        <result column="user_id" property="userId"></result>
+    </resultMap>
+
+    <resultMap id="abstractBlog" type="abstractBlog">
+        <id column="b_id" property="bid"></id>
+        <result column="b_name" property="bName"></result>
+        <result column="title" property="title"></result>
+        <result column="time" property="time"></result>
+        <result column="user_id" property="userId"></result>
     </resultMap>
     
-    <select id="quireAll" resultMap="blog">
-        select *from blog
+    <select id="quireAll" resultMap="abstractBlog">
+        select b_id,b_name,title,time,user_id from blog
     </select>
 
     <select id="quireById" resultMap="blog" parameterType="int">
         select *from blog where b_id = #{id}
     </select>
+    <select id="quireyByUserId" resultMap="abstractBlog" parameterType="int">
+        select b_id,b_name,title,time,user_id from blog where user_id = #{userId}
+    </select>
     <insert id="addBlog" parameterType="blog">
-        insert into blog(b_name,title,content,time) values(#{bName},#{title},#{content},#{time})
+        insert into blog(b_name,title,content,time,user_id) values(#{bName},#{title},#{content},#{time},#{userId})
     </insert>
 
     <delete id="removeBlogById" parameterType="int">

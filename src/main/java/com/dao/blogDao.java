@@ -1,5 +1,6 @@
 package com.dao;
 
+import com.entity.abstractBlog;
 import com.entity.blog;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +10,7 @@ import java.util.List;
 public interface blogDao {
 
     //查询全部
-    List<blog> quireAll();
+    List<abstractBlog> quireAll();
 
     // 添加博客
     void addBlog(blog blog);
@@ -22,5 +23,8 @@ public interface blogDao {
 
     //更新博客
     void updateBlog(blog blog);
+
+    // 查询当前用户的所有博客
+    List<abstractBlog> quireyByUserId(Integer id);
 
 }

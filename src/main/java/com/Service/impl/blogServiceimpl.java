@@ -2,6 +2,7 @@ package com.Service.impl;
 
 import com.Service.blogService;
 import com.dao.blogDao;
+import com.entity.abstractBlog;
 import com.entity.blog;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class blogServiceimpl  implements blogService {
 
     @Override
     //@Cacheable
-    public List<blog> quireAll() {
+    public List<abstractBlog> quireAll() {
         System.out.println("读取全部博客");
         return blogDao.quireAll();
     }
@@ -51,5 +52,10 @@ public class blogServiceimpl  implements blogService {
     @CachePut(key ="#blog" )
     public void updateBlog(blog blog) {
         blogDao.updateBlog(blog);
+    }
+
+    @Override
+    public List<abstractBlog> quireyByUserId(Integer id) {
+        return  blogDao.quireyByUserId(id);
     }
 }

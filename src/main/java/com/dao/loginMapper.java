@@ -14,4 +14,10 @@ public interface loginMapper {
     List<role> findRoleByUserId(Integer id);
 
     myUser selectByUserId(long id);
+
+    int insertUser(myUser user);
+
+    int addUserRole(Integer userId,Integer roleId);
+
+    int blogNumber(Integer id);
 }

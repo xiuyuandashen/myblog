@@ -1,6 +1,7 @@
 package com.Config;
 
 import com.Service.blogService;
+import com.entity.abstractBlog;
 import com.entity.blog;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,10 @@ public class PageConn {
     blogService blogService;
 
     @Cacheable(cacheNames = "c1",key = "#pageNum")
-    public List<blog> pageList(int pageNum, int pageSize){
+    public List<abstractBlog> pageList(int pageNum, int pageSize){
         System.out.println("读取分页博客列表");
         PageHelper.startPage(pageNum,pageSize);
-        List<blog> blogs = blogService.quireAll();
-        return blogs;
+        List<abstractBlog> abstractBlogs = blogService.quireAll();
+        return abstractBlogs;
     }
 }

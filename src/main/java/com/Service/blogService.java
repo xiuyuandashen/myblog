@@ -1,12 +1,13 @@
 package com.Service;
 
+import com.entity.abstractBlog;
 import com.entity.blog;
 
 import java.util.List;
 
 public interface blogService {
     //查询全部
-    List<blog> quireAll();
+    List<abstractBlog> quireAll();
 
     // 添加博客
     void addBlog(blog blog);
@@ -19,4 +20,7 @@ public interface blogService {
 
     //更新博客
     void updateBlog(blog blog);
+
+    // 查询当前用户的所有博客
+    List<abstractBlog> quireyByUserId(Integer id);
 }

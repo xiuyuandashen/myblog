@@ -38,10 +38,12 @@ class MyblogApplicationTests {
 //        myUser root = loginMapper.loadUserByUsername("root");
 //        System.out.println(root);
         //blogService.removeBlogById(1002);
-
-        blogService.quireAll();
-
-
+        //myUser user = new myUser("陈悦林","123456");
+       // user.setHeadPortrait("/img/5.png");
+//        int i = loginMapper.addUserRole(1004,2);
+//        System.out.println(i);
+        int i = loginMapper.blogNumber(1001);
+        System.out.println(i);
 
     }
 

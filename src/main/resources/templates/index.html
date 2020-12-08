@@ -51,10 +51,19 @@
                     <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
 <!--                    <li><a th:href="@{}">博客</a></li>-->
                 </ul>
-
+                <ul class="nav navbar-nav tx " th:if="${user}!=null" style="position: relative" >
+                    <li >
+                        <a href="#">
+                        <img th:src="${user.headPortrait}" class="img-circle"  id="touxiang" width="20px" height="20px">
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li sec:authorize="!isAuthenticated()"><a th:href="@{/admin}">登陆</a></li>
-                    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">注销</a></li>
+
+                    <li th:if="${user}==null" ><a th:href="@{/login}">登录</a></li>
+                    <li th:if="${user}==null" ><a th:href="@{/registered}">注册</a></li>
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -148,5 +157,52 @@
 <!--        })-->
 <!--    })-->
 <!--</script>-->
+    <script>
+        var touxiang = document.querySelector("#touxiang");
+        touxiang.addEventListener("mouseover",()=>{
+            if(document.querySelector(".caidan")==null){
+
+                var div = document.createElement("div");
+                div.className = "caidan"
+                div.style.width="100px";
+                div.innerHTML=`
+                <ul style="background-color: white;box-shadow: 0 0 5px #999;text-align: left;list-style: none;padding: 3px" >
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-home" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/user/personalCenter" style="color: #999999">个人中心</a>
+                    </li>
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-th-list" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/user/userBlogList" style="color: #999999">我的博客</a>
+                    </li>
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-pencil" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/user/addBlog" style="color: #999999">写博客</a>
+                    </li>
+                    <li style="line-height: 30px">
+                    <span class="glyphicon glyphicon-off" style="margin:0 5px 0 5px;" aria-hidden="true"></span>
+                    <a href="/logout" style="color: #999999">注销</a>
+                    </li>
+
+                </ul>
+            `
+                let tx = document.querySelector(".tx")
+                tx.appendChild(div)
+                div.style.position =  "absolute";
+                div.style.top = "50px"
+                div.style.left = "0px"
+                div.addEventListener("mouseleave",()=>{
+                    tx.removeChild(document.querySelector(".caidan"))
+                })
+            }else{
+
+            }
+
+
+        })
+
+    </script>
+
+
 </body>
 </html>

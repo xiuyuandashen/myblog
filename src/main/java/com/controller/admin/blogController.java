@@ -3,13 +3,16 @@ package com.controller.admin;
 
 import com.Config.PageConn;
 import com.Service.impl.blogServiceimpl;
+import com.entity.abstractBlog;
 import com.entity.blog;
+import com.entity.myUser;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +40,12 @@ public class blogController {
     @Autowired
     PageConn pageConn;
 
+    @Autowired
+    com.dao.loginMapper loginMapper;
+
+
     @RequestMapping("/queryAll")
-    public List<blog> queryAllBlog(){
+    public List<abstractBlog> queryAllBlog(){
 
         return  blogService.quireAll();
     }
@@ -49,8 +56,8 @@ public class blogController {
     public String BlogList(Model model, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum, @RequestParam(value = "pageSize",defaultValue = "3") int pageSize){
 
         //PageHelper.startPage(pageNum,pageSize);
-        List<blog> blogs = pageConn.pageList(pageNum,pageSize);
-        PageInfo<blog> blogPageInfo = new PageInfo<>(blogs);
+        List<abstractBlog> abstractBlogs = pageConn.pageList(pageNum, pageSize);
+        PageInfo<abstractBlog> blogPageInfo = new PageInfo<>(abstractBlogs);
         model.addAttribute("blogPageInfo",blogPageInfo);
         return "admin/blog_list";
     }
@@ -101,7 +108,10 @@ public class blogController {
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
         blog blog = gson.fromJson(len, blog.class);
-
+        SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
+        String name = securityContext.getAuthentication().getName();
+        myUser myUser = loginMapper.loadUserByUsername(name);
+        blog.setUserId(myUser.getId());
         //System.out.println(blog);
         blogService.addBlog(blog);
         return blog;

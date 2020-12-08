@@ -41,7 +41,7 @@ public class commentController {
         if(creatCommentForm!=null) {
             //System.out.println(creatCommentForm);
 
-           String username = securityContext.getAuthentication().getName();
+            String username = securityContext.getAuthentication().getName();
             myUser user = loginMapper.loadUserByUsername(username);
             Comment comment = new Comment(user.getId(),creatCommentForm.getBlogId(),creatCommentForm.getReplyUserId()
                     ,creatCommentForm.getPid(),creatCommentForm.getCommentMsg(),new Date());

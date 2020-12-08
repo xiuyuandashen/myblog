@@ -16,4 +16,15 @@
         select ROLE.id,ROLE.name from ROLE,USER,ROLE_USER where  USER.id = ROLE_USER.user_id and ROLE.id = ROLE_USER.role_id and USER.id = #{id} ;
     </select>
 
+    <insert id="insertUser" parameterType="myUser" >
+        insert into USER(name,password,headPortrait,email) values (#{name},#{password},#{headPortrait},#{email})
+    </insert>
+
+    <insert id="addUserRole" parameterType="int" >
+        insert into ROLE_USER(user_id,role_id) values(#{userId},#{roleId})
+    </insert>
+
+    <select id="blogNumber" parameterType="int" resultType="int">
+        select count(*) from blog where user_id = #{id}
+    </select>
 </mapper>
