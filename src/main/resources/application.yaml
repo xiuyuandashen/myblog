@@ -34,6 +34,7 @@ spring:
 
   thymeleaf:
     cache: false
+
   devtools:
     restart:
       enabled: true
@@ -72,6 +73,17 @@ pagehelper:
   reasonable: true
   support-methods-arguments: true
   params: count=countsql
+
+
+
+file:
+  # 服务器上的地址 localhost:8080/Users/zlf/myBlog/upload
+  staticAccessPath: /Users/zlf/myBlog/upload/
+  # 本地路径 /Users/zlf/myBlog/upload
+  uploadFolder: /Users/zlf/myBlog/upload/
+
+
+
 
 #logging:
 #  file:

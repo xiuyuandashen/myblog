@@ -31,7 +31,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/blog/BlogList").hasRole("ADMIN")
                 .antMatchers("/admin/blog/addBlog").hasRole("USER")
                 .antMatchers("/admin/blog/upload").hasRole("USER")
-                .antMatchers("/admin/blog/**/update").hasRole("USER")
+                .antMatchers("/admin/blog/**/update").hasAnyRole("USER","ADMIN")
                 .antMatchers("/admin/blog/UpdateBlog").hasRole("USER");
         //关闭  CSRF disable() 禁用
         http.csrf().disable();

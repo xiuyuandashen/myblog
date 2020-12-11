@@ -20,7 +20,7 @@ public class ReplyVO implements Serializable {
 
     private String replyUserName;
 
-    private Date createTime;
+    private String createTime;
 
     private String commentMsg;
 
@@ -86,11 +86,11 @@ public class ReplyVO implements Serializable {
         this.replyUserName = replyUserName;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

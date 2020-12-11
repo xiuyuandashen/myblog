@@ -6,12 +6,11 @@ import com.Service.impl.blogServiceimpl;
 import com.entity.abstractBlog;
 import com.entity.blog;
 import com.entity.myUser;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.server.PathParam;
 import java.io.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +37,10 @@ public class blogController {
     PageConn pageConn;
 
     @Autowired
-    com.dao.loginMapper loginMapper;
+    com.dao.UserMapper userMapper;
+
+    @Value("${file.uploadFolder}")
+    public  String uploadFolder;
 
 
     @RequestMapping("/queryAll")
@@ -81,7 +80,7 @@ public class blogController {
         while((len = reader.readLine())!=null){
             str.append(len);
         }
-        System.out.println(str.toString());
+        //System.out.println(str.toString());
         len = str.toString();
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
@@ -103,14 +102,14 @@ public class blogController {
         while((len = reader.readLine())!=null){
             str.append(len);
         }
-        System.out.println(str.toString());
+        //System.out.println(str.toString());
         len = str.toString();
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
         blog blog = gson.fromJson(len, blog.class);
         SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
         String name = securityContext.getAuthentication().getName();
-        myUser myUser = loginMapper.loadUserByUsername(name);
+        myUser myUser = userMapper.loadUserByUsername(name);
         blog.setUserId(myUser.getId());
         //System.out.println(blog);
         blogService.addBlog(blog);
@@ -120,7 +119,7 @@ public class blogController {
 
     /**
      * 博客上传图片
-     * @param upload    图片 图片不能超过1mb
+     * @param upload    图片 图片不能超过1mb （已经配置成5mb）
      * @param request
      * @return
      */
@@ -134,8 +133,9 @@ public class blogController {
             request.setCharacterEncoding("utf-8");
             //request.getClass().getClassLoader().getResource("static").getPath()+"/img/blog";
             //request.getSession().getServletContext().getRealPath("/static/img/blog");
-            final String realPath = request.getClass().getClassLoader().getResource("static").getPath()+"/img/blog";
-            System.out.println(realPath);
+            //final String realPath = request.getClass().getClassLoader().getResource("static").getPath()+"/img/blog";
+            String realPath = uploadFolder +"img/blog";
+            //System.out.println(realPath);
             File filePath = new File(realPath);
             if (!filePath.exists()) {
                 filePath.mkdirs();
@@ -145,7 +145,7 @@ public class blogController {
             //这个是editor 要求的上传文件的格式 或则直接用一个map 就行了 key 分别是success message url
             resultMap.put("success",1);
             resultMap.put("message","上传成功");
-            resultMap.put("url","/img/blog/" + upload.getOriginalFilename());
+            resultMap.put("url",realPath +File.separator+ upload.getOriginalFilename());
             upload.transferTo(realFile);
             return resultMap;
         }catch (Exception e){

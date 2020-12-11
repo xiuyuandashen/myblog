@@ -5,6 +5,7 @@ import com.Service.impl.blogServiceimpl;
 import com.entity.blog;
 import com.entity.myUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -27,7 +28,10 @@ public class userController {
     PageConn pageConn;
 
     @Autowired
-    com.dao.loginMapper loginMapper;
+    com.dao.UserMapper userMapper;
+
+    @Value("${file.uploadFolder}")
+    public  String uploadFolder;
 
     @RequestMapping("/{userId}/addBlog")
     @ResponseBody
@@ -53,7 +57,9 @@ public class userController {
     public String registeredUser(@RequestParam("username") String username, @RequestParam("password") String password ,
                                 @RequestParam("email") String email,
                                  @RequestParam("imgFile") MultipartFile headPortrait, HttpServletRequest request, Model model){
-        final String realPath = request.getClass().getClassLoader().getResource("static").getPath()+"/img/User";
+        System.out.println("uploadFolder: "+ uploadFolder);
+
+        final String realPath = uploadFolder + "img/User";
         //System.out.println(username + "  " + password);
 
         System.out.println(realPath);
@@ -68,12 +74,12 @@ public class userController {
 
             myUser user = new myUser(username,password);
             user.setEmail(email+"@qq.com");
-            user.setHeadPortrait(url.substring(url.indexOf("/img")));
-            int i =loginMapper.insertUser(user);
+            user.setHeadPortrait(url);
+            int i = userMapper.insertUser(user);
             // 普通用户 2 root用户 1
             if(i>0){
-                myUser user1 = loginMapper.loadUserByUsername(user.getName());
-                loginMapper.addUserRole(user1.getId(),2);
+                myUser user1 = userMapper.loadUserByUsername(user.getName());
+                userMapper.addUserRole(user1.getId(),2);
                 headPortrait.transferTo(file);
                 return "redirect:/";
             }else {

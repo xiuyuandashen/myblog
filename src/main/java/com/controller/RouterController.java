@@ -1,8 +1,10 @@
 package com.controller;
 
 import com.Config.PageConn;
+import com.Service.commentService;
 import com.Service.impl.blogServiceimpl;
-import com.dao.loginMapper;
+import com.dao.UserMapper;
+import com.entity.CommentVO;
 import com.entity.abstractBlog;
 import com.entity.blog;
 import com.entity.myUser;
@@ -15,8 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -31,7 +31,10 @@ public class RouterController {
     PageConn pageConn;
 
     @Autowired
-    com.dao.loginMapper loginMapper;
+    UserMapper userMapper;
+
+    @Autowired
+    commentService commentService;
 
     @GetMapping(path = {"/","index"})
     public String index(Model model,
@@ -41,7 +44,7 @@ public class RouterController {
         SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
         if(securityContext!=null){
             String username = securityContext.getAuthentication().getName();
-            myUser user = loginMapper.loadUserByUsername(username);
+            myUser user = userMapper.loadUserByUsername(username);
             //System.out.println(user);
             model.addAttribute("user",user);
         }
@@ -88,7 +91,7 @@ public class RouterController {
         SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
         if(securityContext!=null){
             String username = securityContext.getAuthentication().getName();
-            myUser user = loginMapper.loadUserByUsername(username);
+            myUser user = userMapper.loadUserByUsername(username);
             //System.out.println(user);
             model.addAttribute("user",user);
             model.addAttribute("flag","true");
@@ -97,6 +100,8 @@ public class RouterController {
         }
         final blog blog = blogService.quireById(id);
         model.addAttribute("blog",blog);
+        List<CommentVO> comments = commentService.getAllCommentByBlogId(id);
+        model.addAttribute("comments",comments);
         return "blog";
     }
 
@@ -105,7 +110,7 @@ public class RouterController {
         SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
         if(securityContext!=null){
             String username = securityContext.getAuthentication().getName();
-            myUser user = loginMapper.loadUserByUsername(username);
+            myUser user = userMapper.loadUserByUsername(username);
             //System.out.println(user);
             model.addAttribute("user",user);
         }
@@ -119,14 +124,14 @@ public class RouterController {
         myUser user = null;
         if(securityContext!=null){
             String username = securityContext.getAuthentication().getName();
-            user = loginMapper.loadUserByUsername(username);
+            user = userMapper.loadUserByUsername(username);
             //System.out.println(user);
             model.addAttribute("user",user);
             PageHelper.startPage(pageNum,pageSize);
             List<abstractBlog> abstractBlogs = blogService.quireyByUserId(user.getId());
             final PageInfo<abstractBlog> blogPageInfo = new PageInfo<>(abstractBlogs);
             model.addAttribute("blogPageInfo",blogPageInfo);
-            int blogNumber = loginMapper.blogNumber(user.getId());
+            int blogNumber = userMapper.blogNumber(user.getId());
             model.addAttribute("blogNumber",blogNumber);
         }
         return "userBlogList";

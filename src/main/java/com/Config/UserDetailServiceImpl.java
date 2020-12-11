@@ -1,6 +1,6 @@
 package com.Config;
 
-import com.dao.loginMapper;
+import com.dao.UserMapper;
 import com.entity.myUser;
 import com.entity.role;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +23,16 @@ import java.util.List;
 public class UserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
-    private loginMapper loginMapper;
+    private UserMapper userMapper;
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
         // 获取数据库对应名称的用户
-        myUser myUser = loginMapper.loadUserByUsername(name);
+        myUser myUser = userMapper.loadUserByUsername(name);
         // 用户不存在
         if(myUser == null)  throw new UsernameNotFoundException("用户不存在");
         // 获取用户对应的角色
-        List<role> roleByUserId = loginMapper.findRoleByUserId(myUser.getId());
+        List<role> roleByUserId = userMapper.findRoleByUserId(myUser.getId());
 
         // 添加角色
         List<GrantedAuthority> authorities = new ArrayList<>();

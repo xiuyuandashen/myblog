@@ -2,17 +2,14 @@ package com;
 
 import com.Service.blogService;
 import com.dao.blogDao;
-import com.dao.commentMapper;
-import com.dao.loginMapper;
+import com.dao.UserMapper;
 import com.entity.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.crypto.spec.PSource;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -24,7 +21,7 @@ class MyblogApplicationTests {
     blogService blogService;
 
     @Autowired
-    loginMapper loginMapper;
+    UserMapper userMapper;
 
     @Autowired
     com.dao.commentMapper commentMapper;
@@ -42,7 +39,7 @@ class MyblogApplicationTests {
        // user.setHeadPortrait("/img/5.png");
 //        int i = loginMapper.addUserRole(1004,2);
 //        System.out.println(i);
-        int i = loginMapper.blogNumber(1001);
+        int i = userMapper.blogNumber(1001);
         System.out.println(i);
 
     }
@@ -54,7 +51,7 @@ class MyblogApplicationTests {
 
         for(long commentId : commentIdByBlogId) {
             CommentVO commentVO = commentMapper.selectCommentById((int) commentId);
-            myUser myUser1 = loginMapper.selectByUserId(commentVO.getUserId());
+            myUser myUser1 = userMapper.selectByUserId(commentVO.getUserId());
             commentVO.setUserName(myUser1.getName());
 
 
@@ -62,7 +59,7 @@ class MyblogApplicationTests {
             List<ReplyVO> reply = new ArrayList<>();
 //
             for (ReplyVO replyVO : replyVOS) {
-                myUser myUser = loginMapper.selectByUserId(replyVO.getUserId());
+                myUser myUser = userMapper.selectByUserId(replyVO.getUserId());
                 replyVO.setReplyUserName(myUser1.getName());
                 replyVO.setUserName(myUser.getName());
                 reply.add(replyVO);

@@ -51,7 +51,11 @@
                     <!--                    <li><a th:href="@{}">博客</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav tx " th:if="${user}!=null" style="position: relative" >
-                    <li ><a href="#"><img th:src="${user.headPortrait}" class="img-circle"  id="touxiang" width="20px"><span class="sr-only">(current)</span></a></li>
+                    <li ><a href="#">
+                        <img  th:if="${user}!=null" th:src="${user.headPortrait}" class="img-circle"  id="touxiang" width="20px">
+                        <img  th:if="${user}==null" src="./img/4.png" class="img-circle"  id="touxiang" width="20px">
+                        <span class="sr-only">(current)</span>
+                    </a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
 
@@ -86,7 +90,7 @@
         </div>
 
 
-        <div  class="row" style="margin-bottom: 5vh">
+        <div  class="row col-xs-12" style="margin-bottom: 5vh">
             <div class="pinglun1" style="display: flex;justify-content: space-between;align-items: center">
                 <div th:if="${user}!=null" class="touxiang col-lg-1" style="display: flex">
                     <img th:src="${user.headPortrait}" alt="" class="img-circle" style="width: 70px;height: 70px;margin: 0 auto" id="headImg">
@@ -100,7 +104,51 @@
                 </div>
             </div>
         </div>
-        <div class="row ping" >
+        <div class="row ping col-xs-12" >
+            <div class="panel panel-default" th:each="item : ${comments}">
+                <div class="panel-body" th:pid="0" th:replyUserId="0" th:userId="${item.userId}"  th:commentId="${item.commentId}" >
+                    <div style="display:flex;justify-content: start;align-items: center;">
+                        <img th:src="${item.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">
+                        [[${item.userName}]] :
+                        [[${item.commentMsg}]]
+                        <span class="label label-primary" style="margin-left: 7px"> [[${item.createTime}]] </span>
+                        <small id="huiFuBtn" style="color: #999999;margin-left: 5px;">回复</small>
+                    </div>
+                    <div class="pinglun" style="display: none;justify-content: space-between;align-items: center;width:80%;height:100%;margin-left: 100px;border-left: 1px solid #ddd;">
+                        <div class="touxiang" style="display: flex;width:80px;">
+                            <img th:if="${user}!=null" th:src="${user.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;" >
+                            <img th:if="${user}==null" src="/img/4.png" alt="" class="img-circle" style="width: 50px;height: 50px;" >
+                        </div>
+                        <div class="" style="display: flex;justify-content: flex-start;width:90%;align-items: center">
+                            <textarea class="FplText" id="hf" style="width: 80%;height: 80%;min-width: 600px;max-height: 80px;min-height: 50px"></textarea>
+                            <button class="btn btn-success Fpinglun" id="btnhf" style="width: 80px;margin-left: 10px">评论</button>
+                            <small id="quxiaohuifu" style="color: red;margin-left: 7px">取消回复</small>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${item.getReplyVO().size()}>0" th:each="it :${item.getReplyVO()}" class="panel-body" th:pid="${item.commentId}" th:commentId="${it.commentId}" th:userId="${it.userId}" th:replyUserId="${it.replyUserId}" style="margin-left:100px;border-left: 1px solid #ddd;">
+                    <div style="display:flex;justify-content: start;align-items: center;">
+                        <img th:src="${it.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">
+                        [[${it.userName}]]  对   [[${it.replyUserName}]]  说：
+                        [[${it.commentMsg}]]
+                        <span class="label label-primary" style="margin-left: 7px" >[[${it.createTime}]]</span>
+                        <small class="" id="huiFuBtn" style="color: #999999;margin-left: 5px;">回复</small>
+                    </div>
+
+                    <div class="pinglun" style="display: none;justify-content: space-between;align-items: center;width:80%;height:100%;margin: 20px 0 0 0">
+                        <div class="touxiang" style="display: flex;width:80px;">
+                            <img th:if="${user}!=null" th:src="${user.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;" >
+                            <img th:if="${user}==null" src="/img/4.png" alt="" class="img-circle" style="width: 50px;height: 50px;" >
+                        </div>
+                        <div class="" style="display: flex;justify-content: flex-start;width:90%;align-items: center">
+                            <textarea class="FplText" id="hf" style="width: 80%;height: 80%;min-width: 600px;max-height: 80px;min-height: 50px"></textarea>
+                            <button class="btn btn-success Fpinglun" id="btnhf" style="width: 80px;margin-left: 10px">评论</button>
+                            <small id="quxiaohuifu" style="color: red;margin-left: 7px">取消回复</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
@@ -186,139 +234,6 @@
     PingLunDiv = document.querySelector(".ping");
 
 
-    var responseCommentList;
-    window.addEventListener("load",function (){
-        responseCommentList = ()=> {
-            let url = "/comment/" + [[${blog.bid}]];
-            Ajax2(url, "POST", () => {
-                let data = xmlHttpRequest.responseText;
-                let arr = JSON.parse(data);
-                console.log(data);
-                arr.forEach((item, index) => {
-                    let PingLunItemF = document.createElement("div");
-                    PingLunItemF.className = "panel panel-default";
-                    if (item.replyVO.length >= 1) {
-                        PingLunItemF.innerHTML += `
-
-                <div class="panel-body" pid="0" replyUserId="0" userId="${item.userId}"  commentId="${item.commentId}" style="display:flex;justify-content: start;align-items: center;"><img src="${item.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + item.userName + ": " +
-                            item.commentMsg + `<span class="label label-primary" style="margin-left: 7px">` + item.createTime + `</span><small class="hfbtn-${item.commentId}" style="color: #999999;margin-left: 5px;">回复</small>
-                </div>
-                `;
-                        item.replyVO.forEach((it, index) => {
-                            PingLunItemF.innerHTML += `
-
-                <div class="panel-body" pid="${item.commentId}" commentId="${it.commentId}" userId="${it.userId}" replyUserId="${it.replyUserId}" style="margin-left:100px;display:flex;justify-content: start;align-items: center;border-left: 1px solid #ddd;"><img src="${it.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + it.userName + " 对 " + it.replyUserName + "说：" +
-                                it.commentMsg + `<span class="label label-primary" style="margin-left: 7px">` + it.createTime + `</span><small class="hfbtn-${it.commentId}" style="color: #999999;margin-left: 5px;">回复</small>
-                </div>
-                      `;
-                        })
-                        PingLunDiv.appendChild(PingLunItemF);
-                    } else {
-                        PingLunItemF.innerHTML += `<div class="panel-body" commentId="${item.commentId}" userId="${item.userId}" pid="0" replyUserId="0"  style="display:flex;justify-content: start;align-items: center;"><img src="${item.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">` + item.userName + ": " +
-                            item.commentMsg + `<span class="label label-primary" style="margin-left: 7px">` + item.createTime + `</span><small class="hfbtn-${item.commentId}" style="color: #999999;margin-left: 5px;">回复</small>
-                </div>
-                `;
-                        PingLunDiv.appendChild(PingLunItemF);
-                    }
-                })
-            })
-        }
-        responseCommentList();
-
-
-    });
-
-    var arr;
-
-    function huifuBtn() {
-        arr =  document.querySelectorAll(".panel small");
-            var imgurl = document.querySelector("#headImg").getAttribute("src")
-            console.log(imgurl)
-
-            arr.forEach((item,index)=>{
-                item.addEventListener('click',()=>{
-                    if(document.querySelector('.pinglun')!=null){
-                        document.querySelector('.pinglun').parentNode.parentNode.removeChild(document.querySelector('.pinglun').parentNode);
-                    }
-                    let parentandnext = item.parentNode.nextSibling;
-                    let p = parentandnext.parentNode;
-                    console.log(parentandnext)
-                    let div =  document.createElement("div");
-                    div.className = "panel-body huifu";
-                    div.style.marginLeft = "100px";
-                    div.style.borderLeft="1px solid #ddd";
-                    div.innerHTML+=`<div class="pinglun" style="display: flex;justify-content: space-between;align-items: center;width:100%;height:100%">
-                    <div class="touxiang" style="display: flex;width:80px;">
-                        <img src="`+imgurl+`" alt="" class="img-circle" style="width: 50px;height: 50px;" >
-                    </div>
-                    <div class="" style="display: flex;justify-content: flex-start;width:90%;align-items: center">
-                        <textarea class="FplText" id="hf" style="width: 80%;height: 80%;min-width: 600px;max-height: 80px;min-height: 50px"></textarea>
-                        <button class="btn btn-success Fpinglun" id="btnhf" style="width: 80px;margin-left: 10px">评论</button>
-                        <small id="quxiaohuifu" style="color: red;margin-left: 7px">取消回复</small>
-                    </div>
-                </div>`
-                    p.insertBefore(div,parentandnext);
-
-                    //绑定取消评论事件
-                    quxiaopinglun();
-
-
-
-                    //回复
-                    var btnhuifu = document.querySelector("#btnhf");
-                    btnhuifu.addEventListener('click',()=>{
-                        if(document.querySelector("#hf").value.trim().length>0){
-                            let url = "/comment/addcomment";
-                            var a = btnhuifu.parentNode.parentNode.parentNode.previousSibling;
-                             console.log(a);
-                             console.log("-- ---")
-                            // console.log(a.parentNode.firstElementChild);
-                            let pid;
-                            if(a.getAttribute("pid") == '0') pid = a.getAttribute("commentId");
-                            else pid = a.parentNode.firstElementChild.getAttribute("commentId");
-                            let data={
-                                blogId : [[${blog.bid}]],
-                                commentMsg : document.querySelector("#hf").value,
-                                replyUserId: a.getAttribute("userId"),
-                                pid: pid
-
-                            }
-
-                            Ajax1(url,data,"POST",()=>{
-                                // 响应
-                                var res = xmlHttpRequest.responseText;
-                                if(res == "true"){
-                                    //清除所有评论
-                                    clearCommentList();
-                                    //加载所有评论
-                                    responseCommentList();
-                                    // 添加回复绑定事件
-                                    setTimeout(huifuBtn,1000);
-                                }else alert("请先登陆！")
-                            });
-                        }
-
-                    })
-
-                })
-            })
-    }
-     // 延时1.5s后执行，这样dom对象才能加载完获取。
-    if(flag==true)
-        setTimeout(huifuBtn,1500);
-
-    // 取消评论
-    function quxiaopinglun() {
-        let btn = document.querySelector("#quxiaohuifu");
-        console.log(btn);
-        if(btn!=null){
-            btn.addEventListener('click',()=>{
-                // 删除评论的div
-                btn.parentNode.parentNode.parentNode.parentNode.removeChild(btn.parentNode.parentNode.parentNode);
-            })
-        }
-    }
-
     //评论
     function pinglunBtn() {
         var pinglunBtn = document.querySelector("#PL");
@@ -336,12 +251,8 @@
                 Ajax1(url,data,"POST",()=>{
                     var res = xmlHttpRequest.responseText;
                     if(res == "true"){
-                        //清除所有评论
-                        clearCommentList();
-                        //加载所有评论
-                        responseCommentList();
-                        // 添加回复绑定事件
-                        setTimeout(huifuBtn,1000);
+                        //重新加载
+                        location.reload();
                     }else alert("请先登陆！")
 
 
@@ -358,7 +269,69 @@
         var Plist = document.querySelector(".ping");
         Plist.innerHTML="";
     }
+    // 显示回复框
+    var huifuArr = document.querySelectorAll("#huiFuBtn");
+    huifuArr.forEach((item)=>{
 
+
+        item.addEventListener("click",()=>{
+            huifuArr.forEach((item)=>{
+                let nextSibling = item.parentNode.nextSibling;
+                nextSibling.nextSibling.style.display = "none";
+            })
+            let nextSibling = item.parentNode.nextSibling;
+            //console.log(nextSibling.nextSibling);
+
+            nextSibling.nextSibling.style.display = "flex";
+        })
+    })
+
+    //回复消息
+    var btnhuifuArr = document.querySelectorAll("#btnhf");
+    if(flag==true){
+        btnhuifuArr.forEach((it)=>{
+            //console.log(it)
+            it.addEventListener('click',()=>{
+                if(it.previousElementSibling.value.trim().length>0){
+                    let url = "/comment/addcomment";
+                    let a = it.parentNode.parentNode.parentNode;
+                    console.log(a);
+                    console.log("-- ---")
+
+                    let pid;
+                    if(a.getAttribute("pid") == '0') pid = a.getAttribute("commentId");
+                    else if(a.parentNode.firstElementChild.getAttribute("pid")) pid = a.parentNode.firstElementChild.getAttribute("commentId");
+
+                    let data={
+                        blogId : [[${blog.bid}]],
+                        commentMsg : it.previousElementSibling.value,
+                        replyUserId: a.getAttribute("userId"),
+                        pid: pid
+
+                    }
+                    console.log(data);
+                    Ajax1(url,data,"POST",()=>{
+                        // 响应
+                        var res = xmlHttpRequest.responseText;
+                        if(res == "true"){
+                            location.reload();
+                        }else alert("请先登陆！")
+                    });
+                }
+
+            })
+        })
+    }
+
+    // 取消评论
+
+    let quxiaohuifubtnArr = document.querySelectorAll("#quxiaohuifu");
+    quxiaohuifubtnArr.forEach((item)=>{
+        item.addEventListener("click",()=>{
+            item.parentNode.parentNode.style.display = "none";
+        })
+
+    })
 </script>
 
 

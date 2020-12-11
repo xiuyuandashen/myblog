@@ -20,7 +20,7 @@ public class commentServiceimpl implements commentService {
     com.dao.commentMapper commentMapper;
 
     @Autowired
-    com.dao.loginMapper loginMapper;
+    com.dao.UserMapper userMapper;
 
     @Override
     public List<CommentVO> getAllCommentByBlogId(int BlogId) {
@@ -32,7 +32,7 @@ public class commentServiceimpl implements commentService {
             // 查评论
             CommentVO commentVO = commentMapper.selectCommentById((int) commentId);
             // 评论所属的用户
-            myUser myUser1 = loginMapper.selectByUserId(commentVO.getUserId());
+            myUser myUser1 = userMapper.selectByUserId(commentVO.getUserId());
             commentVO.setUserName(myUser1.getName());
             commentVO.setHeadPortrait(myUser1.getHeadPortrait());
 
@@ -41,10 +41,10 @@ public class commentServiceimpl implements commentService {
 //
             for (ReplyVO replyVO : replyVOS) {
                 // 该回复所属的用户
-                myUser myUser = loginMapper.selectByUserId(replyVO.getUserId());
+                myUser myUser = userMapper.selectByUserId(replyVO.getUserId());
                 //
 
-                replyVO.setReplyUserName(loginMapper.selectByUserId(replyVO.getReplyUserId()).getName());
+                replyVO.setReplyUserName(userMapper.selectByUserId(replyVO.getReplyUserId()).getName());
                 replyVO.setUserName(myUser.getName());
                 replyVO.setHeadPortrait(myUser.getHeadPortrait());
                 reply.add(replyVO);

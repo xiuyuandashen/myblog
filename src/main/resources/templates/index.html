@@ -71,30 +71,11 @@
     <div class="jumbotron" style="background-image: url('/img/blog/2.jpeg');background-size:100% auto;background-position-y:10%;border: none;">
 
         <div class="container">
-            <h1>hello </h1>
-            <p style="color: #999">欢迎来到秀元的个人博客</p>
+            <h1>Hello World</h1>
+            <p style="color: #999">这是一个简约的博客网站</p>
         </div>
     </div>
     <div class="container" >
-
-<!--        <div class="panel panel-success">-->
-<!--            <div class="panel-heading">-->
-<!--                <h3 class="panel-title">博客列表</h3>-->
-<!--            </div>-->
-<!--            <div class="panel-body">-->
-<!--                <div class="panel panel-default" th:each="blog : ${blogPageInfo.list}">-->
-<!--                    <a th:href="@{/blog/queryId(id=${blog.getBid()})}">-->
-<!--                        <div class="panel-heading">-->
-<!--                        <h3 class="panel-title" th:text="${blog.getbName()}"></h3>-->
-<!--                        </div>-->
-<!--                        <div class="panel-body" th:text="${blog.getTitle()}">-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </div>-->
-
             <div class="row" style="margin-bottom: 3vh">
                 <div class="col-md-4 bloglistitem" ontouchstart="this.classList.toggle('hover');" th:each="blog : ${blogPageInfo.list}">
                     <div class="container1">
