@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * 分页
+ */
 @Component
 public class PageConn {
 

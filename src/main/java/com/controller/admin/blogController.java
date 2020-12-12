@@ -9,6 +9,7 @@ import com.entity.myUser;
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.util.GithubUploader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextImpl;
@@ -41,6 +42,9 @@ public class blogController {
 
     @Value("${file.uploadFolder}")
     public  String uploadFolder;
+
+    @Autowired
+    GithubUploader githubUploader;
 
 
     @RequestMapping("/queryAll")
@@ -111,6 +115,7 @@ public class blogController {
         String name = securityContext.getAuthentication().getName();
         myUser myUser = userMapper.loadUserByUsername(name);
         blog.setUserId(myUser.getId());
+        blog.setUserName(myUser.getName());
         //System.out.println(blog);
         blogService.addBlog(blog);
         return blog;
@@ -134,19 +139,20 @@ public class blogController {
             //request.getClass().getClassLoader().getResource("static").getPath()+"/img/blog";
             //request.getSession().getServletContext().getRealPath("/static/img/blog");
             //final String realPath = request.getClass().getClassLoader().getResource("static").getPath()+"/img/blog";
-            String realPath = uploadFolder +"img/blog";
-            //System.out.println(realPath);
-            File filePath = new File(realPath);
-            if (!filePath.exists()) {
-                filePath.mkdirs();
-            }
-            File realFile = new File(realPath + File.separator + upload.getOriginalFilename());
+//            String realPath = uploadFolder +"img/blog";
+//            //System.out.println(realPath);
+//            File filePath = new File(realPath);
+//            if (!filePath.exists()) {
+//                filePath.mkdirs();
+//            }
+//            File realFile = new File(realPath + File.separator + upload.getOriginalFilename());
 
             //这个是editor 要求的上传文件的格式 或则直接用一个map 就行了 key 分别是success message url
             resultMap.put("success",1);
             resultMap.put("message","上传成功");
-            resultMap.put("url",realPath +File.separator+ upload.getOriginalFilename());
-            upload.transferTo(realFile);
+            String url = githubUploader.upload(upload);
+            resultMap.put("url",url);
+            //upload.transferTo(realFile);
             return resultMap;
         }catch (Exception e){
             resultMap.put("success",0);

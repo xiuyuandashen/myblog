@@ -50,7 +50,7 @@ spring:
   cache:
     cache-names: c1,c2
     redis:
-      time-to-live: 300s
+      time-to-live: 100s
   redis:
     database: 0
     host: 120.55.51.37
@@ -83,7 +83,16 @@ file:
   uploadFolder: /Users/zlf/myBlog/upload/
 
 
-
+github:
+  bucket:
+    # 配置仓库所属的用户名（如果是自己创建的，就是自己的用户名）
+    user: "xiuyuandashen"
+    # 配置仓库名称
+    repository: "figureBed"
+    # 配置自己的acccessToken
+    access-token: "5f66f204024d2f11a201a9d6ed998e095f55c91c"
+    url: "https://cdn.jsdelivr.net/gh/${github.bucket.user}/${github.bucket.repository}/"
+    api: "https://api.github.com/repos/${github.bucket.user}/${github.bucket.repository}/contents/"
 
 #logging:
 #  file:

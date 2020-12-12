@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" th:href="@{/css/loading.css}">
     <style>
         *{
             padding: 0;
@@ -40,13 +40,26 @@
                     <li class="active"><a href="/">首页 <span class="sr-only">(current)</span></a></li>
                     <!--                    <li><a th:href="@{}">博客</a></li>-->
                 </ul>
-                <ul class="nav navbar-nav tx " th:if="${user}!=null" style="position: relative" >
-                    <li ><a href="#"><img th:src="${user.headPortrait}" class="img-circle"  id="touxiang" width="20px"><span class="sr-only">(current)</span></a></li>
-                </ul>
                 <ul class="nav navbar-nav navbar-right">
 
                     <li th:if="${user}==null" ><a th:href="@{/login}">登录</a></li>
-
+                    <li th:if="${user}==null" ><a th:href="@{/registered}">注册</a></li>
+                    <li th:if="${user}!=null">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img class="img-circle" th:src="${user.headPortrait}" alt="头像" style="margin: -5px;" width="35px">
+                            &nbsp;
+                            <strong id="id_user_username">[[${user.name}]]</strong>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="divider"></li>
+                            <li><a href = "/user/personalCenter">个人中心</a></li>
+                            <li><a href = "/user/userBlogList">我的博客</a></li>
+                            <li><a href = "/user/addBlog">写博客</a></li>
+                            <li class = "divider"></li>
+                            <li><a href = "/logout">登出</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -101,47 +114,29 @@
     </div>
     <div th:replace="~{ admin/conn ::  dibu }"></div>
 </div>
+<div class="a">
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
 </body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
-    var touxiang = document.querySelector("#touxiang");
-    touxiang.addEventListener("mouseover",()=>{
-        if(document.querySelector(".caidan")==null){
-            let userId = [[${user.id}]]
-            var div = document.createElement("div");
-            div.className = "caidan"
-            div.style.width="100px";
-            div.innerHTML=`
-                <ul style="background-color: white;box-shadow: 0 0 5px #999;text-align: left;list-style: none;padding: 3px" >
-                    <li style="line-height: 30px">
-                    <span class="glyphicon glyphicon-home" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
-                    <a href="/user/personalCenter" style="color: #999999">个人中心</a>
-                    </li>
-                    <li style="line-height: 30px">
-                    <span class="glyphicon glyphicon-th-list" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
-                    <a href="/user/userBlogList" style="color: #999999">我的博客</a>
-                    </li>
-                    <li style="line-height: 30px">
-                    <span class="glyphicon glyphicon-pencil" style="margin:0  5px 0 5px;" aria-hidden="true"></span>
-                    <a href="/user/addBlog" style="color: #999999">写博客</a>
-                    </li>
-                    <li style="line-height: 30px">
-                    <span class="glyphicon glyphicon-off" style="margin:0 5px 0 5px;" aria-hidden="true"></span>
-                    <a href="/logout" style="color: #999999">注销</a>
-                    </li>
+    document.onreadystatechange = function() 　　//当页面加载状态改变的时候执行function
 
-                </ul>
-            `
-            let tx = document.querySelector(".tx")
-            tx.appendChild(div)
-            div.style.position =  "absolute";
-            div.style.top = "50px"
-            div.style.left = "0px"
-            div.style.zIndex="10"
-            div.addEventListener("mouseleave",()=>{
-                tx.removeChild(document.querySelector(".caidan"))
-            })
+    {
+
+        if(document.readyState == "complete")
+
+        { 　　//当页面加载状态为完全结束时进入
+
+            document.querySelector(".a").style.display = "none";
         }
-    })
-
+    }
 </script>
 </html>

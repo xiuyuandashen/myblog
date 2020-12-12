@@ -8,6 +8,8 @@ import java.util.Date;
 
 public class abstractBlog implements Serializable {
 
+    private static final long serialVersionUID = 165852037836933055L;
+
     @ApiModelProperty("id")
     private Integer bid;
     @ApiModelProperty("博客名称")
@@ -19,7 +21,20 @@ public class abstractBlog implements Serializable {
     private Date time;
     @ApiModelProperty("博主id")
     private Integer userId;
+    @ApiModelProperty("博主名")
+    private String userName;
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public abstractBlog() {
+
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
     public abstractBlog(Integer bid, String bName, String title, Date time, Integer userId) {
         this.bid = bid;
         this.bName = bName;

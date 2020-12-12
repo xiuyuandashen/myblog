@@ -10,6 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/**
+ * 自定义身份认证
+ */
 @Component
 public class MyAuthenticationProvider implements AuthenticationProvider {
     @Autowired

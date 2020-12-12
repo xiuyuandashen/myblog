@@ -4,8 +4,10 @@ import com.Config.PageConn;
 import com.Service.impl.blogServiceimpl;
 import com.entity.blog;
 import com.entity.myUser;
+import com.util.GithubUploader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -30,16 +32,22 @@ public class userController {
     @Autowired
     com.dao.UserMapper userMapper;
 
-    @Value("${file.uploadFolder}")
-    public  String uploadFolder;
+   //图片上传本地路径目录
+   // @Value("${file.uploadFolder}")
+    //public  String uploadFolder;
+
+    @Autowired
+    GithubUploader githubUploader;
 
     @RequestMapping("/{userId}/addBlog")
     @ResponseBody
-    public blog addBlog(@RequestBody blog blog,@PathVariable("userId") Integer userId){
-
+    public blog addBlog(@RequestBody blog blog,@PathVariable("userId") Integer userId,HttpServletRequest request){
+        SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
+        String name = securityContext.getAuthentication().getName();
         //System.out.println(blog);
         blog.setUserId(userId);
         blog.setTime(new Date());
+        blog.setUserName(name);
         blogService.addBlog(blog);
         return blog;
     }
@@ -57,6 +65,9 @@ public class userController {
     public String registeredUser(@RequestParam("username") String username, @RequestParam("password") String password ,
                                 @RequestParam("email") String email,
                                  @RequestParam("imgFile") MultipartFile headPortrait, HttpServletRequest request, Model model){
+        /**
+         *
+
         System.out.println("uploadFolder: "+ uploadFolder);
 
         final String realPath = uploadFolder + "img/User";
@@ -70,17 +81,26 @@ public class userController {
         String url = filePath + File.separator+headPortrait.getOriginalFilename();
         File file = new File(url);
 
+         */
         try {
 
             myUser user = new myUser(username,password);
             user.setEmail(email+"@qq.com");
+            //user.setHeadPortrait(url);
+            // 图床图片路径
+            String url = githubUploader.upload(headPortrait);
+            System.out.println("url: "+url);
             user.setHeadPortrait(url);
             int i = userMapper.insertUser(user);
             // 普通用户 2 root用户 1
             if(i>0){
+                //headPortrait.transferTo(file);
+
+
+
                 myUser user1 = userMapper.loadUserByUsername(user.getName());
                 userMapper.addUserRole(user1.getId(),2);
-                headPortrait.transferTo(file);
+
                 return "redirect:/";
             }else {
                 new RuntimeException("注册失败");

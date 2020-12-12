@@ -9,6 +9,9 @@ import org.springframework.util.unit.DataSize;
 
 import javax.servlet.MultipartConfigElement;
 
+/**
+ * 设置上传文件大小
+ */
 @Configuration
 public class UploadFileConfig {
 

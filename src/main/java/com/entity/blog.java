@@ -25,6 +25,18 @@ public class blog implements Serializable {
     private Date time;
     @ApiModelProperty("博主id")
     private Integer userId;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    @ApiModelProperty("博主名")
+
+    private String userName;
     @Override
     public String toString() {
         return "blog{" +

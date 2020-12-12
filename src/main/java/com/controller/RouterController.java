@@ -17,9 +17,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class RouterController {
@@ -50,22 +55,10 @@ public class RouterController {
         }
         List<abstractBlog> abstractBlogs = pageConn.pageList(pageNum, pageSize);
         final PageInfo<abstractBlog> blogPageInfo = new PageInfo<abstractBlog>(abstractBlogs);
+        //System.out.println(blogPageInfo);
         model.addAttribute("blogPageInfo",blogPageInfo);
         return "index";
     }
-//    @RequestMapping("/pageInfo")
-//    @ResponseBody
-//    public PageInfo<blog> pageInfo(Model model,
-//                         @RequestParam(value = "pageNum",defaultValue = "1",required = false) Integer pageNum,
-//                         @RequestParam(value = "pageSize",defaultValue = "3",required = false) Integer pageSize){
-//        PageHelper.startPage(pageNum,pageSize);
-//        final List<blog> blogs = blogService.quireAll();
-//        final PageInfo<blog> blogPageInfo = new PageInfo<>(blogs);
-//        //model.addAttribute("blogPageInfo",blogPageInfo);
-//        return blogPageInfo;
-//    }
-
-
 
     @RequestMapping(path = {"/admin","/admin/"})
     public String adminIndex(Model model){
@@ -130,6 +123,7 @@ public class RouterController {
             PageHelper.startPage(pageNum,pageSize);
             List<abstractBlog> abstractBlogs = blogService.quireyByUserId(user.getId());
             final PageInfo<abstractBlog> blogPageInfo = new PageInfo<>(abstractBlogs);
+            //System.out.println(blogPageInfo);
             model.addAttribute("blogPageInfo",blogPageInfo);
             int blogNumber = userMapper.blogNumber(user.getId());
             model.addAttribute("blogNumber",blogNumber);
@@ -140,6 +134,12 @@ public class RouterController {
     @RequestMapping("/registered")
     public String registered(){
         return "registered";
+    }
+
+    @RequestMapping("/user/personalCenter")
+    public String personalCenter(HttpServletResponse response,Model model) throws IOException {
+        model.addAttribute("msg","暂未制作，谢谢～～");
+        return "error/404";
     }
 
 }
