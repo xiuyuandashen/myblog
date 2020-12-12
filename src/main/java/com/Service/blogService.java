@@ -16,7 +16,7 @@ public interface blogService {
     blog quireById(Integer id);
 
     //删除博客
-    void removeBlogById(Integer id);
+    int removeBlogById(Integer id);
 
     //更新博客
     void updateBlog(blog blog);

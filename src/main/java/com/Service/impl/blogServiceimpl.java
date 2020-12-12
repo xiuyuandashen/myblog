@@ -44,8 +44,8 @@ public class blogServiceimpl  implements blogService {
 
     @Override
     @CacheEvict(key = "#id",beforeInvocation = true) // beforeInvocation 在执行方法前先删除缓存 默认为false
-    public void removeBlogById(Integer id) {
-        blogDao.removeBlogById(id);
+    public int removeBlogById(Integer id) {
+       return blogDao.removeBlogById(id);
     }
 
     @Override

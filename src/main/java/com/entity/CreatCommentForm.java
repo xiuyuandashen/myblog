@@ -17,6 +17,9 @@ public class CreatCommentForm {
     //父级评论id 、若为首级评论则为 0
     private Long pid;
 
+    public CreatCommentForm() {
+    }
+
     public CreatCommentForm(Long blogId, String commentMsg, Long replyUserId, Long pid) {
         this.blogId = blogId;
         this.commentMsg = commentMsg;

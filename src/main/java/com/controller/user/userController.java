@@ -7,6 +7,7 @@ import com.entity.myUser;
 import com.util.GithubUploader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Set;
 
 @Controller
 public class userController {
@@ -39,6 +41,9 @@ public class userController {
     @Autowired
     GithubUploader githubUploader;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
     @RequestMapping("/{userId}/addBlog")
     @ResponseBody
     public blog addBlog(@RequestBody blog blog,@PathVariable("userId") Integer userId,HttpServletRequest request){
@@ -49,6 +54,9 @@ public class userController {
         blog.setTime(new Date());
         blog.setUserName(name);
         blogService.addBlog(blog);
+        //清除所有缓存
+        Set keys = redisTemplate.keys("*");
+        redisTemplate.delete(keys);
         return blog;
     }
 

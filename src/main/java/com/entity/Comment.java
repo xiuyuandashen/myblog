@@ -23,6 +23,9 @@ public class Comment  implements Serializable {
         this.createTime = createTime;
     }
 
+    public Comment() {
+    }
+
     @Override
     public String toString() {
         return "Comment{" +

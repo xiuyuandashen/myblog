@@ -24,6 +24,9 @@ public class ReplyVO implements Serializable {
 
     private String commentMsg;
 
+    public ReplyVO() {
+    }
+
     @Override
     public String toString() {
         return "ReplyVO{" +

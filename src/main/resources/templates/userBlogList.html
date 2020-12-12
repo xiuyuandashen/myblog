@@ -86,6 +86,7 @@
                             <p>
                                 <a th:href="@{/blog/queryId(id=${blog.getBid()})}" class="btn btn-primary" role="button">阅读</a>
                                 <a th:href="@{/admin/blog/{id}/update(id=${blog.getBid()})}" class="btn btn-primary" role="button">修改</a>
+                                <a th:href="@{/delete/{id}(id=${blog.getBid()})}" class="btn btn-primary" role="button">删除</a>
                             </p>
                         </div>
                     </div>

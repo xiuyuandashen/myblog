@@ -22,6 +22,9 @@ public class CommentVO implements Serializable {
 
     private List<ReplyVO> replyVO;
 
+    public CommentVO() {
+    }
+
     @Override
     public String toString() {
         return "CommentVO{" +

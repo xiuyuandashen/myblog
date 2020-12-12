@@ -11,13 +11,11 @@ import com.entity.myUser;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +23,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 public class RouterController {
@@ -37,6 +36,9 @@ public class RouterController {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    RedisTemplate redisTemplate;
 
     @Autowired
     commentService commentService;
@@ -140,6 +142,20 @@ public class RouterController {
     public String personalCenter(HttpServletResponse response,Model model) throws IOException {
         model.addAttribute("msg","暂未制作，谢谢～～");
         return "error/404";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteBlog(@PathVariable("id") int blogId, Model model){
+        int i = blogService.removeBlogById(blogId);
+        if(i>0){
+            Set keys = redisTemplate.keys("*");
+            redisTemplate.delete(keys);
+            return "redirect:/user/userBlogList";
+        }
+        else  {
+            model.addAttribute("msg","删除博客失败！");
+            return "error/404";
+        }
     }
 
 }
