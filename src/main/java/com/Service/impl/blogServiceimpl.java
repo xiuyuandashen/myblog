@@ -58,4 +58,9 @@ public class blogServiceimpl  implements blogService {
     public List<abstractBlog> quireyByUserId(Integer id) {
         return  blogDao.quireyByUserId(id);
     }
+
+    @Override
+    public List<abstractBlog> quireyByTitle(String title) {
+        return blogDao.quireyByTitle(title);
+    }
 }

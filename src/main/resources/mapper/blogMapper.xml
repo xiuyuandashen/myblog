@@ -34,6 +34,11 @@
     <select id="quireyByUserId" resultMap="abstractBlog" parameterType="int">
         select b_id,b_name,title,time,user_id,user_Name from blog where user_id = #{userId}
     </select>
+
+    <select id="quireyByTitle" resultMap="abstractBlog" parameterType="String">
+        select b_id,b_name,title,time,user_id,user_Name from blog where title like '%${value}%'
+    </select>
+
     <insert id="addBlog" parameterType="blog">
         insert into blog(b_name,title,content,time,user_id,user_Name) values(#{bName},#{title},#{content},#{time},#{userId},#{userName})
     </insert>

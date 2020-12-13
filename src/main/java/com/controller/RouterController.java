@@ -62,6 +62,27 @@ public class RouterController {
         return "index";
     }
 
+    @GetMapping(path = "/{title}")
+    public String index(Model model,@PathVariable("title") String title,
+                        @RequestParam(value = "pageNum",defaultValue = "1",required = false) Integer pageNum,
+                        @RequestParam(value = "pageSize",defaultValue = "3",required = false) Integer pageSize, HttpServletRequest request){
+        //PageHelper.startPage(pageNum,pageSize);
+        SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
+        if(securityContext!=null){
+            String username = securityContext.getAuthentication().getName();
+            myUser user = userMapper.loadUserByUsername(username);
+            //System.out.println(user);
+            model.addAttribute("user",user);
+        }
+        List<abstractBlog> abstractBlogs = pageConn.pageListByTitle(title,pageNum, pageSize);
+        final PageInfo<abstractBlog> blogPageInfo = new PageInfo<abstractBlog>(abstractBlogs);
+        //System.out.println(blogPageInfo);
+        model.addAttribute("blogPageInfo",blogPageInfo);
+        return "index";
+    }
+
+
+
     @RequestMapping(path = {"/admin","/admin/"})
     public String adminIndex(Model model){
 

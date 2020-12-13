@@ -21,9 +21,24 @@ public class PageConn {
 
     @Cacheable(cacheNames = "c1",key = "#pageNum")
     public List<abstractBlog> pageList(int pageNum, int pageSize){
-        System.out.println("读取分页博客列表");
+        //System.out.println("读取分页博客列表");
         PageHelper.startPage(pageNum,pageSize);
         List<abstractBlog> abstractBlogs = blogService.quireAll();
         return abstractBlogs;
     }
+
+    /**
+     * 模糊分页查询
+     * @param title
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    public List<abstractBlog> pageListByTitle(String title,int pageNum, int pageSize){
+        //System.out.println("读取分页博客列表");
+        PageHelper.startPage(pageNum,pageSize);
+        List<abstractBlog> abstractBlogs = blogService.quireyByTitle(title);
+        return abstractBlogs;
+    }
+
 }

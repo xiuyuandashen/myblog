@@ -27,4 +27,7 @@ public interface blogDao {
     // 查询当前用户的所有博客
     List<abstractBlog> quireyByUserId(Integer id);
 
+    // 模糊搜索
+    List<abstractBlog> quireyByTitle(String title);
+
 }

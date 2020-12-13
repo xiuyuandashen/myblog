@@ -28,6 +28,8 @@
                 margin: 4vw;
             }
         }
+
+
     </style>
 </head>
 <body>
@@ -84,26 +86,36 @@
         </div>
     </div>
     <div class="container" >
-            <div class="row" style="margin-bottom: 3vh">
-                <div class="col-md-4 bloglistitem" ontouchstart="this.classList.toggle('hover');" th:each="blog : ${blogPageInfo.list}">
-                    <div class="container1">
-                        <a th:href="@{/blog/queryId(id=${blog.getBid()})}">
-                            <div class="front" style="background-image: url('/img/2.png');" >
-                                <div class="inner">
-                                    <p th:text="${blog.title}"></p>
-                                    <p th:text="${blog.userName}"></p>
-                                    <span th:text="${#dates.format(blog.time, 'yyyy-MM-dd')}"></span>
-                                </div>
+
+       <div class="row" style="padding: 0 4vw;margin-bottom: 30px">
+
+           <div class="col-xs-8 col-xs-offset-2" style="display: flex">
+               <input type="text" class="form-control" id="searchText" placeholder="搜索博客" style="padding-right: 30px">
+               <span class="glyphicon glyphicon-search" aria-hidden="true" id="search" style="position: relative;left: -23px;top: 10px"></span>
+           </div>
+
+       </div>
+
+        <div class="row" style="margin-bottom: 3vh">
+            <div class="col-md-4 bloglistitem" ontouchstart="this.classList.toggle('hover');" th:each="blog : ${blogPageInfo.list}">
+                <div class="container1">
+                    <a th:href="@{/blog/queryId(id=${blog.getBid()})}">
+                        <div class="front" style="background-image: url('/img/2.png');" >
+                            <div class="inner">
+                                <p th:text="${blog.title}"></p>
+                                <p th:text="${blog.userName}"></p>
+                                <span th:text="${#dates.format(blog.time, 'yyyy-MM-dd')}"></span>
                             </div>
-                            <div class="back">
-                                <div class="inner">
-                                    <p th:text="${blog.getbName()}"></p>
-                                </div>
+                        </div>
+                        <div class="back">
+                            <div class="inner">
+                                <p th:text="${blog.getbName()}"></p>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
             </div>
+        </div>
 
 
 
@@ -162,6 +174,12 @@
              document.querySelector(".a").style.display = "none";
         }
     }
+    document.querySelector("#search").addEventListener("click",()=>{
+        let title = document.querySelector("#searchText").value;
+        location.href ="/" + title;
+    })
+
+
 </script>
 
 

@@ -23,4 +23,6 @@ public interface blogService {
 
     // 查询当前用户的所有博客
     List<abstractBlog> quireyByUserId(Integer id);
+
+    List<abstractBlog> quireyByTitle(String title);
 }
