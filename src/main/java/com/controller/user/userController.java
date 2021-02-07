@@ -2,8 +2,13 @@ package com.controller.user;
 
 import com.Config.PageConn;
 import com.Service.impl.blogServiceimpl;
+import com.entity.abstractBlog;
 import com.entity.blog;
 import com.entity.myUser;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.github.pagehelper.util.StringUtil;
+import com.util.BASE64DecodedMultipartFile;
 import com.util.GithubUploader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,8 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 public class userController {
@@ -43,6 +47,69 @@ public class userController {
 
     @Autowired
     RedisTemplate redisTemplate;
+
+
+    @RequestMapping("/user/personalCenter")
+    public String personalCenter(HttpServletRequest request,Model model){
+        SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
+        myUser user = null;
+        if(securityContext!=null){
+            String username = securityContext.getAuthentication().getName();
+            user = userMapper.loadUserByUsername(username);
+            //System.out.println(user);
+            if(user==null){
+                return "admin/login";
+            }
+            model.addAttribute("user",user);
+
+        }else{
+            model.addAttribute("msg","请先登录！～～");
+            return "error/404";
+        }
+        return "personalCenter";
+    }
+
+    @RequestMapping(path = "/user/updatePersonalInformation")
+    public String updatePersonalInformation(@RequestParam("username") String username,
+                                            @RequestParam("email") String email,
+                                            @RequestParam("password") String password,Model model,HttpServletRequest request){
+
+        SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
+        String name = securityContext.getAuthentication().getName();
+        myUser user = userMapper.loadUserByUsername(name);
+        user.setName(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        int i = userMapper.updateUser(user);
+        if(i>0){
+
+            return "redirect:/user/personalCenter";
+        }
+        model.addAttribute("msg","出现未知错误～～～！");
+        return "error/404";
+    }
+
+    /**
+     * 裁剪图片
+     * @param request
+     * @param dataURL
+     * @return
+     */
+    @RequestMapping("/user/tailorImg")
+    public String tailorImg(HttpServletRequest request,@RequestParam("dataURL") StringBuilder dataURL) throws Exception{
+        Map<String,String> map = new HashMap<>();
+        System.out.println(dataURL.toString());
+        MultipartFile multipartFile = BASE64DecodedMultipartFile.base64ToMultipart(dataURL.toString());
+        String url = githubUploader.upload(multipartFile);
+        System.out.println(url);
+        SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
+        String name = securityContext.getAuthentication().getName();
+        myUser user = userMapper.loadUserByUsername(name);
+        user.setHeadPortrait(url);
+        userMapper.updateUser(user);
+        return "admin/login";
+    }
+
 
     @RequestMapping("/{userId}/addBlog")
     @ResponseBody

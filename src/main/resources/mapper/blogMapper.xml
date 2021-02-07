@@ -11,7 +11,7 @@
         <result column="content" property="content"></result>
         <result column="time" property="time"></result>
         <result column="user_id" property="userId"></result>
-        <result column="user_Name" property="userName"></result>
+<!--        <result column="user_Name" property="userName"></result>-->
     </resultMap>
 
     <resultMap id="abstractBlog" type="abstractBlog">
@@ -20,27 +20,27 @@
         <result column="title" property="title"></result>
         <result column="time" property="time"></result>
         <result column="user_id" property="userId"></result>
-        <result column="user_Name" property="userName" ></result>
+<!--        <result column="user_Name" property="userName" ></result>-->
 
     </resultMap>
-    
+
     <select id="quireAll" resultMap="abstractBlog">
-        select b_id,b_name,title,user_Name,time,user_id from blog
+        select b_id,b_name,title,time,user_id from blog
     </select>
 
     <select id="quireById" resultMap="blog" parameterType="int">
         select *from blog where b_id = #{id}
     </select>
     <select id="quireyByUserId" resultMap="abstractBlog" parameterType="int">
-        select b_id,b_name,title,time,user_id,user_Name from blog where user_id = #{userId}
+        select b_id,b_name,title,time,user_id from blog where user_id = #{userId}
     </select>
 
     <select id="quireyByTitle" resultMap="abstractBlog" parameterType="String">
-        select b_id,b_name,title,time,user_id,user_Name from blog where title like '%${value}%'
+        select b_id,b_name,title,time,user_id from blog where title like '%${value}%'
     </select>
 
     <insert id="addBlog" parameterType="blog">
-        insert into blog(b_name,title,content,time,user_id,user_Name) values(#{bName},#{title},#{content},#{time},#{userId},#{userName})
+        insert into blog(b_name,title,content,time,user_id) values(#{bName},#{title},#{content},#{time},#{userId})
     </insert>
 
     <delete id="removeBlogById" parameterType="int">

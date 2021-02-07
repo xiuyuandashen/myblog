@@ -10,6 +10,8 @@ public class myUser implements Serializable {
 
     private String email;
 
+    //头像地址
+    private String headPortrait;
 
     public String getEmail() {
         return email;
@@ -19,8 +21,7 @@ public class myUser implements Serializable {
         this.email = email;
     }
 
-    //头像地址
-    private String headPortrait;
+
 
     public String getHeadPortrait() {
         return headPortrait;

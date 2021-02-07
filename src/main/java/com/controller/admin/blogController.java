@@ -12,6 +12,7 @@ import com.google.gson.GsonBuilder;
 import com.util.GithubUploader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +27,7 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin/blog")
@@ -45,6 +47,9 @@ public class blogController {
 
     @Autowired
     GithubUploader githubUploader;
+
+    @Autowired
+    RedisTemplate redisTemplate;
 
 
     @RequestMapping("/queryAll")
@@ -70,6 +75,8 @@ public class blogController {
     @RequestMapping("/{id}/update")
     public String queryByIdIsUpdate(@PathVariable("id") Integer id,Model model){
         final blog blog = blogService.quireById(id);
+        myUser user = userMapper.selectByUserId(blog.getUserId());
+        blog.setUserName(user.getName());
         model.addAttribute("blog",blog);
         return "admin/blog_update";
     }
@@ -120,6 +127,20 @@ public class blogController {
         blogService.addBlog(blog);
         return blog;
 
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteBlog(@PathVariable("id") int blogId, Model model){
+        int i = blogService.removeBlogById(blogId);
+        if(i>0){
+            Set keys = redisTemplate.keys("*");
+            redisTemplate.delete(keys);
+            return "redirect:/admin/blog/BlogList";
+        }
+        else  {
+            model.addAttribute("msg","删除博客失败！");
+            return "error/404";
+        }
     }
 
     /**

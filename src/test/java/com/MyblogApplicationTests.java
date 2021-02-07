@@ -4,6 +4,7 @@ import com.Service.blogService;
 import com.dao.blogDao;
 import com.dao.UserMapper;
 import com.entity.*;
+import org.apache.catalina.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -39,7 +40,8 @@ class MyblogApplicationTests {
        // user.setHeadPortrait("/img/5.png");
 //        int i = loginMapper.addUserRole(1004,2);
 //        System.out.println(i);
-        int i = userMapper.blogNumber(1001);
+
+        int i = userMapper.updatePassword("1556450877@qq.com","红警","feng10.10");
         System.out.println(i);
 
     }

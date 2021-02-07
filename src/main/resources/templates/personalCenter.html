@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${user.name}]]的个人中心～～</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"-->
+<!--            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"-->
+<!--            crossorigin="anonymous">-->
+
+<!--    </script>-->
+    <link rel="stylesheet"  th:href="@{/css/loading.css}">
+    <link rel="stylesheet" th:href="@{/css/cropper.css}" >
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <link rel="Bookmark" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #Personal_information{
+            display: flex;
+            justify-content: center;
+        }
+        /* 图片裁剪 */
+        .img-con {
+            width: 800px;
+            height: 400px;
+            border: 1px solid #ccc;
+            float: left;
+        }
+
+        .img-pre {
+            width: 400px;
+            height: 400px;
+            float: right;
+            border: 1px solid #eee;
+        }
+
+        .img-pre img {
+            width: 180px;
+            height: 180px;
+            padding: 10px;
+        }
+
+        .img-con img {
+            width: 100%;
+            height: 100%;
+        }
+        #zhezhao{
+
+            margin: 0 auto;
+            padding: 3vw;
+            width: 50%;
+            position: fixed;
+            top: 25%;
+            left: 25%;
+
+        }
+        /* 图片裁剪 */
+        @media (max-width: 768px) {
+            #Personal_information{
+                display: block;
+
+            }
+            #Personal_information > div{
+                margin: 0 auto;
+            }
+            /* 图片裁剪 */
+            #zhezhao{
+
+                width: 100vw;
+                top: 25%;
+                left: 0;
+            }
+            #buju{
+                display: flex;
+                flex-direction: column;
+
+            }
+            /* 图片裁剪 */
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid" style="padding: 0;min-height: 100vh">
+    <div th:replace="~{ admin/conn ::  common_haeder }"></div>
+    <div class="container" style="margin-top: 30px">
+        <div class="row" style="" id="Personal_information">
+            <div class="col-xs-12  col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="my_head_photo_container">
+                            <img id="my_head_photo" class="img-responsive center-block" th:src="${user.headPortrait}" >
+                        </div>
+
+                        <hr/>
+                        <div align="center">
+                            <form id="form_submit_photo" class="form-horizontal" role="form" action="/user/profile/saverawphoto/" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="kHBrookWqs6Qzfb3syfgu85dbE3vgDo1BdsnO7mSYBeoCRDt2hcMLHPQIhoN6VRE">
+                                <label class="btn btn-default btn-file">
+                                    更新头像
+                                    <input id="input" type="file" style="display: none;" name="photo" required>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>个人信息</h3>
+                        <hr/>
+                        <form  class="form-horizontal"  action="/user/updatePersonalInformation" method="post" enctype="multipart/form-data">
+
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3"><label for="id_username">用户名:</label></label>
+                                <div class="col-md-7"><input type="text" name="username" th:placeholder="${user.name}" class="form-control" maxlength="30"  id="id_username"></div>
+                                <span class="text-danger small"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3"><label for="id_email">邮件地址:</label></label>
+                                <div class="col-md-7"><input type="email" th:placeholder="${user.email}" name="email" class="form-control" style="margin-top: 0;" maxlength="50"  id="id_email"></div>
+                                <span class="text-danger small"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3"><label for="id_passoword">密码:</label></label>
+                                <div class="col-md-7"><input type="text" name="password" th:placeholder="${user.password}" class="form-control" maxlength="30"  id="id_passoword"></div>
+                                <span class="text-danger small"></span>
+                            </div>
+
+
+
+                            <div class="col-xs-offset-5">
+                                <button type="submit" class="btn btn-success" style="border-radius: 5px">更新信息</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="dazhezhao" style="display: none;position: fixed;top: 0;z-index: 10;min-width: 100vw;min-height: 100vh;background-color: #999999;opacity: .85">
+    <div class="row" id="zhezhao" style="display: none;margin-left: 0;margin-right: 0;opacity: 1;">
+        <div class="panel panel-default" style="width: 100%;">
+            <div class="panel-body">
+                <div class="row" id="buju" >
+                    <div class="col-xs-12 col-md-6" style="padding-left: 0;padding-right: 0" >
+                        <img src="" id="photo" style="width: 100%;height: auto;">
+                    </div>
+                    <div class="col-xs-12 col-md-6" style="width: 20%;">
+                        <div>
+                            <p>
+                                预览(100*100)：
+                            </p>
+                            <div class="img-preview">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="crop()" id="croploading" >裁剪图片</button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="a">
+    <div class="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script th:src="@{/js/cropper.js}" ></script>
+<script>
+    document.onreadystatechange = function() 　　//当页面加载状态改变的时候执行function
+
+    {
+
+        if(document.readyState == "complete")
+
+        { 　　//当页面加载状态为完全结束时进入
+
+            document.querySelector(".a").style.display = "none";
+        }
+    }
+
+    // 修改自官方demo的js
+    var initCropper = function (img, input){
+        var $image = img;
+        var options = {
+            aspectRatio: 1, // 纵横比
+            viewMode: 2,
+            preview: '.img-preview' // 预览图的class名
+        };
+        $image.cropper(options);
+        var $inputImage = input;
+        var uploadedImageURL;
+        if (URL) {
+            // 给input添加监听
+            $inputImage.change(function () {
+                var files = this.files;
+                var file;
+                if (!$image.data('cropper')) {
+                    return;
+                }
+                if (files && files.length) {
+                    file = files[0];
+                    // 判断是否是图像文件
+                    if (/^image\/\w+$/.test(file.type)) {
+                        // 如果URL已存在就先释放
+                        if (uploadedImageURL) {
+                            URL.revokeObjectURL(uploadedImageURL);
+                        }
+                        uploadedImageURL = URL.createObjectURL(file);
+                        // 销毁cropper后更改src属性再重新创建cropper
+                        $image.cropper('destroy').attr('src', uploadedImageURL).cropper(options);
+                        $inputImage.val('');
+                    } else {
+                        window.alert('请选择一个图像文件！');
+                    }
+                }
+            });
+        } else {
+            $inputImage.prop('disabled', true).addClass('disabled');
+        }
+    }
+    var crop = function () {
+        var photo = $('#photo').cropper('getCroppedCanvas', {
+            // 裁剪后的长宽
+            height: 160
+        }).toDataURL('image/png');
+        console.log(photo);
+        $.ajax({
+            url: '/user/tailorImg', // 要上传的地址
+            method: 'post',
+            data: { dataURL:photo },
+            success: function (data) {
+                window.location.href="/login";
+            },
+            error: function (data) {
+                alert("裁剪失败");
+            }
+        });
+    }
+
+    $(function(){
+        console.log("~~~~ ~~~~")
+        initCropper($('#photo'),$('#input'));
+    });
+    let btn =  document.querySelector("#input");
+    btn.addEventListener("click",()=>{
+        document.querySelector("#zhezhao").style.display = "flex";
+        document.querySelector(".dazhezhao").style.display = "block";
+    })
+    document.querySelector("#croploading").addEventListener("click",()=>{
+        document.querySelector(".a").style.display = "flex";
+    })
+
+
+</script>
+
+
+
+</html>

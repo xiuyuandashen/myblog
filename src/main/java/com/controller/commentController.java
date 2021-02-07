@@ -30,6 +30,12 @@ public class commentController {
     }
 
 
+    /**
+     * 添加评论
+     * @param creatCommentForm
+     * @param request
+     * @return
+     */
     @RequestMapping(path = "/addcomment")
     public boolean addComment(@RequestBody CreatCommentForm creatCommentForm, HttpServletRequest request){
         SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");

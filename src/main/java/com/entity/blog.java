@@ -26,6 +26,9 @@ public class blog implements Serializable {
     @ApiModelProperty("博主id")
     private Integer userId;
 
+    @ApiModelProperty("博主名")
+    private String userName;
+
     public String getUserName() {
         return userName;
     }
@@ -34,9 +37,7 @@ public class blog implements Serializable {
         this.userName = userName;
     }
 
-    @ApiModelProperty("博主名")
 
-    private String userName;
     @Override
     public String toString() {
         return "blog{" +

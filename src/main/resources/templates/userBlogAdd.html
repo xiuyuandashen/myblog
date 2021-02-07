@@ -11,6 +11,8 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/css/loading.css}">
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <link rel="Bookmark" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
     <style>
         *{
             margin: 0;
@@ -21,49 +23,7 @@
 </head>
 <body>
 <div class="container-fluid" style="padding: 0" th:fragment="admin">
-    <nav class="navbar  navbar-inverse" style="margin-bottom: 0;border: none">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header" >
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/" style="padding: 15px 24px">个人博客</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">首页 <span class="sr-only">(current)</span></a></li>
-                    <!--                    <li><a th:href="@{}">博客</a></li>-->
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li th:if="${user}==null" ><a th:href="@{/login}">登录</a></li>
-                    <li th:if="${user}==null" ><a th:href="@{/registered}">注册</a></li>
-                    <li th:if="${user}!=null">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img class="img-circle" th:src="${user.headPortrait}" alt="头像" style="margin: -5px;" width="35px">
-                            &nbsp;
-                            <strong id="id_user_username">[[${user.name}]]</strong>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="divider"></li>
-                            <li><a href = "/user/personalCenter">个人中心</a></li>
-                            <li><a href = "/user/userBlogList">我的博客</a></li>
-                            <li><a href = "/user/addBlog">写博客</a></li>
-                            <li class = "divider"></li>
-                            <li><a href = "/logout">登出</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
+    <div th:replace="~{ admin/conn ::  common_haeder }"></div>
     <div class="row" style="margin-top: 10px;padding: 0 30px 30px 30px">
 
         <div class="col-xs-12">

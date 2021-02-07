@@ -27,4 +27,25 @@
     <select id="blogNumber" parameterType="int" resultType="int">
         select count(*) from blog where user_id = #{id}
     </select>
+
+    <update id="updateUser" parameterType="myUser">
+        update USER
+        <set>
+            <if test="name!=null and name!='' " >
+            name = #{name},</if>
+            <if test="email !=null and email != ''" >
+            email = #{email},</if>
+            <if test="headPortrait !=null and headPortrait !=''">
+                headPortrait = #{headPortrait}
+            </if>,
+            <if test="password!=null and password != ''">
+                password = #{password}
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+
+    <update id="updatePassword" >
+        update USER set password = #{password} where name = #{name} and email = #{email};
+    </update>
 </mapper>

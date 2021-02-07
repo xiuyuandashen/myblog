@@ -90,7 +90,7 @@ github:
     # 配置仓库名称
     repository: "figureBed"
     # 配置自己的acccessToken
-    access-token: "833d3eb7e26c8e5c096d1491c8d5eba1c7c23f55"
+    access-token: "df4f68e4ca6aec203c36dbcb9faa314babf95ced"
     url: "https://cdn.jsdelivr.net/gh/${github.bucket.user}/${github.bucket.repository}/"
     api: "https://api.github.com/repos/${github.bucket.user}/${github.bucket.repository}/contents/"
 

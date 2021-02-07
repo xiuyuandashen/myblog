@@ -102,6 +102,16 @@ public class RouterController {
         return "admin/login";
     }
 
+
+
+    /**
+     * 获取文章信息
+     * 获取改文章的评论
+     * @param model
+     * @param id
+     * @param request
+     * @return
+     */
     @RequestMapping("/blog/queryId")
     public String queryById(Model model,@RequestParam("id") Integer id,HttpServletRequest request){
         SecurityContextImpl securityContext = (SecurityContextImpl)request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
@@ -115,6 +125,10 @@ public class RouterController {
             model.addAttribute("flag","false");
         }
         final blog blog = blogService.quireById(id);
+        // 获取作者名称
+        myUser user = userMapper.selectByUserId(blog.getUserId());
+        blog.setUserName(user.getName());
+
         model.addAttribute("blog",blog);
         List<CommentVO> comments = commentService.getAllCommentByBlogId(id);
         model.addAttribute("comments",comments);
@@ -150,7 +164,11 @@ public class RouterController {
             model.addAttribute("blogPageInfo",blogPageInfo);
             int blogNumber = userMapper.blogNumber(user.getId());
             model.addAttribute("blogNumber",blogNumber);
+        }else{
+            model.addAttribute("msg","请先登录！～～");
+            return "error/404";
         }
+
         return "userBlogList";
     }
 
@@ -159,11 +177,11 @@ public class RouterController {
         return "registered";
     }
 
-    @RequestMapping("/user/personalCenter")
-    public String personalCenter(HttpServletResponse response,Model model) throws IOException {
-        model.addAttribute("msg","暂未制作，谢谢～～");
-        return "error/404";
-    }
+//    @RequestMapping("/user/personalCenter")
+//    public String personalCenter(HttpServletResponse response,Model model) throws IOException {
+//        model.addAttribute("msg","暂未制作，谢谢～～");
+//        return "error/404";
+//    }
 
     @RequestMapping("/delete/{id}")
     public String deleteBlog(@PathVariable("id") int blogId, Model model){
