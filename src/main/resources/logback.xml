@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!--1，定义日志保存的路径-->
-    <property name="LOG_HOME" value="e://logs//" />
+    <property name="LOG_HOME" value="/project/logs" />
     <!--2，定义一个控制台输出器，名为console-->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <!--按pattern指定的格式输出日志，编码为UTF-8-->

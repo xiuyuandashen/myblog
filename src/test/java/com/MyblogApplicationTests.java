@@ -4,7 +4,12 @@ import com.Service.blogService;
 import com.dao.blogDao;
 import com.dao.UserMapper;
 import com.entity.*;
+<<<<<<< HEAD
 import org.junit.Test;
+=======
+import org.apache.catalina.User;
+import org.junit.jupiter.api.Test;
+>>>>>>> 9e811b46decff1916ce5ea8d0dc775953cb53cc5
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;

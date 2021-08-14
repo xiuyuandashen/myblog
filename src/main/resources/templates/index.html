@@ -1,190 +1,201 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
     <meta charset="UTF-8">
     <title>主页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="">
-<!--    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
+    <!--    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
     <script th:src="@{/js/jquery.min.js}"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
-    <link rel="Bookmark" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <link rel="shortcut icon"
+        href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <link rel="Bookmark"
+        href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
     <link rel="stylesheet" th:href="@{/css/index-3dimg.css}">
     <link rel="stylesheet" th:href="@{/css/loading.css}">
     <link rel="stylesheet" th:href="@{/js/bs_pagination-master/jquery.bs_pagination.min.css}">
     <script th:src="@{/js/bs_pagination-master/jquery.bs_pagination.min.js}"></script>
     <script th:src="@{/js/bs_pagination-master/localization/en.min.js}"></script>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        a{
+
+        a {
             text-decoration: none;
 
         }
-        .container-fluid{
+
+        .container-fluid {
             padding: 0;
-            border: none ;
+            border: none;
         }
-        @media screen and (max-width: 1045px){
-            .bloglistitem{
+
+        @media screen and (max-width: 1045px) {
+            .bloglistitem {
                 margin: 4vw;
             }
         }
-
-
     </style>
 </head>
+
 <body>
 
-<div class="container-fluid"  >
-    <div th:replace="~{ admin/conn ::  common_haeder }"></div>
-    <div class="jumbotron" style="background-image: url('https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/1228a0bf5a46394a7f8c51202b055a8864.jpeg');background-size:100% auto;background-position-y:10%;border: none;">
+    <div class="container-fluid">
+        <div th:replace="~{ admin/conn ::  common_haeder }"></div>
+        <div class="jumbotron"
+            style="background-image: url('https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/1228a0bf5a46394a7f8c51202b055a8864.jpeg');background-size:100% auto;background-position-y:10%;border: none;">
 
-        <div class="container">
-            <h1>Hello World</h1>
-            <p style="color: #999">执笔画江山。</p>
-        </div>
-    </div>
-    <div class="container" >
-
-       <div class="row" style="padding: 0 4vw;margin-bottom: 30px">
-
-           <div class="col-xs-8 col-xs-offset-2" style="display: flex">
-               <input type="text" class="form-control" id="searchText" placeholder="搜索博客" style="padding-right: 30px">
-               <span class="glyphicon glyphicon-search" aria-hidden="true" id="search" style="position: relative;left: -23px;top: 10px"></span>
-           </div>
-
-       </div>
-
-        <div class="row" style="margin-bottom: 3vh">
-            <div class="col-md-4 bloglistitem" ontouchstart="this.classList.toggle('hover');" th:each="blog : ${blogPageInfo.list}">
-                <div class="container1">
-                    <a th:href="@{/blog/queryId(id=${blog.getBid()})}">
-                        <div class="front" style="background-image: url('/img/2.png');" >
-                            <div class="inner">
-                                <p th:text="${blog.title}"></p>
-                                <span th:text="${#dates.format(blog.time, 'yyyy-MM-dd')}"></span>
-                            </div>
-                        </div>
-                        <div class="back">
-                            <div class="inner">
-                                <p th:text="${blog.getbName()}"></p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+            <div class="container">
+                <h1>Hello World</h1>
+                <p style="color: #999">执笔画江山。</p>
             </div>
         </div>
+        <div class="container">
+
+            <div class="row" style="padding: 0 4vw;margin-bottom: 30px">
+
+                <div class="col-xs-8 col-xs-offset-2" style="display: flex">
+                    <input type="text" class="form-control" id="searchText" placeholder="搜索博客"
+                        style="padding-right: 30px">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true" id="search"
+                        style="position: relative;left: -23px;top: 10px"></span>
+                </div>
+
+            </div>
+
+            <div class="row" style="margin-bottom: 3vh">
+                <div class="col-md-4 bloglistitem" ontouchstart="this.classList.toggle('hover');"
+                    th:each="blog : ${blogPageInfo.list}">
+                    <div class="container1">
+                        <a th:href="@{/blog/queryId(id=${blog.getBid()})}">
+                            <div class="front" style="background-image: url('/img/2.png');">
+                                <div class="inner">
+                                    <p th:text="${blog.title}"></p>
+                                    <span th:text="${#dates.format(blog.time, 'yyyy-MM-dd')}"></span>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="inner">
+                                    <p th:text="${blog.getbName()}"></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
 
 
-        <div class="row">
-            <p class="text-primary col-md-12" style="text-align: center">
-                当前第<span th:text="${blogPageInfo.pageNum}"></span>页,
-                共<span th:text="${blogPageInfo.list.size()}"></span>条记录,
-                共<span th:text="${blogPageInfo.pages}"></span>页
-            </p>
+            <div class="row">
+                <p class="text-primary col-md-12" style="text-align: center">
+                    当前第<span th:text="${blogPageInfo.pageNum}"></span>页,
+                    共<span th:text="${blogPageInfo.list.size()}"></span>条记录,
+                    共<span th:text="${blogPageInfo.pages}"></span>页
+                </p>
+            </div>
+            <div class="row">
+                <!--            <nav aria-label="Page navigation"  class="col-lg-12" style="display: flex;justify-content: center">-->
+                <!--                <ul class="pagination" style="">-->
+                <!--                    <li>-->
+                <!--                        <a th:href="@{/(pageNum=${blogPageInfo.getPrePage()})}" aria-label="Previous">-->
+                <!--                            <span aria-hidden="true">&laquo;</span>-->
+                <!--                        </a>-->
+                <!--                    </li>-->
+                <!--                    <li id="page" th:each="pagenums :${blogPageInfo.navigatepageNums}" th:class="${pagenums == blogPageInfo.getPageNum()?'active':''}"><a th:href="@{/(pageNum=${pagenums})}" th:text="${pagenums}"></a></li>-->
+
+                <!--                    <li>-->
+                <!--                        <a th:href="@{/(pageNum=${blogPageInfo.getNextPage()})}" aria-label="Next">-->
+                <!--                            <span aria-hidden="true">&raquo;</span>-->
+                <!--                        </a>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
+                <!--            </nav>-->
+
+                <div id="page2" style="display: flex;justify-content: center"></div>
+            </div>
+
+
         </div>
-        <div class="row">
-<!--            <nav aria-label="Page navigation"  class="col-lg-12" style="display: flex;justify-content: center">-->
-<!--                <ul class="pagination" style="">-->
-<!--                    <li>-->
-<!--                        <a th:href="@{/(pageNum=${blogPageInfo.getPrePage()})}" aria-label="Previous">-->
-<!--                            <span aria-hidden="true">&laquo;</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li id="page" th:each="pagenums :${blogPageInfo.navigatepageNums}" th:class="${pagenums == blogPageInfo.getPageNum()?'active':''}"><a th:href="@{/(pageNum=${pagenums})}" th:text="${pagenums}"></a></li>-->
+        <div th:replace="~{ admin/conn ::  dibu }"></div>
+    </div>
 
-<!--                    <li>-->
-<!--                        <a th:href="@{/(pageNum=${blogPageInfo.getNextPage()})}" aria-label="Next">-->
-<!--                            <span aria-hidden="true">&raquo;</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </nav>-->
-
-            <div id="page2" style="display: flex;justify-content: center"></div>
+    <div class="a">
+        <div class="loading">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-
-
     </div>
-    <div th:replace="~{ admin/conn ::  dibu }"></div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script>
 
-<div class="a">
-    <div class="loading">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script>
+        document.onreadystatechange = function () 　　//当页面加载状态改变的时候执行function
 
-    document.onreadystatechange = function() 　　//当页面加载状态改变的时候执行function
+        {
 
-    {
+            if (document.readyState == "complete") { 　　//当页面加载状态为完全结束时进入
 
-        if(document.readyState == "complete")
-
-        { 　　//当页面加载状态为完全结束时进入
-
-             document.querySelector(".a").style.display = "none";
+                document.querySelector(".a").style.display = "none";
+            }
         }
-    }
-    document.querySelector("#search").addEventListener("click",()=>{
-        let title = document.querySelector("#searchText").value;
-        location.href ="/" + title;
-    })
-
-    $('#page2').bs_pagination({
-        totalPages: [[${blogPageInfo.pages}]],//总页数：由接口返回（AJAX）
-        currentPage: [[${blogPageInfo.pageNum}]],//当前页：由前端指定
-        visiblePageLinks: 5,//显示的最多分页链接数
-        showGoToPage: false,
-        showRowsPerPage: false,
-        showRowsInfo: false,
-        showRowsDefaultInfo: false,
-        mainWrapperClass: 'dataPage clearfix',
-        navListContainerClass: '',
-        navListClass: 'pagination-sm pagination',
-        containerClass: '',
-        onChangePage: function (e, obj) {//returns page_num and rows_per_page
-            //当分页被点击的时候，事件回调
-            //obj.currentPage;//获取点击对象里的当前页
-            console.log(e)
-            console.log(obj)
-
-            if(location.href.indexOf(location.href.indexOf("?")-1) == "/")
-                location.href ="?pageNum=" + obj.currentPage;
-            else
-                location.href = location.href.substr(0,location.href.indexOf("?")) + "?pageNum=" + obj.currentPage;
-            //console.log([[${blogPageInfo}]])
-
-        }
-    });
-
-    var input = document.querySelector("#searchText")
-    input.addEventListener('keyup',(e)=>{
-        e.preventDefault();
-        if(e.keyCode===13){
+        document.querySelector("#search").addEventListener("click", () => {
             let title = document.querySelector("#searchText").value;
-            location.href ="/" + title;
-        }
+            location.href = "/" + title;
+        })
 
-    })
+        $('#page2').bs_pagination({
+            totalPages: [[${ blogPageInfo.pages }]],//总页数：由接口返回（AJAX）
+            currentPage: [[${ blogPageInfo.pageNum }]],//当前页：由前端指定
+            visiblePageLinks: 5,//显示的最多分页链接数
+            showGoToPage: false,
+            showRowsPerPage: false,
+            showRowsInfo: false,
+            showRowsDefaultInfo: false,
+            mainWrapperClass: 'dataPage clearfix',
+            navListContainerClass: '',
+            navListClass: 'pagination-sm pagination',
+            containerClass: '',
+            onChangePage: function (e, obj) {//returns page_num and rows_per_page
+                //当分页被点击的时候，事件回调
+                //obj.currentPage;//获取点击对象里的当前页
+                console.log(e)
+                console.log(obj)
+
+                if (location.href.indexOf(location.href.indexOf("?") - 1) == "/")
+                    location.href = "?pageNum=" + obj.currentPage;
+                else
+                    location.href = location.href.substr(0, location.href.indexOf("?")) + "?pageNum=" + obj.currentPage;
+                //console.log([[${blogPageInfo}]])
+
+            }
+        });
+
+        var input = document.querySelector("#searchText")
+        input.addEventListener('keyup', (e) => {
+            e.preventDefault();
+            if (e.keyCode === 13) {
+                let title = document.querySelector("#searchText").value;
+                location.href = "/" + title;
+            }
+
+        })
 
 
-</script>
+    </script>
 
 
 </body>
+
 </html>

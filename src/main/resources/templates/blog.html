@@ -1,171 +1,199 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>[[${blog.title}]]</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
-    <link rel="Bookmark" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
-    <link rel="stylesheet" th:href="@{/editor.md-master/css/editormd.css}"/>
-    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon"
+        href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <link rel="Bookmark"
+        href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <link rel="stylesheet" th:href="@{/editor.md-master/css/editormd.css}" />
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" th:href="@{/css/loading.css}">
     <style>
         /*img {*/
         /*    width: 80%;*/
         /*    text-align: left;*/
         /*}*/
-        .container-fluid{
+        .container-fluid {
             padding: 0;
-            border: none ;
-        }
-        .container .jumbotron, .container-fluid .jumbotron{
             border: none;
         }
 
+        .container .jumbotron,
+        .container-fluid .jumbotron {
+            border: none;
+        }
     </style>
 
 
 </head>
+
 <body>
-<div class="container-fluid">
-    <div th:replace="~{ admin/conn ::  common_haeder }"></div>
-    <div class="jumbotron" style="background-image: url('/img/blog/2.jpeg');background-size:100% auto;background-position-y:10%;border: none;margin-bottom: 5px">
+    <div class="container-fluid">
+        <div th:replace="~{ admin/conn ::  common_haeder }"></div>
+        <div class="jumbotron"
+            style="background-image: url('/img/blog/2.jpeg');background-size:100% auto;background-position-y:10%;border: none;margin-bottom: 5px">
 
+            <div class="container">
+                <h1>Hello World</h1>
+                <p style="color: #999">欢迎来到 [[${blog.userName}]] 的个人博客</p>
+            </div>
+        </div>
+        <ol class="breadcrumb">
+            <li><a href="/index">首页</a></li>
+            <li class="active" th:text="${blog.title}"></li>
+        </ol>
         <div class="container">
-            <h1>Hello World</h1>
-            <p  style="color: #999">欢迎来到 [[${blog.userName}]] 的个人博客</p>
-        </div>
-    </div>
-    <ol class="breadcrumb">
-        <li><a href="/index">首页</a></li>
-        <li class="active" th:text="${blog.title}"></li>
-    </ol>
-    <div class="container">
-        <div class="row" style="margin-bottom: 5vh">
-            <div id="layout" class="editor col-lg-12" >
-                <div class="page-header">
-                    <h3 id="dingbu">[[${blog.getTitle()}]]  <small th:text="${#dates.format(blog.time, 'yyyy-MM-dd')}"></small></h3>
+            <div class="row" style="margin-bottom: 5vh">
+                <div id="layout" class="editor col-lg-12">
+                    <div class="page-header">
+                        <h3 id="dingbu">[[${blog.getTitle()}]] <small
+                                th:text="${#dates.format(blog.time, 'yyyy-MM-dd')}"></small></h3>
+                    </div>
+                    <!-- id 与 editormd.markdownToHTML("id",{}) 要一致 -->
+                    <div id="test-editormd">
+                        <textarea th:text="${blog.getContent()}"></textarea>
+                    </div>
                 </div>
-                <!-- id 与 editormd.markdownToHTML("id",{}) 要一致 -->
-                <div id="test-editormd">
-                    <textarea th:text="${blog.getContent()}"></textarea>
+            </div>
+
+
+            <div class="row col-xs-10 col-xs-offset-1" style="margin-bottom: 5vh">
+                <div class="pinglun1" style="display: flex;justify-content: space-between;align-items: center">
+                    <div th:if="${user}!=null" class="touxiang col-xs-2"
+                        style="display: flex;justify-content: flex-end">
+                        <img th:src="${user.headPortrait}" alt="" class="img-circle"
+                            style="width: 50px;height: 50px;margin-right: 1vw" id="headImg">
+                    </div>
+                    <div th:if="${flag}=='false'" class="touxiang col-xs-2"
+                        style="display: flex;justify-content: flex-end">
+                        <img th:src="@{/img/4.png}" alt="" class="img-circle"
+                            style="width: 50px;height: 50px;margin-right: 1vw;margin-left: 1vw">
+                    </div>
+                    <div class="col-xs-10" style="display: flex;justify-content: flex-start;">
+                        <textarea class="FplText form-control" id="fpl"
+                            style="height: auto;min-height: 80px;"></textarea>
+                        <button class="btn btn-success Fpinglun" id="PL"
+                            style="max-width: 80px;margin-left: 10px">评论</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row ping col-xs-12">
+                <div class="panel panel-default" th:each="item : ${comments}">
+                    <div class="panel-body" th:pid="0" th:replyUserId="0" th:userId="${item.userId}"
+                        th:commentId="${item.commentId}">
+                        <div style="display:flex;justify-content: start;align-items: center;">
+                            <img th:src="${item.headPortrait}" alt="" class="img-circle"
+                                style="width: 50px;height: 50px;margin-right: 20px;">
+                            [[${item.userName}]] :
+                            [[${item.commentMsg}]]
+                            <span class="label label-primary" style="margin-left: 7px"> [[${item.createTime}]] </span>
+                            <small id="huiFuBtn" style="color: #999999;margin-left: 5px;">回复</small>
+                        </div>
+                        <div class="pinglun"
+                            style="display: none;justify-content: space-between;align-items: center;width:80%;height:100%;margin-left: 4vw;margin-top: 20px">
+                            <div class="touxiang" style="display: flex;width:80px;">
+                                <img th:if="${user}!=null" th:src="${user.headPortrait}" alt="" class="img-circle"
+                                    style="width: 50px;height: 50px;">
+                                <img th:if="${user}==null" src="/img/4.png" alt="" class="img-circle"
+                                    style="width: 50px;height: 50px;">
+                            </div>
+                            <div class=""
+                                style="display: flex;justify-content: flex-start;width:90%;align-items: center">
+                                <textarea class="FplText" id="hf"
+                                    style="width: 80%;height: 80%;max-height: 80px;min-height: 50px"></textarea>
+                                <button class="btn btn-success Fpinglun" id="btnhf"
+                                    style="width: 80px;margin-left: 10px">评论</button>
+                                <small id="quxiaohuifu" style="color: red;margin-left: 7px">取消</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:if="${item.getReplyVO().size()}>0" th:each="it :${item.getReplyVO()}" class="panel-body"
+                        th:pid="${item.commentId}" th:commentId="${it.commentId}" th:userId="${it.userId}"
+                        th:replyUserId="${it.replyUserId}" style="margin-left:4vw;border-left: 1px solid #ddd;">
+                        <div style="display:flex;justify-content: start;align-items: center;">
+                            <img th:src="${it.headPortrait}" alt="" class="img-circle"
+                                style="width: 50px;height: 50px;margin-right: 20px;">
+                            [[${it.userName}]] 对 [[${it.replyUserName}]] 说：
+                            [[${it.commentMsg}]]
+                            <span class="label label-primary" style="margin-left: 7px">[[${it.createTime}]]</span>
+                            <small class="" id="huiFuBtn" style="color: #999999;margin-left: 5px;">回复</small>
+                        </div>
+
+                        <div class="pinglun"
+                            style="display: none;justify-content: space-between;align-items: center;width:80%;height:100%;margin: 20px 0 0 0">
+                            <div class="touxiang" style="display: flex;width:80px;">
+                                <img th:if="${user}!=null" th:src="${user.headPortrait}" alt="" class="img-circle"
+                                    style="width: 50px;height: 50px;">
+                                <img th:if="${user}==null" src="/img/4.png" alt="" class="img-circle"
+                                    style="width: 50px;height: 50px;">
+                            </div>
+                            <div class=""
+                                style="display: flex;justify-content: flex-start;width:90%;align-items: center">
+                                <textarea class="FplText" id="hf"
+                                    style="width: 80%;height: 80%;max-height: 80px;min-height: 50px"></textarea>
+                                <button class="btn btn-success Fpinglun" id="btnhf"
+                                    style="width: 80px;margin-left: 10px">评论</button>
+                                <small id="quxiaohuifu" style="color: red;margin-left: 7px">取消</small>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
 
-
-        <div  class="row col-xs-10 col-xs-offset-1" style="margin-bottom: 5vh">
-            <div class="pinglun1" style="display: flex;justify-content: space-between;align-items: center">
-                <div th:if="${user}!=null" class="touxiang col-xs-2" style="display: flex;justify-content: flex-end">
-                    <img th:src="${user.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 1vw" id="headImg">
-                </div>
-                <div th:if="${flag}=='false'" class="touxiang col-xs-2" style="display: flex;justify-content: flex-end">
-                    <img th:src="@{/img/4.png}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 1vw;margin-left: 1vw" >
-                </div>
-                <div class="col-xs-10" style="display: flex;justify-content: flex-start;">
-                    <textarea class="FplText form-control" id="fpl" style="height: auto;min-height: 80px;"></textarea>
-                    <button class="btn btn-success Fpinglun" id="PL" style="max-width: 80px;margin-left: 10px">评论</button>
-                </div>
-            </div>
-        </div>
-        <div class="row ping col-xs-12" >
-            <div class="panel panel-default" th:each="item : ${comments}">
-                <div class="panel-body" th:pid="0" th:replyUserId="0" th:userId="${item.userId}"  th:commentId="${item.commentId}" >
-                    <div style="display:flex;justify-content: start;align-items: center;">
-                        <img th:src="${item.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">
-                        [[${item.userName}]] :
-                        [[${item.commentMsg}]]
-                        <span class="label label-primary" style="margin-left: 7px"> [[${item.createTime}]] </span>
-                        <small id="huiFuBtn" style="color: #999999;margin-left: 5px;">回复</small>
-                    </div>
-                    <div class="pinglun" style="display: none;justify-content: space-between;align-items: center;width:80%;height:100%;margin-left: 4vw;margin-top: 20px">
-                        <div class="touxiang" style="display: flex;width:80px;">
-                            <img th:if="${user}!=null" th:src="${user.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;" >
-                            <img th:if="${user}==null" src="/img/4.png" alt="" class="img-circle" style="width: 50px;height: 50px;" >
-                        </div>
-                        <div class="" style="display: flex;justify-content: flex-start;width:90%;align-items: center">
-                            <textarea class="FplText" id="hf" style="width: 80%;height: 80%;max-height: 80px;min-height: 50px"></textarea>
-                            <button class="btn btn-success Fpinglun" id="btnhf" style="width: 80px;margin-left: 10px">评论</button>
-                            <small id="quxiaohuifu" style="color: red;margin-left: 7px">取消</small>
-                        </div>
-                    </div>
-                </div>
-                <div th:if="${item.getReplyVO().size()}>0" th:each="it :${item.getReplyVO()}" class="panel-body" th:pid="${item.commentId}" th:commentId="${it.commentId}" th:userId="${it.userId}" th:replyUserId="${it.replyUserId}" style="margin-left:4vw;border-left: 1px solid #ddd;">
-                    <div style="display:flex;justify-content: start;align-items: center;">
-                        <img th:src="${it.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;margin-right: 20px;">
-                        [[${it.userName}]]  对   [[${it.replyUserName}]]  说：
-                        [[${it.commentMsg}]]
-                        <span class="label label-primary" style="margin-left: 7px" >[[${it.createTime}]]</span>
-                        <small class="" id="huiFuBtn" style="color: #999999;margin-left: 5px;">回复</small>
-                    </div>
-
-                    <div class="pinglun" style="display: none;justify-content: space-between;align-items: center;width:80%;height:100%;margin: 20px 0 0 0">
-                        <div class="touxiang" style="display: flex;width:80px;">
-                            <img th:if="${user}!=null" th:src="${user.headPortrait}" alt="" class="img-circle" style="width: 50px;height: 50px;" >
-                            <img th:if="${user}==null" src="/img/4.png" alt="" class="img-circle" style="width: 50px;height: 50px;" >
-                        </div>
-                        <div class="" style="display: flex;justify-content: flex-start;width:90%;align-items: center">
-                            <textarea class="FplText" id="hf" style="width: 80%;height: 80%;max-height: 80px;min-height: 50px"></textarea>
-                            <button class="btn btn-success Fpinglun" id="btnhf" style="width: 80px;margin-left: 10px">评论</button>
-                            <small id="quxiaohuifu" style="color: red;margin-left: 7px">取消</small>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+    </div>
+    <hr>
+    <div th:replace="~{ admin/conn ::  dibu }"></div>
+    <div class="a">
+        <div class="loading">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
-
-</div>
-<hr>
-<div th:replace="~{ admin/conn ::  dibu }"></div>
-<div class="a">
-    <div class="loading">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
-<script th:src="@{/editor.md-master/lib/marked.min.js}"></script>
-<script th:src="@{/editor.md-master/lib/prettify.min.js}"></script>
-<script th:src="@{/editor.md-master/lib/raphael.min.js} "></script>
-<script th:src="@{/editor.md-master/lib/underscore.min.js}"></script>
-<script th:src="@{/editor.md-master/lib/sequence-diagram.min.js} "></script>
-<script th:src="@{/editor.md-master/lib/flowchart.min.js }"></script>
-<script th:src="@{/editor.md-master/editormd.min.js}"></script>
-<script th:src="@{/js/ajax.js}"></script>
+    <script th:src="@{/editor.md-master/lib/marked.min.js}"></script>
+    <script th:src="@{/editor.md-master/lib/prettify.min.js}"></script>
+    <script th:src="@{/editor.md-master/lib/raphael.min.js} "></script>
+    <script th:src="@{/editor.md-master/lib/underscore.min.js}"></script>
+    <script th:src="@{/editor.md-master/lib/sequence-diagram.min.js} "></script>
+    <script th:src="@{/editor.md-master/lib/flowchart.min.js }"></script>
+    <script th:src="@{/editor.md-master/editormd.min.js}"></script>
+    <script th:src="@{/js/ajax.js}"></script>
 
 </body>
 
 <script>
 
-    document.onreadystatechange = function() 　　//当页面加载状态改变的时候执行function
+    document.onreadystatechange = function () 　　//当页面加载状态改变的时候执行function
 
     {
 
-        if(document.readyState == "complete")
-
-        { 　　//当页面加载状态为完全结束时进入
+        if (document.readyState == "complete") { 　　//当页面加载状态为完全结束时进入
 
             document.querySelector(".a").style.display = "none";
         }
     }
 
-    let flag = [[${flag}]]
+    let flag = [[${ flag }]]
     console.log(flag)
-    var testEditor =null;
-    let PingLunDiv=null;
+    var testEditor = null;
+    let PingLunDiv = null;
     testEditor = editormd.markdownToHTML("test-editormd", {
         htmlDecode: "style,script,iframe", // you can filter tags decode
         // emoji: true,
@@ -182,23 +210,23 @@
     //评论
     function pinglunBtn() {
         var pinglunBtn = document.querySelector("#PL");
-        pinglunBtn.addEventListener("click",()=>{
-            if(document.querySelector("#fpl").value.trim().length>0){
+        pinglunBtn.addEventListener("click", () => {
+            if (document.querySelector("#fpl").value.trim().length > 0) {
                 let url = "/comment/addcomment";
-                let data={
-                    blogId : [[${blog.bid}]],
-                    commentMsg : document.querySelector("#fpl").value,
+                let data = {
+                    blogId: [[${ blog.bid }]],
+                    commentMsg: document.querySelector("#fpl").value,
                     replyUserId: 0,
                     pid: 0
                 }
 
                 console.log(data);
-                Ajax1(url,data,"POST",()=>{
+                Ajax1(url, data, "POST", () => {
                     var res = xmlHttpRequest.responseText;
-                    if(res == "true"){
+                    if (res == "true") {
                         //重新加载
                         location.reload();
-                    }else alert("请先登陆！")
+                    } else alert("请先登陆！")
 
 
                 });
@@ -210,17 +238,17 @@
     pinglunBtn();
 
     //清除评论列表
-    var clearCommentList = ()=>{
+    var clearCommentList = () => {
         var Plist = document.querySelector(".ping");
-        Plist.innerHTML="";
+        Plist.innerHTML = "";
     }
     // 显示回复框
     var huifuArr = document.querySelectorAll("#huiFuBtn");
-    huifuArr.forEach((item)=>{
+    huifuArr.forEach((item) => {
 
 
-        item.addEventListener("click",()=>{
-            huifuArr.forEach((item)=>{
+        item.addEventListener("click", () => {
+            huifuArr.forEach((item) => {
                 let nextSibling = item.parentNode.nextSibling;
                 nextSibling.nextSibling.style.display = "none";
             })
@@ -233,34 +261,34 @@
 
     //回复消息
     var btnhuifuArr = document.querySelectorAll("#btnhf");
-    if(flag==true){
-        btnhuifuArr.forEach((it)=>{
+    if (flag == true) {
+        btnhuifuArr.forEach((it) => {
             //console.log(it)
-            it.addEventListener('click',()=>{
-                if(it.previousElementSibling.value.trim().length>0){
+            it.addEventListener('click', () => {
+                if (it.previousElementSibling.value.trim().length > 0) {
                     let url = "/comment/addcomment";
                     let a = it.parentNode.parentNode.parentNode;
                     console.log(a);
                     console.log("-- ---")
 
                     let pid;
-                    if(a.getAttribute("pid") == '0') pid = a.getAttribute("commentId");
-                    else if(a.parentNode.firstElementChild.getAttribute("pid")) pid = a.parentNode.firstElementChild.getAttribute("commentId");
+                    if (a.getAttribute("pid") == '0') pid = a.getAttribute("commentId");
+                    else if (a.parentNode.firstElementChild.getAttribute("pid")) pid = a.parentNode.firstElementChild.getAttribute("commentId");
 
-                    let data={
-                        blogId : [[${blog.bid}]],
-                        commentMsg : it.previousElementSibling.value,
+                    let data = {
+                        blogId: [[${ blog.bid }]],
+                        commentMsg: it.previousElementSibling.value,
                         replyUserId: a.getAttribute("userId"),
                         pid: pid
 
                     }
                     console.log(data);
-                    Ajax1(url,data,"POST",()=>{
+                    Ajax1(url, data, "POST", () => {
                         // 响应
                         var res = xmlHttpRequest.responseText;
-                        if(res == "true"){
+                        if (res == "true") {
                             location.reload();
-                        }else alert("请先登陆！")
+                        } else alert("请先登陆！")
                     });
                 }
 
@@ -271,8 +299,8 @@
     // 取消评论
 
     let quxiaohuifubtnArr = document.querySelectorAll("#quxiaohuifu");
-    quxiaohuifubtnArr.forEach((item)=>{
-        item.addEventListener("click",()=>{
+    quxiaohuifubtnArr.forEach((item) => {
+        item.addEventListener("click", () => {
             item.parentNode.parentNode.style.display = "none";
         })
 

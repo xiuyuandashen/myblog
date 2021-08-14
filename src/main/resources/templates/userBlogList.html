@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>[[${user.name}]]的博客列表～～</title>
@@ -7,58 +8,64 @@
     <script th:src="@{/js/jquery.min.js}"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/css/loading.css}">
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
-    <link rel="Bookmark" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <link rel="shortcut icon"
+        href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <link rel="Bookmark"
+        href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
 
     <link rel="stylesheet" th:href="@{/js/bs_pagination-master/jquery.bs_pagination.min.css}">
     <script th:src="@{/js/bs_pagination-master/jquery.bs_pagination.min.js}"></script>
     <script th:src="@{/js/bs_pagination-master/localization/en.min.js}"></script>
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
         }
+
         @media (max-width: 768px) {
-            .userMsg{
+            .userMsg {
                 display: none;
             }
-            .TouXiang{
+
+            .TouXiang {
                 margin-top: 30px;
             }
 
         }
+
         @media (min-width: 768px) {
-            .userMsg1{
+            .userMsg1 {
                 display: none;
             }
         }
     </style>
 </head>
+
 <body>
-<div class="container-fluid" style="padding: 0;min-height: 100vh">
-    <div th:replace="~{ admin/conn ::  common_haeder }"></div>
-    <div class="row" style="margin:0;display: flex;justify-content: center">
-        <div class="col-xs-12 userMsg1" >
-            <div class="thumbnail TouXiang">
-                <img th:src="${user.headPortrait}" alt="...">
-                <div class="caption">
-                    <h3>[[${user.name}]]</h3>
-                    <p>博客数量: [[${blogNumber}]]</p>
+    <div class="container-fluid" style="padding: 0;min-height: 100vh">
+        <div th:replace="~{ admin/conn ::  common_haeder }"></div>
+        <div class="row" style="margin:0;display: flex;justify-content: center">
+            <div class="col-xs-12 userMsg1">
+                <div class="thumbnail TouXiang">
+                    <img th:src="${user.headPortrait}" alt="...">
+                    <div class="caption">
+                        <h3>[[${user.name}]]</h3>
+                        <p>博客数量: [[${blogNumber}]]</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
         <div class="row" style="margin-top: 10px;margin-left: 0;margin-right: 0;display: flex;justify-content: center">
 
-            <div class="col-xs-12 col-md-2 userMsg" style="min-width: 300px" >
+            <div class="col-xs-12 col-md-2 userMsg" style="min-width: 300px">
                 <div class="col-xs-12 col-md-12">
                     <div class="thumbnail">
                         <img th:src="${user.headPortrait}" alt="...">
@@ -69,79 +76,81 @@
                     </div>
                 </div>
             </div>
-<!--            <div class="col-xs-12 col-md-6">-->
-                <div class="row" style="margin-right: 0;margin-left: 0;display: flex;justify-content: center;width: 100%">
-                    <div class="col-xs-12 col-md-12" >
-                        <div class="thumbnail" th:each="blog : ${blogPageInfo.list}">
-                            <div class="caption">
-                                <h3>[[${blog.title}]]</h3>
-                                <p>[[${blog.bName}]]</p>
-                                <p>
-                                    <a th:href="@{/blog/queryId(id=${blog.getBid()})}" class="btn btn-primary" role="button">阅读</a>
-                                    <a th:href="@{/{id}/update(id=${blog.getBid()})}" class="btn btn-primary" role="button">修改</a>
-                                    <a th:href="@{/delete/{id}(id=${blog.getBid()})}" class="btn btn-primary" role="button">删除</a>
-                                </p>
-                            </div>
+            <!--            <div class="col-xs-12 col-md-6">-->
+            <div class="row" style="margin-right: 0;margin-left: 0;display: flex;justify-content: center;width: 100%">
+                <div class="col-xs-12 col-md-12">
+                    <div class="thumbnail" th:each="blog : ${blogPageInfo.list}">
+                        <div class="caption">
+                            <h3>[[${blog.title}]]</h3>
+                            <p>[[${blog.bName}]]</p>
+                            <p>
+                                <a th:href="@{/blog/queryId(id=${blog.getBid()})}" class="btn btn-primary"
+                                    role="button">阅读</a>
+                                <a th:href="@{/{id}/update(id=${blog.getBid()})}" class="btn btn-primary"
+                                    role="button">修改</a>
+                                <a th:href="@{/delete/{id}(id=${blog.getBid()})}" class="btn btn-primary"
+                                    role="button">删除</a>
+                            </p>
                         </div>
                     </div>
                 </div>
+            </div>
 
 
 
-<!--            </div>-->
+            <!--            </div>-->
         </div>
-    <div class="row" style="margin-right: 0">
-<!--        <nav aria-label="Page navigation" style="display: flex;justify-content: center">-->
-<!--            <ul class="pagination">-->
-<!--                <li>-->
-<!--                    <a href="#" aria-label="Previous">-->
-<!--                        <span aria-hidden="true">&laquo;</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--                <li th:each="pageNums :${blogPageInfo.navigatepageNums}" th:class="${pageNums == blogPageInfo.getPageNum()?'active':''}"><a th:href="@{/user/userBlogList(pageNum=${pageNums})}" th:text="${pageNums}"></a> </li>-->
+        <div class="row" style="margin-right: 0">
+            <!--        <nav aria-label="Page navigation" style="display: flex;justify-content: center">-->
+            <!--            <ul class="pagination">-->
+            <!--                <li>-->
+            <!--                    <a href="#" aria-label="Previous">-->
+            <!--                        <span aria-hidden="true">&laquo;</span>-->
+            <!--                    </a>-->
+            <!--                </li>-->
+            <!--                <li th:each="pageNums :${blogPageInfo.navigatepageNums}" th:class="${pageNums == blogPageInfo.getPageNum()?'active':''}"><a th:href="@{/user/userBlogList(pageNum=${pageNums})}" th:text="${pageNums}"></a> </li>-->
 
-<!--                <li>-->
-<!--                    <a href="#" aria-label="Next">-->
-<!--                        <span aria-hidden="true">&raquo;</span>-->
-<!--                    </a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </nav>-->
-        <div id="page2" style="display: flex;justify-content: center"></div>
+            <!--                <li>-->
+            <!--                    <a href="#" aria-label="Next">-->
+            <!--                        <span aria-hidden="true">&raquo;</span>-->
+            <!--                    </a>-->
+            <!--                </li>-->
+            <!--            </ul>-->
+            <!--        </nav>-->
+            <div id="page2" style="display: flex;justify-content: center"></div>
+        </div>
+
+
+
     </div>
-
-
-
-</div>
-<div th:replace="~{ admin/conn ::  dibu }"></div>
-<div class="a">
-    <div class="loading">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+    <div th:replace="~{ admin/conn ::  dibu }"></div>
+    <div class="a">
+        <div class="loading">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
-</div>
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
 <script>
-    document.onreadystatechange = function() 　　//当页面加载状态改变的时候执行function
+    document.onreadystatechange = function () 　　//当页面加载状态改变的时候执行function
 
     {
 
-        if(document.readyState == "complete")
-
-        { 　　//当页面加载状态为完全结束时进入
+        if (document.readyState == "complete") { 　　//当页面加载状态为完全结束时进入
 
             document.querySelector(".a").style.display = "none";
         }
     }
 
     $('#page2').bs_pagination({
-        totalPages: [[${blogPageInfo.pages}]],//总页数：由接口返回（AJAX）
-        currentPage: [[${blogPageInfo.pageNum}]],//当前页：由前端指定
+        totalPages: [[${ blogPageInfo.pages }]],//总页数：由接口返回（AJAX）
+        currentPage: [[${ blogPageInfo.pageNum }]],//当前页：由前端指定
         visiblePageLinks: 5,//显示的最多分页链接数
         showGoToPage: false,
         showRowsPerPage: false,
@@ -156,8 +165,9 @@
             //obj.currentPage;//获取点击对象里的当前页
             console.log(e)
             console.log(obj)
-            location.href ="/user/userBlogList?pageNum=" + obj.currentPage;
+            location.href = "/user/userBlogList?pageNum=" + obj.currentPage;
         }
     });
 </script>
+
 </html>
