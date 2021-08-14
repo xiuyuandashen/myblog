@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <link rel="Bookmark" href="https://cdn.jsdelivr.net/gh/xiuyuandashen/figureBed/2020/12/228573cc37f47e46319a7b18289b8723a6.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid" style="padding: 0;margin:0;min-height: 100vh;">
+    <div th:replace="~{ admin/conn :: common_haeder }"></div>
+    <div style="display: flex;justify-content: center;margin-top: 30vh;margin-right: 0" class="row" >
+        <form class="form-horizontal col-xs-10 col-md-5" style="" th:action="@{/toLogin}" method="post">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-xs-3 col-md-1 control-label" style="text-align: center" >账号</label>
+                <div class="col-xs-9 col-md-11">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="请输入账号" name="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-xs-3 col-md-1 control-label" style="text-align: center">密码</label>
+                <div class="col-xs-9 col-md-11">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码" name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class=" col-xs-12 ">
+                    <button type="submit" class="btn btn-primary btn-block">登录</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<div th:replace="~{ admin/conn ::  dibu }"></div>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

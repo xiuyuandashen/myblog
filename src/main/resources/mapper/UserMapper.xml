@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserMapper">
+
+    <select id="loadUserByUsername" parameterType="java.lang.String" resultType="com.entity.myUser" >
+        select * from user where name = #{name};
+    </select>
+
+    <select id="selectByUserId" parameterType="long" resultType="com.entity.myUser">
+        select * from  user where id = #{id}
+    </select>
+
+    <select id="findRoleByUserId" parameterType="java.lang.Integer" resultType="com.entity.role">
+        select role.id,role.name from role,user,role_user where  user.id = role_user.user_id and role.id = role_user.role_id and user.id = #{id} ;
+    </select>
+
+    <insert id="insertUser" parameterType="myUser" >
+        insert into user(name,password,headPortrait,email) values (#{name},#{password},#{headPortrait},#{email})
+    </insert>
+
+    <insert id="addUserRole" parameterType="int" >
+        insert into role_user (user_id,role_id) values(#{userId},#{roleId})
+    </insert>
+
+    <select id="blogNumber" parameterType="int" resultType="int">
+        select count(*) from blog where user_id = #{id}
+    </select>
+
+    <update id="updateUser" parameterType="myUser">
+        update user
+        <set>
+            <if test="name!=null and name!='' " >
+            name = #{name},</if>
+            <if test="email !=null and email != ''" >
+            email = #{email},</if>
+            <if test="headPortrait !=null and headPortrait !=''">
+                headPortrait = #{headPortrait}
+            </if>,
+            <if test="password!=null and password != ''">
+                password = #{password}
+            </if>
+        </set>
+        where id = #{id};
+    </update>
+
+    <update id="updatePassword" >
+        update user set password = #{password} where name = #{name} and email = #{email};
+    </update>
+</mapper>
